@@ -35,3 +35,67 @@
 2021-10-17 18:02:11.059 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 0.868 seconds (JVM running for 1.197)
 2021-10-17 18:02:11.060 INFO  com.agroup.store.StoreApplication                 :16   [32m                  [0;39m 启动成功!!
 2021-10-17 18:02:11.061 INFO  com.agroup.store.StoreApplication                 :17   [32m                  [0;39m 地址：	http://127.0.0.1:8880
+2021-10-17 18:16:46.500 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 17836 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
+2021-10-17 18:16:46.501 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2021-10-17 18:16:46.935 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8880 (http)
+2021-10-17 18:16:46.940 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8880"]
+2021-10-17 18:16:46.940 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2021-10-17 18:16:46.940 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-17 18:16:46.991 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2021-10-17 18:16:46.992 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 463 ms
+2021-10-17 18:16:47.143 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8880"]
+2021-10-17 18:16:47.156 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8880 (http) with context path ''
+2021-10-17 18:16:47.163 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 0.912 seconds (JVM running for 1.242)
+2021-10-17 18:16:47.164 INFO  com.agroup.store.StoreApplication                 :16   [32m                  [0;39m 启动成功!!
+2021-10-17 18:16:47.164 INFO  com.agroup.store.StoreApplication                 :17   [32m                  [0;39m 地址：	http://127.0.0.1:8880
+2021-10-17 18:17:15.652 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-17 18:17:15.652 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2021-10-17 18:17:15.653 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
+2021-10-17 18:33:06.982 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 30540 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
+2021-10-17 18:33:06.984 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2021-10-17 18:33:07.405 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8880 (http)
+2021-10-17 18:33:07.410 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8880"]
+2021-10-17 18:33:07.411 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2021-10-17 18:33:07.411 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-17 18:33:07.464 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2021-10-17 18:33:07.464 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 456 ms
+2021-10-17 18:33:07.613 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8880"]
+2021-10-17 18:33:07.627 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8880 (http) with context path ''
+2021-10-17 18:33:07.634 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 0.886 seconds (JVM running for 1.223)
+2021-10-17 18:33:07.635 INFO  com.agroup.store.StoreApplication                 :16   [32m                  [0;39m 启动成功!!
+2021-10-17 18:33:07.636 INFO  com.agroup.store.StoreApplication                 :17   [32m                  [0;39m 地址：	http://127.0.0.1:8880
+2021-10-17 18:33:10.048 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-17 18:33:10.049 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2021-10-17 18:33:10.049 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
+2021-10-17 21:15:36.520 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 20356 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
+2021-10-17 21:15:36.522 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2021-10-17 21:15:36.940 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8880 (http)
+2021-10-17 21:15:36.945 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8880"]
+2021-10-17 21:15:36.945 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2021-10-17 21:15:36.946 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-17 21:15:36.997 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2021-10-17 21:15:36.997 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 450 ms
+2021-10-17 21:15:37.145 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8880"]
+2021-10-17 21:15:37.158 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8880 (http) with context path ''
+2021-10-17 21:15:37.165 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 0.877 seconds (JVM running for 1.31)
+2021-10-17 21:15:37.166 INFO  com.agroup.store.StoreApplication                 :16   [32m                  [0;39m 启动成功!!
+2021-10-17 21:15:37.166 INFO  com.agroup.store.StoreApplication                 :17   [32m                  [0;39m 地址：	http://127.0.0.1:8880
+2021-10-17 21:15:40.636 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-17 21:15:40.636 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2021-10-17 21:15:40.637 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
+2021-10-17 21:16:39.435 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 30224 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
+2021-10-17 21:16:39.436 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2021-10-17 21:16:39.853 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8880 (http)
+2021-10-17 21:16:39.858 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8880"]
+2021-10-17 21:16:39.859 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2021-10-17 21:16:39.859 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-17 21:16:39.913 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2021-10-17 21:16:39.913 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 453 ms
+2021-10-17 21:16:40.058 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8880"]
+2021-10-17 21:16:40.071 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8880 (http) with context path ''
+2021-10-17 21:16:40.078 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 0.867 seconds (JVM running for 1.208)
+2021-10-17 21:16:40.079 INFO  com.agroup.store.StoreApplication                 :16   [32m                  [0;39m 启动成功!!
+2021-10-17 21:16:40.079 INFO  com.agroup.store.StoreApplication                 :17   [32m                  [0;39m 地址：	http://127.0.0.1:8880
+2021-10-17 21:16:56.959 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-10-17 21:16:56.960 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2021-10-17 21:16:56.960 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms

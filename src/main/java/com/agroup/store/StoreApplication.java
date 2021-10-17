@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 
-
+//@componentScan("com.agroup")
 @SpringBootApplication
 public class StoreApplication {
     private static final Logger LOG = LoggerFactory.getLogger(StoreApplication.class);
