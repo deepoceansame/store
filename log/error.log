@@ -1472,3 +1472,33 @@ com.mysql.cj.exceptions.WrongArgumentException: Malformed database URL, failed t
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-10-18 23:51:31.013 ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter  :40   [32m                  [0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.agroup.store.service.GoodsService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.agroup.store.service.GoodsService' in your configuration.
+
+2021-10-18 23:52:19.171 ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter  :40   [32m                  [0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+A component required a bean of type 'com.agroup.store.service.GoodsService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.agroup.store.service.GoodsService' in your configuration.
+
