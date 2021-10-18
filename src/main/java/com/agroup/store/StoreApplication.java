@@ -1,5 +1,6 @@
 package com.agroup.store;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -7,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 
 //@componentScan("com.agroup")
+@MapperScan("com.agroup.store.mapper")
 @SpringBootApplication
 public class StoreApplication {
     private static final Logger LOG = LoggerFactory.getLogger(StoreApplication.class);
