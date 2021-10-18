@@ -1,6 +1,7 @@
 package com.agroup.store.controller;
 
 import com.agroup.store.domain.Account;
+import com.agroup.store.resp.CommonResp;
 import com.agroup.store.service.AccountService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class TestController {
+public class AccountController {
 
     @Value("${test.hello:default value}")
     private String testHello;
@@ -38,7 +39,7 @@ public class TestController {
     }
 
     @GetMapping("account/list")
-    public List<Account> list(){
+    public CommonResp list(){
         return accountService.list();
     }
 }
