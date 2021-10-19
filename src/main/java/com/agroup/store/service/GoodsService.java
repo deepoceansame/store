@@ -4,10 +4,8 @@ import com.agroup.store.domain.Goods;
 import com.agroup.store.domain.GoodsExample;
 import com.agroup.store.mapper.GoodsMapper;
 import com.agroup.store.req.GoodsReq;
-import com.agroup.store.resp.CommonResp;
 import com.agroup.store.resp.GoodsResp;
 import com.agroup.store.util.CopyUtil;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
