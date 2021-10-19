@@ -6,6 +6,7 @@ import com.agroup.store.mapper.GoodsMapper;
 import com.agroup.store.req.GoodsReq;
 import com.agroup.store.resp.CommonResp;
 import com.agroup.store.resp.GoodsResp;
+import com.agroup.store.util.CopyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +23,7 @@ public class GoodsService {
         GoodsExample.Criteria criteria = goodsExample.createCriteria();
         criteria.andNameLike("%"+req.getName()+"%");
         List<Goods> lis = goodsMapper.selectByExample(goodsExample);
-        List<GoodsResp> lisr = new ArrayList<>();
-        for (Goods gu:lis){
-            GoodsResp gur = new GoodsResp();
-            BeanUtils.copyProperties(gu, gur);
-            lisr.add(gur);
-        }
+        List<GoodsResp> lisr = CopyUtil.copyList(lis, GoodsResp.class);
         return lisr;
     }
 }
