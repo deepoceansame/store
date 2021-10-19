@@ -11,6 +11,8 @@ public class GoodsResp {
 
     private String img;
 
+    private Integer accountid;
+
     public Integer getId() {
         return id;
     }
@@ -51,6 +53,14 @@ public class GoodsResp {
         this.img = img;
     }
 
+    public Integer getAccountid() {
+        return accountid;
+    }
+
+    public void setAccountid(Integer accountid) {
+        this.accountid = accountid;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -62,6 +72,7 @@ public class GoodsResp {
         sb.append(", description=").append(description);
         sb.append(", categoryId=").append(categoryId);
         sb.append(", img=").append(img);
+        sb.append(", accountid=").append(accountid);
         sb.append("]");
         return sb.toString();
     }

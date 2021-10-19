@@ -19,10 +19,12 @@ create table goods(
   description varchar(200),
   category_id int,
   img varchar(200),
-  primary key (id)
+  accountId int unsigned,
+  primary key (id),
+  foreign key (accountId) references account(id)
 );
 
-insert into goods(name, description) value ('橘子', '非常好吃');
-insert into goods(name, description) value ('大橘子', '还可以');
-insert into goods(name, description) value ('耳机', '几乎全新');
-insert into goods(name, description) value ('旧耳机', '不新，但品质优秀');
+insert into goods(name, description, accountId) value ('橘子', '非常好吃', 1);
+insert into goods(name, description, accountId) value ('大橘子', '还可以', 1);
+insert into goods(name, description, accountId) value ('耳机', '几乎全新', 2);
+insert into goods(name, description, accountId) value ('旧耳机', '不新，但品质优秀', 2);

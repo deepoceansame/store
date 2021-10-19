@@ -1,0 +1,8 @@
+console.log("ref");
+    console.log(goods);
+    console.log("reactive")
+    console.log(goods2)
+    console.log("toRef")
+    console.log(toRef(goods2))
+    console.log("toRefs")
+    console.log(toRefs(goods2))

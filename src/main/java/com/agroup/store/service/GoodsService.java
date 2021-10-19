@@ -7,6 +7,7 @@ import com.agroup.store.req.GoodsReq;
 import com.agroup.store.resp.GoodsResp;
 import com.agroup.store.util.CopyUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -19,7 +20,9 @@ public class GoodsService {
     public List<GoodsResp> list(GoodsReq req){
         GoodsExample goodsExample = new GoodsExample();
         GoodsExample.Criteria criteria = goodsExample.createCriteria();
-        criteria.andNameLike("%"+req.getName()+"%");
+        if (!ObjectUtils.isEmpty(req.getName())) {
+            criteria.andNameLike("%" + req.getName() + "%");
+        }
         List<Goods> lis = goodsMapper.selectByExample(goodsExample);
         List<GoodsResp> lisr = CopyUtil.copyList(lis, GoodsResp.class);
         return lisr;

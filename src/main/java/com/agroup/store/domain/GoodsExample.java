@@ -433,6 +433,66 @@ public class GoodsExample {
             addCriterion("img not between", value1, value2, "img");
             return (Criteria) this;
         }
+
+        public Criteria andAccountidIsNull() {
+            addCriterion("accountId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountidIsNotNull() {
+            addCriterion("accountId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountidEqualTo(Integer value) {
+            addCriterion("accountId =", value, "accountid");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountidNotEqualTo(Integer value) {
+            addCriterion("accountId <>", value, "accountid");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountidGreaterThan(Integer value) {
+            addCriterion("accountId >", value, "accountid");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("accountId >=", value, "accountid");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountidLessThan(Integer value) {
+            addCriterion("accountId <", value, "accountid");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountidLessThanOrEqualTo(Integer value) {
+            addCriterion("accountId <=", value, "accountid");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountidIn(List<Integer> values) {
+            addCriterion("accountId in", values, "accountid");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountidNotIn(List<Integer> values) {
+            addCriterion("accountId not in", values, "accountid");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountidBetween(Integer value1, Integer value2) {
+            addCriterion("accountId between", value1, value2, "accountid");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountidNotBetween(Integer value1, Integer value2) {
+            addCriterion("accountId not between", value1, value2, "accountid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
