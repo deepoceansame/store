@@ -38,7 +38,7 @@ export default defineComponent({
     };
     const goods = ref();
     onMounted(() => {
-      axios.get("http://localhost:8081/goods/list").then(
+      axios.get("/goods/list").then(
           ( response ) => {
             console.log("12")
             console.log(response)
