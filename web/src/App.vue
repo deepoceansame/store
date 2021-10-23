@@ -56,8 +56,8 @@
       </a-layout-content>
     </a-layout>
 
-    <the-footer/>
 
+    <the-footer/>
   </a-layout>
 </template>
 
@@ -81,6 +81,8 @@ export default defineComponent({
 
 
 <style>
+
+
 #components-layout-demo-top .logo {
   float: left;
   width: 120px;

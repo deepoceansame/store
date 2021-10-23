@@ -8,8 +8,9 @@ create table account(
 
 insert into account(id, name, password) values(1, "aa", "dsd1");
 insert into account(id, name, password) values(2, "ds", "1234");
+insert into account(id, name, password) values(3, "me", "7781");
 
-set global time_zone='+8:00'
+set global time_zone='+8:00';
 
 
 drop table if exists goods;
