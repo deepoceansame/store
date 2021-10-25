@@ -8,26 +8,6 @@
     <div class="goodsname">goodsName</div>
     <p class="info">出售Vue标签， 世间仅有一个，售价人道</p>
   </div>
-
-  <div class="lis">
-    <img class="pic" src="../assets/logo.png" alt="picture"/>
-    <div class="panda">
-      <label class="price">120000yuan</label><br/>
-      <label class="accountName">TTTTTXY</label>
-    </div>
-    <div class="goodsname">goodsName</div>
-    <p class="info">出售Vue标签， 世间仅有一个，售价人道</p>
-  </div>
-
-  <div class="lis">
-    <img class="pic" src="../assets/logo.png" alt="picture"/>
-    <div class="panda">
-      <label class="price">120000yuan</label><br/>
-      <label class="accountName">TTTTTXY</label>
-    </div>
-    <div class="goodsname">goodsName</div>
-    <p class="info">出售Vue标签， 世间仅有一个，售价人道</p>
-  </div>
 </template>
 
 <script>
@@ -37,10 +17,6 @@ export default {
 </script>
 
 <style scoped>
-  #aa{
-    border-width: 10px;
-    border-color: #141414;
-  }
   .lis{
     margin: 1px;
     display: flex;

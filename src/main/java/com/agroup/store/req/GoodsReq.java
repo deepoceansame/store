@@ -1,6 +1,6 @@
 package com.agroup.store.req;
 
-public class GoodsReq {
+public class GoodsReq extends PageReq{
     private Integer id;
 
     private String name;

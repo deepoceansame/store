@@ -1,57 +1,45 @@
 <template>
-  <a-list item-layout="horizontal" size="large" :pagination="pagination" :data-source="goods">
-    <template #footer>
-      <div>
-        <b>ant design vue</b>
-        footer part
-      </div>
-    </template>
-
-    <template #renderItem="{ item }">
-      <a-list-item key="item.id">
-        <a-list-item-meta>
-          <template #title>
-            <a :href="item.href">{{ item.name }} {{item.accountid}}</a>
-            <br/>
-            <label>12元</label>
-          </template>
-          <template #avatar><a-avatar :src="item.img" /></template>
-        </a-list-item-meta>
-        {{ item.description }}
-      </a-list-item>
-    </template>
-  </a-list>
+  <table>
+    <GoodsTableRow v-for="(item, index) in goodsList.values()" :goods="item" :key="index"/>
+  </table>
 </template>
 <script>
-import {defineComponent, onMounted, ref} from 'vue';
-import axios from 'axios'
+import {defineComponent, ref} from 'vue';
+import GoodsTableRow from "@/components/GoodsTableRow";
 
 
 export default defineComponent({
   name: "Home",
-  setup() {
-    const pagination = {
-      onChange: (page) => {
-        console.log(page);
+  components: {GoodsTableRow},
+  setup(){
+    const goodsList = ref([
+      {
+        name:'大橘子',
+        price:12,
+        accountname:'TTTTXY',
+        info:'品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀' +
+            '品质优秀'
       },
-      pageSize: 2,
-    };
-    const goods = ref();
-    onMounted(() => {
-      axios.get("/goods/list").then(
-          ( response ) => {
-            console.log("12")
-            console.log(response)
-            goods.value = response.data.content;
-          }
-      )
-    })
+      {
+        name:'大橘子',
+        price:14,
+        accountname:'TTTTXYjjjjjjji',
+        info:'品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀' +
+            '品质优秀'
+      },
+      {
+        name:'大橘子',
+        price:15,
+        accountname:'TTTTXYLOPoods1',
+        info:'品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀' +
+            '品质优秀'
+      }
+    ]);
 
     return {
-      goods,
-      pagination,
-    };
-  },
+      goodsList
+    }
+  }
 });
 </script>
 
