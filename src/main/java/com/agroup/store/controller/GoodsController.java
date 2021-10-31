@@ -3,6 +3,7 @@ package com.agroup.store.controller;
 import com.agroup.store.req.GoodsReq;
 import com.agroup.store.resp.CommonResp;
 import com.agroup.store.resp.GoodsResp;
+import com.agroup.store.resp.PageResp;
 import com.agroup.store.service.GoodsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,7 @@ public class GoodsController {
 
     @GetMapping("goods/list")
     public CommonResp list(GoodsReq req){
-        CommonResp<List<GoodsResp>> resp = new CommonResp<>();
+        CommonResp<PageResp<GoodsResp>> resp = new CommonResp<>();
         resp.setContent(goodsService.list(req));
         return resp;
     }
