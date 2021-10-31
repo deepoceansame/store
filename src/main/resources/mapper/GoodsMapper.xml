@@ -8,6 +8,7 @@
     <result column="category_id" jdbcType="INTEGER" property="categoryId" />
     <result column="img" jdbcType="VARCHAR" property="img" />
     <result column="accountId" jdbcType="INTEGER" property="accountid" />
+    <result column="price" jdbcType="REAL" property="price" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, description, category_id, img, accountId
+    id, `name`, description, category_id, img, accountId, price
   </sql>
   <select id="selectByExample" parameterType="com.agroup.store.domain.GoodsExample" resultMap="BaseResultMap">
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.agroup.store.domain.Goods">
     insert into goods (id, `name`, description, 
-      category_id, img, accountId
-      )
+      category_id, img, accountId, 
+      price)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{categoryId,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR}, #{accountid,jdbcType=INTEGER}
-      )
+      #{categoryId,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR}, #{accountid,jdbcType=INTEGER}, 
+      #{price,jdbcType=REAL})
   </insert>
   <insert id="insertSelective" parameterType="com.agroup.store.domain.Goods">
     insert into goods
@@ -129,6 +130,9 @@
       <if test="accountid != null">
         accountId,
       </if>
+      <if test="price != null">
+        price,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -148,6 +152,9 @@
       </if>
       <if test="accountid != null">
         #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=REAL},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.accountid != null">
         accountId = #{record.accountid,jdbcType=INTEGER},
       </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=REAL},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       description = #{record.description,jdbcType=VARCHAR},
       category_id = #{record.categoryId,jdbcType=INTEGER},
       img = #{record.img,jdbcType=VARCHAR},
-      accountId = #{record.accountid,jdbcType=INTEGER}
+      accountId = #{record.accountid,jdbcType=INTEGER},
+      price = #{record.price,jdbcType=REAL}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="accountid != null">
         accountId = #{accountid,jdbcType=INTEGER},
       </if>
+      <if test="price != null">
+        price = #{price,jdbcType=REAL},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -222,7 +236,8 @@
       description = #{description,jdbcType=VARCHAR},
       category_id = #{categoryId,jdbcType=INTEGER},
       img = #{img,jdbcType=VARCHAR},
-      accountId = #{accountid,jdbcType=INTEGER}
+      accountId = #{accountid,jdbcType=INTEGER},
+      price = #{price,jdbcType=REAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

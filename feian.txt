@@ -20,3 +20,61 @@
       </a-list-item>
     </template>
   </a-list>
+
+
+
+setup(){
+    const goodsList = ref([
+      {
+        name:'大橘子',
+        price:12,
+        accountname:'TTTTXY',
+        info:'品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀' +
+            '品质优秀'
+      },
+      {
+        name:'大橘子',
+        price:14,
+        accountname:'TTTTXYjjjjjjji',
+        info:'品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀' +
+            '品质优秀'
+      },
+      {
+        name:'大橘子',
+        price:15,
+        accountname:'TTTTXYLOPoods1',
+        info:'品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀 品质优秀' +
+            '品质优秀'
+      }
+    ]);
+
+    return {
+      goodsList
+    }
+}
+
+<GoodsTableRow v-for="(item, index) in goodsList.values()" :goods="item" :key="index"/>
+
+.ant-avatar{
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  border-radius: 8%;
+  margin: 5px 0;
+}
+
+ <router-link to="/goods/category=1&keyword= " :style="{color: getColor('goods')}">在卖的商品</router-link>|
+    <router-link to="/collectedgoods/category=1&keyword= " :style="{color: getColor('collectedgoods')}">收藏的商品</router-link>|
+    <router-link to="/myinquiry/category=1&keyword= " :style="{color: getColor('myinquiry')}">我的求购</router-link>
+
+    const route = useRoute()
+       const router = useRouter()
+       const getColor = (stri) => {
+         if(stri===route.path.split('/')[1]){
+           return 'black'
+         }
+       }
+
+       return {
+         getColor
+       }

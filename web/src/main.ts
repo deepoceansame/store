@@ -40,4 +40,4 @@ axios.interceptors.response.use(function (response) {
 });
 
 const app = createApp(App);
-app.use(Antd).use(store).use(router).mount('#app')
+const vm = app.use(Antd).use(store).use(router).mount('#app')

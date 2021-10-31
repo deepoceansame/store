@@ -1,3 +1,3 @@
-GET http://localhost:8081/goods/list?name=橘子
+GET http://localhost:8081/goods/list?page=1&size=3
 
 ###

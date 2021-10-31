@@ -13,6 +13,8 @@ public class GoodsResp {
 
     private Integer accountid;
 
+    private Float price;
+
     public Integer getId() {
         return id;
     }
@@ -61,6 +63,14 @@ public class GoodsResp {
         this.accountid = accountid;
     }
 
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -73,6 +83,7 @@ public class GoodsResp {
         sb.append(", categoryId=").append(categoryId);
         sb.append(", img=").append(img);
         sb.append(", accountid=").append(accountid);
+        sb.append(", price=").append(price);
         sb.append("]");
         return sb.toString();
     }
