@@ -434,63 +434,63 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andAccountidIsNull() {
-            addCriterion("accountId is null");
+        public Criteria andAccountIdIsNull() {
+            addCriterion("account_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andAccountidIsNotNull() {
-            addCriterion("accountId is not null");
+        public Criteria andAccountIdIsNotNull() {
+            addCriterion("account_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAccountidEqualTo(Integer value) {
-            addCriterion("accountId =", value, "accountid");
+        public Criteria andAccountIdEqualTo(Integer value) {
+            addCriterion("account_id =", value, "accountId");
             return (Criteria) this;
         }
 
-        public Criteria andAccountidNotEqualTo(Integer value) {
-            addCriterion("accountId <>", value, "accountid");
+        public Criteria andAccountIdNotEqualTo(Integer value) {
+            addCriterion("account_id <>", value, "accountId");
             return (Criteria) this;
         }
 
-        public Criteria andAccountidGreaterThan(Integer value) {
-            addCriterion("accountId >", value, "accountid");
+        public Criteria andAccountIdGreaterThan(Integer value) {
+            addCriterion("account_id >", value, "accountId");
             return (Criteria) this;
         }
 
-        public Criteria andAccountidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("accountId >=", value, "accountid");
+        public Criteria andAccountIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("account_id >=", value, "accountId");
             return (Criteria) this;
         }
 
-        public Criteria andAccountidLessThan(Integer value) {
-            addCriterion("accountId <", value, "accountid");
+        public Criteria andAccountIdLessThan(Integer value) {
+            addCriterion("account_id <", value, "accountId");
             return (Criteria) this;
         }
 
-        public Criteria andAccountidLessThanOrEqualTo(Integer value) {
-            addCriterion("accountId <=", value, "accountid");
+        public Criteria andAccountIdLessThanOrEqualTo(Integer value) {
+            addCriterion("account_id <=", value, "accountId");
             return (Criteria) this;
         }
 
-        public Criteria andAccountidIn(List<Integer> values) {
-            addCriterion("accountId in", values, "accountid");
+        public Criteria andAccountIdIn(List<Integer> values) {
+            addCriterion("account_id in", values, "accountId");
             return (Criteria) this;
         }
 
-        public Criteria andAccountidNotIn(List<Integer> values) {
-            addCriterion("accountId not in", values, "accountid");
+        public Criteria andAccountIdNotIn(List<Integer> values) {
+            addCriterion("account_id not in", values, "accountId");
             return (Criteria) this;
         }
 
-        public Criteria andAccountidBetween(Integer value1, Integer value2) {
-            addCriterion("accountId between", value1, value2, "accountid");
+        public Criteria andAccountIdBetween(Integer value1, Integer value2) {
+            addCriterion("account_id between", value1, value2, "accountId");
             return (Criteria) this;
         }
 
-        public Criteria andAccountidNotBetween(Integer value1, Integer value2) {
-            addCriterion("accountId not between", value1, value2, "accountid");
+        public Criteria andAccountIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("account_id not between", value1, value2, "accountId");
             return (Criteria) this;
         }
 

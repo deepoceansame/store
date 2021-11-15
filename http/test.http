@@ -1,0 +1,9 @@
+GET http://localhost:8081/test/redis/set/123/test
+Accept: application/json
+
+###
+
+GET http://localhost:8081/redis/get/114916683155640320
+Accept: application/json
+
+###

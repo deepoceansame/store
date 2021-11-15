@@ -1,17 +1,22 @@
-package com.agroup.store.resp;
+package com.agroup.store.req;
 
-public class GoodsResp {
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.constraints.NotNull;
+
+public class GoodsSaveReq {
     private Integer id;
 
+    @NotNull(message = "[商品名]不能为空")
     private String name;
 
     private String description;
 
     private Integer categoryId;
 
-    private String img;
-
     private Integer accountId;
+
+    private MultipartFile img;
 
     private Float price;
 
@@ -47,11 +52,11 @@ public class GoodsResp {
         this.categoryId = categoryId;
     }
 
-    public String getImg() {
+    public MultipartFile getImg() {
         return img;
     }
 
-    public void setImg(String img) {
+    public void setImg(MultipartFile img) {
         this.img = img;
     }
 
@@ -73,18 +78,14 @@ public class GoodsResp {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", description=").append(description);
-        sb.append(", categoryId=").append(categoryId);
-        sb.append(", img=").append(img);
-        sb.append(", accountid=").append(accountId);
-        sb.append(", price=").append(price);
-        sb.append("]");
-        return sb.toString();
+        return "GoodsSaveReq{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", categoryId=" + categoryId +
+                ", accountId=" + accountId +
+                ", img='" + img + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

@@ -9,7 +9,11 @@ public class GoodsReq extends PageReq{
 
     private Integer categoryId;
 
+    private Integer accountId;
+
     private String img;
+
+    private Float price;
 
     public Integer getId() {
         return id;
@@ -51,18 +55,32 @@ public class GoodsReq extends PageReq{
         this.img = img;
     }
 
+    public Integer getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", description=").append(description);
-        sb.append(", categoryId=").append(categoryId);
-        sb.append(", img=").append(img);
-        sb.append("]");
-        return sb.toString();
+        return "GoodsReq{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", categoryId=" + categoryId +
+                ", accountId=" + accountId +
+                ", img='" + img + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

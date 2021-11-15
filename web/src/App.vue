@@ -1,15 +1,41 @@
 <template>
-  <div>你下面凉快吗</div>
+  <div>
+    {{account}}
+    <button v-show="account.id" @click="logout">登出</button>
+  </div>
   <router-view></router-view>
 </template>
 
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, computed } from 'vue';
+import store from "@/store"
+import axios from "axios";
+import {message} from "ant-design-vue";
+import {useRoute, useRouter} from 'vue-router'
+
 export default defineComponent({
   setup() {
+    const route = useRoute();
+    const router = useRouter();
+    const account = computed(() => {
+      return store.state.account
+    })
+    const logout = () => {
+      axios.get('/account/logout/' + account.value.token).then((response) => {
+        const data: any = response.data;
+        if (data.success) {
+          message.success("退出登录成功！");
+          store.commit("setAccount", {});
+          router.push("/")
+        } else {
+          message.error(data.message);
+        }
+      });
+    }
     return {
-      selectedKeys: ref<string[]>(['2']),
+      account,
+      logout,
     };
   },
 });

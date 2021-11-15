@@ -1,490 +1,351 @@
-2021-10-31 00:28:34.553 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 27156 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
-2021-10-31 00:28:34.556 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
-2021-10-31 00:28:34.586 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-31 00:28:34.587 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-31 00:28:35.366 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
-2021-10-31 00:28:35.372 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
-2021-10-31 00:28:35.372 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
-2021-10-31 00:28:35.372 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-31 00:28:35.431 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
-2021-10-31 00:28:35.435 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 846 ms
-2021-10-31 00:28:36.005 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
-2021-10-31 00:28:36.016 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
-2021-10-31 00:28:36.031 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
-2021-10-31 00:28:36.039 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.78 seconds (JVM running for 2.257)
-2021-10-31 00:28:36.040 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
-2021-10-31 00:28:36.040 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
-2021-10-31 00:28:58.217 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-31 00:28:58.217 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
-2021-10-31 00:28:58.218 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 1 ms
-2021-10-31 00:28:58.243 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 00:28:58.244 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 00:28:58.244 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 00:28:58.244 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 00:28:58.284 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"name":"橘子","page":0,"size":0}]
-2021-10-31 00:28:58.317 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
-2021-10-31 00:28:58.549 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
-2021-10-31 00:28:58.587 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":1,"categoryId":2,"description":"非常好吃","id":1,"name":"橘子"},{"accountid":1,"categoryId":2,"description":"还可以","id":2,"name":"大橘子"}],"success":true}
-2021-10-31 00:28:58.587 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：345 ms -------------
-2021-10-31 00:29:15.169 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 00:29:15.169 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 00:29:15.169 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 00:29:15.169 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 00:29:15.169 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"name":"枪","page":0,"size":0}]
-2021-10-31 00:29:15.190 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[],"success":true}
-2021-10-31 00:29:15.191 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：22 ms -------------
-2021-10-31 00:29:48.291 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 00:29:48.292 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 00:29:48.292 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 00:29:48.292 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 00:29:48.292 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"name":"陆","page":0,"size":0}]
-2021-10-31 00:29:48.314 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":3,"categoryId":4,"description":"对空对地","id":5,"name":"陆战队员"}],"success":true}
-2021-10-31 00:29:48.314 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：23 ms -------------
-2021-10-31 00:42:37.168 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 25572 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
-2021-10-31 00:42:37.169 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
-2021-10-31 00:42:37.194 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-31 00:42:37.194 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-31 00:42:37.874 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
-2021-10-31 00:42:37.879 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
-2021-10-31 00:42:37.879 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
-2021-10-31 00:42:37.879 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-31 00:42:37.935 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
-2021-10-31 00:42:37.936 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 741 ms
-2021-10-31 00:42:38.450 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
-2021-10-31 00:42:38.460 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
-2021-10-31 00:42:38.474 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
-2021-10-31 00:42:38.482 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.57 seconds (JVM running for 1.997)
-2021-10-31 00:42:38.483 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
-2021-10-31 00:42:38.483 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
-2021-10-31 00:43:03.943 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-31 00:43:03.944 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
-2021-10-31 00:43:03.945 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
-2021-10-31 00:43:03.975 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 00:43:03.975 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 00:43:03.976 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 00:43:03.976 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 00:43:04.007 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"name":"陆","page":0,"size":0}]
-2021-10-31 00:43:04.037 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
-2021-10-31 00:43:04.317 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
-2021-10-31 00:43:04.350 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":3,"categoryId":4,"description":"对空对地","id":5,"name":"陆战队员","price":50.0}],"success":true}
-2021-10-31 00:43:04.350 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：376 ms -------------
-2021-10-31 01:18:37.058 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 8880 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
-2021-10-31 01:18:37.060 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
-2021-10-31 01:18:37.086 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-31 01:18:37.087 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-31 01:18:37.808 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
-2021-10-31 01:18:37.813 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
-2021-10-31 01:18:37.813 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
-2021-10-31 01:18:37.813 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-31 01:18:37.873 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
-2021-10-31 01:18:37.873 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 786 ms
-2021-10-31 01:18:38.367 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
-2021-10-31 01:18:38.377 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
-2021-10-31 01:18:38.391 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
-2021-10-31 01:18:38.398 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.598 seconds (JVM running for 2.039)
-2021-10-31 01:18:38.400 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
-2021-10-31 01:18:38.400 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
-2021-10-31 01:19:09.809 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-31 01:19:09.810 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
-2021-10-31 01:19:09.811 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 1 ms
-2021-10-31 01:19:09.828 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 01:19:09.829 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 01:19:09.829 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 01:19:09.829 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 01:19:09.860 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"page":0,"size":0}]
-2021-10-31 01:19:09.891 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
-2021-10-31 01:19:10.130 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
-2021-10-31 01:19:10.135 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==>  Preparing: select id, `name`, description, category_id, img, accountId, price from goods
-2021-10-31 01:19:10.147 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==> Parameters: 
-2021-10-31 01:19:10.168 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, accountId, price
-2021-10-31 01:19:10.168 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 1, 橘子, 非常好吃, 2, null, 1, 10.0
-2021-10-31 01:19:10.169 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 2, 大橘子, 还可以, 2, null, 1, 8.0
-2021-10-31 01:19:10.169 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 3, 耳机, 几乎全新, 2, null, 2, 30.0
-2021-10-31 01:19:10.170 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 4, 旧耳机, 不新，但品质优秀, 2, null, 2, 30.0
-2021-10-31 01:19:10.170 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 5, 陆战队员, 对空对地, 4, null, 3, 50.0
-2021-10-31 01:19:10.170 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 6, 解放者, 对空aoe可架起高伤害对地, 4, null, 3, 300.0
-2021-10-31 01:19:10.171 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 7, 雷神, 重型机甲, 4, null, 3, 1000.0
-2021-10-31 01:19:10.171 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 8, 战列巡洋舰, 对空对地，可折跃, 4, null, 3, 1200.0
-2021-10-31 01:19:10.172 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 9, 攻城坦克, 架起可造成高额aoe伤害, 4, null, 3, 700.0
-2021-10-31 01:19:10.172 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 10, 女妖, 空中对地可隐形单位, 4, null, 3, 500.0
-2021-10-31 01:19:10.172 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 11, 雷兽, 高血量高护甲, 5, null, 2, 1000.0
-2021-10-31 01:19:10.172 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m <==      Total: 11
-2021-10-31 01:19:10.185 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":1,"categoryId":2,"description":"非常好吃","id":1,"name":"橘子","price":10.0},{"accountid":1,"categoryId":2,"description":"还可以","id":2,"name":"大橘子","price":8.0},{"accountid":2,"categoryId":2,"description":"几乎全新","id":3,"name":"耳机","price":30.0},{"accountid":2,"categoryId":2,"description":"不新，但品质优秀","id":4,"name":"旧耳机","price":30.0},{"accountid":3,"categoryId":4,"description":"对空对地","id":5,"name":"陆战队员","price":50.0},{"accountid":3,"categoryId":4,"description":"对空aoe可架起高伤害对地","id":6,"name":"解放者","price":300.0},{"accountid":3,"categoryId":4,"description":"重型机甲","id":7,"name":"雷神","price":1000.0},{"accountid":3,"categoryId":4,"description":"对空对地，可折跃","id":8,"name":"战列巡洋舰","price":1200.0},{"accountid":3,"categoryId":4,"description":"架起可造成高额aoe伤害","id":9,"name":"攻城坦克","price":700.0},{"accountid":3,"categoryId":4,"description":"空中对地可隐形单位","id":10,"name":"女妖","price":500.0},{"accountid":2,"categoryId":5,"description":"高血量高护甲","id":11,"name":"雷兽","price":1000.0}],"success":true}
-2021-10-31 01:19:10.185 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：357 ms -------------
-2021-10-31 01:23:01.928 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 01:23:01.928 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 01:23:01.928 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 01:23:01.928 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 01:23:01.928 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"page":1,"size":3}]
-2021-10-31 01:23:01.940 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==>  Preparing: select id, `name`, description, category_id, img, accountId, price from goods
-2021-10-31 01:23:01.941 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==> Parameters: 
-2021-10-31 01:23:01.952 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, accountId, price
-2021-10-31 01:23:01.953 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 1, 橘子, 非常好吃, 2, null, 1, 10.0
-2021-10-31 01:23:01.953 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 2, 大橘子, 还可以, 2, null, 1, 8.0
-2021-10-31 01:23:01.954 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 3, 耳机, 几乎全新, 2, null, 2, 30.0
-2021-10-31 01:23:01.954 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 4, 旧耳机, 不新，但品质优秀, 2, null, 2, 30.0
-2021-10-31 01:23:01.954 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 5, 陆战队员, 对空对地, 4, null, 3, 50.0
-2021-10-31 01:23:01.956 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 6, 解放者, 对空aoe可架起高伤害对地, 4, null, 3, 300.0
-2021-10-31 01:23:01.956 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 7, 雷神, 重型机甲, 4, null, 3, 1000.0
-2021-10-31 01:23:01.956 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 8, 战列巡洋舰, 对空对地，可折跃, 4, null, 3, 1200.0
-2021-10-31 01:23:01.957 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 9, 攻城坦克, 架起可造成高额aoe伤害, 4, null, 3, 700.0
-2021-10-31 01:23:01.957 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 10, 女妖, 空中对地可隐形单位, 4, null, 3, 500.0
-2021-10-31 01:23:01.957 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 11, 雷兽, 高血量高护甲, 5, null, 2, 1000.0
-2021-10-31 01:23:01.957 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m <==      Total: 11
-2021-10-31 01:23:01.960 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":1,"categoryId":2,"description":"非常好吃","id":1,"name":"橘子","price":10.0},{"accountid":1,"categoryId":2,"description":"还可以","id":2,"name":"大橘子","price":8.0},{"accountid":2,"categoryId":2,"description":"几乎全新","id":3,"name":"耳机","price":30.0},{"accountid":2,"categoryId":2,"description":"不新，但品质优秀","id":4,"name":"旧耳机","price":30.0},{"accountid":3,"categoryId":4,"description":"对空对地","id":5,"name":"陆战队员","price":50.0},{"accountid":3,"categoryId":4,"description":"对空aoe可架起高伤害对地","id":6,"name":"解放者","price":300.0},{"accountid":3,"categoryId":4,"description":"重型机甲","id":7,"name":"雷神","price":1000.0},{"accountid":3,"categoryId":4,"description":"对空对地，可折跃","id":8,"name":"战列巡洋舰","price":1200.0},{"accountid":3,"categoryId":4,"description":"架起可造成高额aoe伤害","id":9,"name":"攻城坦克","price":700.0},{"accountid":3,"categoryId":4,"description":"空中对地可隐形单位","id":10,"name":"女妖","price":500.0},{"accountid":2,"categoryId":5,"description":"高血量高护甲","id":11,"name":"雷兽","price":1000.0}],"success":true}
-2021-10-31 01:23:01.960 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：32 ms -------------
-2021-10-31 01:45:44.463 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 11840 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
-2021-10-31 01:45:44.463 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
-2021-10-31 01:45:44.496 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-31 01:45:44.496 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-31 01:45:45.158 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
-2021-10-31 01:45:45.174 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
-2021-10-31 01:45:45.174 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
-2021-10-31 01:45:45.174 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-31 01:45:45.221 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
-2021-10-31 01:45:45.221 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 725 ms
-2021-10-31 01:45:45.705 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
-2021-10-31 01:45:45.721 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
-2021-10-31 01:45:45.736 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
-2021-10-31 01:45:45.736 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.559 seconds (JVM running for 1.999)
-2021-10-31 01:45:45.736 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
-2021-10-31 01:45:45.736 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
-2021-10-31 01:45:48.440 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-31 01:45:48.440 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
-2021-10-31 01:45:48.440 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
-2021-10-31 01:45:48.471 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 01:45:48.471 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 01:45:48.471 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 01:45:48.471 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 01:45:48.503 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"page":1,"size":3}]
-2021-10-31 01:45:48.534 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
-2021-10-31 01:45:48.738 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
-2021-10-31 01:45:48.754 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==>  Preparing: select id, `name`, description, category_id, img, accountId, price from goods
-2021-10-31 01:45:48.754 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==> Parameters: 
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, accountId, price
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 1, 橘子, 非常好吃, 2, null, 1, 10.0
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 2, 大橘子, 还可以, 2, null, 1, 8.0
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 3, 耳机, 几乎全新, 2, null, 2, 30.0
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 4, 旧耳机, 不新，但品质优秀, 2, null, 2, 30.0
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 5, 陆战队员, 对空对地, 4, null, 3, 50.0
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 6, 解放者, 对空aoe可架起高伤害对地, 4, null, 3, 300.0
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 7, 雷神, 重型机甲, 4, null, 3, 1000.0
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 8, 战列巡洋舰, 对空对地，可折跃, 4, null, 3, 1200.0
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 9, 攻城坦克, 架起可造成高额aoe伤害, 4, null, 3, 700.0
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 10, 女妖, 空中对地可隐形单位, 4, null, 3, 500.0
-2021-10-31 01:45:48.786 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 11, 雷兽, 高血量高护甲, 5, null, 2, 1000.0
-2021-10-31 01:45:48.786 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m <==      Total: 11
-2021-10-31 01:45:48.801 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":1,"categoryId":2,"description":"非常好吃","id":1,"name":"橘子","price":10.0},{"accountid":1,"categoryId":2,"description":"还可以","id":2,"name":"大橘子","price":8.0},{"accountid":2,"categoryId":2,"description":"几乎全新","id":3,"name":"耳机","price":30.0},{"accountid":2,"categoryId":2,"description":"不新，但品质优秀","id":4,"name":"旧耳机","price":30.0},{"accountid":3,"categoryId":4,"description":"对空对地","id":5,"name":"陆战队员","price":50.0},{"accountid":3,"categoryId":4,"description":"对空aoe可架起高伤害对地","id":6,"name":"解放者","price":300.0},{"accountid":3,"categoryId":4,"description":"重型机甲","id":7,"name":"雷神","price":1000.0},{"accountid":3,"categoryId":4,"description":"对空对地，可折跃","id":8,"name":"战列巡洋舰","price":1200.0},{"accountid":3,"categoryId":4,"description":"架起可造成高额aoe伤害","id":9,"name":"攻城坦克","price":700.0},{"accountid":3,"categoryId":4,"description":"空中对地可隐形单位","id":10,"name":"女妖","price":500.0},{"accountid":2,"categoryId":5,"description":"高血量高护甲","id":11,"name":"雷兽","price":1000.0}],"success":true}
-2021-10-31 01:45:48.801 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：330 ms -------------
-2021-10-31 01:46:16.466 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 5508 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
-2021-10-31 01:46:16.468 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
-2021-10-31 01:46:16.494 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-31 01:46:16.494 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-31 01:46:17.181 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
-2021-10-31 01:46:17.186 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
-2021-10-31 01:46:17.186 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
-2021-10-31 01:46:17.186 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-31 01:46:17.244 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
-2021-10-31 01:46:17.244 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 750 ms
-2021-10-31 01:46:17.744 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
-2021-10-31 01:46:17.754 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
-2021-10-31 01:46:17.768 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
-2021-10-31 01:46:17.776 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.548 seconds (JVM running for 2.074)
-2021-10-31 01:46:17.778 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
-2021-10-31 01:46:17.778 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
-2021-10-31 01:46:22.384 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-31 01:46:22.384 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
-2021-10-31 01:46:22.385 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 1 ms
-2021-10-31 01:46:22.415 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 01:46:22.416 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 01:46:22.416 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 01:46:22.416 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 01:46:22.449 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"page":1,"size":3}]
-2021-10-31 01:46:22.477 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
-2021-10-31 01:46:22.661 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
-2021-10-31 01:46:22.666 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==>  Preparing: select id, `name`, description, category_id, img, accountId, price from goods
-2021-10-31 01:46:22.677 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==> Parameters: 
-2021-10-31 01:46:22.698 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, accountId, price
-2021-10-31 01:46:22.698 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 1, 橘子, 非常好吃, 2, null, 1, 10.0
-2021-10-31 01:46:22.700 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 2, 大橘子, 还可以, 2, null, 1, 8.0
-2021-10-31 01:46:22.700 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 3, 耳机, 几乎全新, 2, null, 2, 30.0
-2021-10-31 01:46:22.700 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 4, 旧耳机, 不新，但品质优秀, 2, null, 2, 30.0
-2021-10-31 01:46:22.700 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 5, 陆战队员, 对空对地, 4, null, 3, 50.0
-2021-10-31 01:46:22.701 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 6, 解放者, 对空aoe可架起高伤害对地, 4, null, 3, 300.0
-2021-10-31 01:46:22.701 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 7, 雷神, 重型机甲, 4, null, 3, 1000.0
-2021-10-31 01:46:22.701 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 8, 战列巡洋舰, 对空对地，可折跃, 4, null, 3, 1200.0
-2021-10-31 01:46:22.702 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 9, 攻城坦克, 架起可造成高额aoe伤害, 4, null, 3, 700.0
-2021-10-31 01:46:22.702 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 10, 女妖, 空中对地可隐形单位, 4, null, 3, 500.0
-2021-10-31 01:46:22.702 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 11, 雷兽, 高血量高护甲, 5, null, 2, 1000.0
-2021-10-31 01:46:22.703 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m <==      Total: 11
-2021-10-31 01:46:22.714 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":1,"categoryId":2,"description":"非常好吃","id":1,"name":"橘子","price":10.0},{"accountid":1,"categoryId":2,"description":"还可以","id":2,"name":"大橘子","price":8.0},{"accountid":2,"categoryId":2,"description":"几乎全新","id":3,"name":"耳机","price":30.0},{"accountid":2,"categoryId":2,"description":"不新，但品质优秀","id":4,"name":"旧耳机","price":30.0},{"accountid":3,"categoryId":4,"description":"对空对地","id":5,"name":"陆战队员","price":50.0},{"accountid":3,"categoryId":4,"description":"对空aoe可架起高伤害对地","id":6,"name":"解放者","price":300.0},{"accountid":3,"categoryId":4,"description":"重型机甲","id":7,"name":"雷神","price":1000.0},{"accountid":3,"categoryId":4,"description":"对空对地，可折跃","id":8,"name":"战列巡洋舰","price":1200.0},{"accountid":3,"categoryId":4,"description":"架起可造成高额aoe伤害","id":9,"name":"攻城坦克","price":700.0},{"accountid":3,"categoryId":4,"description":"空中对地可隐形单位","id":10,"name":"女妖","price":500.0},{"accountid":2,"categoryId":5,"description":"高血量高护甲","id":11,"name":"雷兽","price":1000.0}],"success":true}
-2021-10-31 01:46:22.715 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：301 ms -------------
-2021-10-31 01:48:14.705 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 24560 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
-2021-10-31 01:48:14.706 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
-2021-10-31 01:48:14.730 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-31 01:48:14.731 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-31 01:48:15.423 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
-2021-10-31 01:48:15.428 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
-2021-10-31 01:48:15.429 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
-2021-10-31 01:48:15.429 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-31 01:48:15.496 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
-2021-10-31 01:48:15.496 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 765 ms
-2021-10-31 01:48:16.009 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
-2021-10-31 01:48:16.019 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
-2021-10-31 01:48:16.033 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
-2021-10-31 01:48:16.040 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.585 seconds (JVM running for 2.026)
-2021-10-31 01:48:16.041 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
-2021-10-31 01:48:16.042 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
-2021-10-31 01:48:18.540 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-31 01:48:18.541 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
-2021-10-31 01:48:18.542 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 1 ms
-2021-10-31 01:48:18.565 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 01:48:18.566 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 01:48:18.566 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 01:48:18.566 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 01:48:18.597 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"page":1,"size":3}]
-2021-10-31 01:48:18.642 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
-2021-10-31 01:48:18.824 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
-2021-10-31 01:48:18.828 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==>  Preparing: SELECT count(0) FROM goods
-2021-10-31 01:48:18.840 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==> Parameters: 
-2021-10-31 01:48:18.866 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==    Columns: count(0)
-2021-10-31 01:48:18.866 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==        Row: 11
-2021-10-31 01:48:18.867 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m <==      Total: 1
-2021-10-31 01:48:18.871 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==>  Preparing: select id, `name`, description, category_id, img, accountId, price from goods LIMIT ?
-2021-10-31 01:48:18.871 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==> Parameters: 3(Integer)
-2021-10-31 01:48:18.880 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, accountId, price
-2021-10-31 01:48:18.881 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 1, 橘子, 非常好吃, 2, null, 1, 10.0
-2021-10-31 01:48:18.881 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 2, 大橘子, 还可以, 2, null, 1, 8.0
-2021-10-31 01:48:18.882 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 3, 耳机, 几乎全新, 2, null, 2, 30.0
-2021-10-31 01:48:18.882 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m <==      Total: 3
-2021-10-31 01:48:18.891 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":1,"categoryId":2,"description":"非常好吃","id":1,"name":"橘子","price":10.0},{"accountid":1,"categoryId":2,"description":"还可以","id":2,"name":"大橘子","price":8.0},{"accountid":2,"categoryId":2,"description":"几乎全新","id":3,"name":"耳机","price":30.0}],"success":true}
-2021-10-31 01:48:18.891 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：327 ms -------------
-2021-10-31 11:07:25.494 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 2552 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
-2021-10-31 11:07:25.494 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
-2021-10-31 11:07:25.528 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-31 11:07:25.528 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-31 11:07:26.313 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
-2021-10-31 11:07:26.313 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
-2021-10-31 11:07:26.313 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
-2021-10-31 11:07:26.313 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-31 11:07:26.383 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
-2021-10-31 11:07:26.383 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 855 ms
-2021-10-31 11:07:26.962 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
-2021-10-31 11:07:26.973 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
-2021-10-31 11:07:26.988 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
-2021-10-31 11:07:26.993 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.781 seconds (JVM running for 2.301)
-2021-10-31 11:07:26.993 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
-2021-10-31 11:07:26.993 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
-2021-10-31 11:07:27.062 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-31 11:07:27.073 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
-2021-10-31 11:07:27.073 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
-2021-10-31 11:07:27.102 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 11:07:27.102 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 11:07:27.102 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 11:07:27.102 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 11:07:27.143 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"page":1,"size":3}]
-2021-10-31 11:07:27.193 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
-2021-10-31 11:07:27.443 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
-2021-10-31 11:07:27.453 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==>  Preparing: SELECT count(0) FROM goods
-2021-10-31 11:07:27.462 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==> Parameters: 
-2021-10-31 11:07:27.483 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==    Columns: count(0)
-2021-10-31 11:07:27.483 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==        Row: 11
-2021-10-31 11:07:27.483 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m <==      Total: 1
-2021-10-31 11:07:27.492 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==>  Preparing: select id, `name`, description, category_id, img, accountId, price from goods LIMIT ?
-2021-10-31 11:07:27.492 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==> Parameters: 3(Integer)
-2021-10-31 11:07:27.502 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, accountId, price
-2021-10-31 11:07:27.502 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 1, 橘子, 非常好吃, 2, null, 1, 10.0
-2021-10-31 11:07:27.502 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 2, 大橘子, 还可以, 2, null, 1, 8.0
-2021-10-31 11:07:27.502 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 3, 耳机, 几乎全新, 2, null, 2, 30.0
-2021-10-31 11:07:27.502 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m <==      Total: 3
-2021-10-31 11:07:27.520 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":1,"categoryId":2,"description":"非常好吃","id":1,"name":"橘子","price":10.0},{"accountid":1,"categoryId":2,"description":"还可以","id":2,"name":"大橘子","price":8.0},{"accountid":2,"categoryId":2,"description":"几乎全新","id":3,"name":"耳机","price":30.0}],"success":true}
-2021-10-31 11:07:27.520 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：418 ms -------------
-2021-10-31 11:23:48.913 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 15960 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
-2021-10-31 11:23:48.913 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
-2021-10-31 11:23:48.942 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-31 11:23:48.942 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-31 11:23:49.608 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
-2021-10-31 11:23:49.613 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
-2021-10-31 11:23:49.613 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
-2021-10-31 11:23:49.613 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-31 11:23:49.668 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
-2021-10-31 11:23:49.672 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 730 ms
-2021-10-31 11:23:50.168 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
-2021-10-31 11:23:50.178 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
-2021-10-31 11:23:50.193 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
-2021-10-31 11:23:50.193 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.532 seconds (JVM running for 1.979)
-2021-10-31 11:23:50.193 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
-2021-10-31 11:23:50.193 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
-2021-10-31 11:23:52.268 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-31 11:23:52.273 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
-2021-10-31 11:23:52.273 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
-2021-10-31 11:23:52.291 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 11:23:52.291 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 11:23:52.291 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 11:23:52.291 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 11:23:52.322 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"page":1,"size":3}]
-2021-10-31 11:23:52.369 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
-2021-10-31 11:23:52.570 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
-2021-10-31 11:23:52.585 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==>  Preparing: SELECT count(0) FROM goods
-2021-10-31 11:23:52.592 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==> Parameters: 
-2021-10-31 11:23:52.607 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==    Columns: count(0)
-2021-10-31 11:23:52.607 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==        Row: 11
-2021-10-31 11:23:52.607 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m <==      Total: 1
-2021-10-31 11:23:52.607 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==>  Preparing: select id, `name`, description, category_id, img, accountId, price from goods LIMIT ?
-2021-10-31 11:23:52.623 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==> Parameters: 3(Integer)
-2021-10-31 11:23:52.623 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, accountId, price
-2021-10-31 11:23:52.623 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 1, 橘子, 非常好吃, 2, null, 1, 10.0
-2021-10-31 11:23:52.623 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 2, 大橘子, 还可以, 2, null, 1, 8.0
-2021-10-31 11:23:52.623 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 3, 耳机, 几乎全新, 2, null, 2, 30.0
-2021-10-31 11:23:52.623 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m <==      Total: 3
-2021-10-31 11:23:52.623 INFO  com.agroup.store.service.GoodsService             :39   [32m                  [0;39m 总行数11
-2021-10-31 11:23:52.623 INFO  com.agroup.store.service.GoodsService             :40   [32m                  [0;39m 总页数4
-2021-10-31 11:23:52.639 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":1,"categoryId":2,"description":"非常好吃","id":1,"name":"橘子","price":10.0},{"accountid":1,"categoryId":2,"description":"还可以","id":2,"name":"大橘子","price":8.0},{"accountid":2,"categoryId":2,"description":"几乎全新","id":3,"name":"耳机","price":30.0}],"success":true}
-2021-10-31 11:23:52.639 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：348 ms -------------
-2021-10-31 11:40:09.485 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 23380 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
-2021-10-31 11:40:09.485 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
-2021-10-31 11:40:09.511 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-31 11:40:09.511 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-31 11:40:10.154 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
-2021-10-31 11:40:10.154 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
-2021-10-31 11:40:10.154 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
-2021-10-31 11:40:10.154 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-31 11:40:10.217 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
-2021-10-31 11:40:10.217 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 706 ms
-2021-10-31 11:40:10.710 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
-2021-10-31 11:40:10.725 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
-2021-10-31 11:40:10.741 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
-2021-10-31 11:40:10.741 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.502 seconds (JVM running for 1.908)
-2021-10-31 11:40:10.741 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
-2021-10-31 11:40:10.741 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
-2021-10-31 11:40:14.757 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-31 11:40:14.757 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
-2021-10-31 11:40:14.757 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
-2021-10-31 11:40:14.788 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 11:40:14.788 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 11:40:14.788 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 11:40:14.788 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 11:40:14.820 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"page":1,"size":9}]
-2021-10-31 11:40:14.851 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
-2021-10-31 11:40:15.101 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
-2021-10-31 11:40:15.116 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==>  Preparing: SELECT count(0) FROM goods
-2021-10-31 11:40:15.116 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==> Parameters: 
-2021-10-31 11:40:15.148 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==    Columns: count(0)
-2021-10-31 11:40:15.148 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==        Row: 11
-2021-10-31 11:40:15.148 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m <==      Total: 1
-2021-10-31 11:40:15.148 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==>  Preparing: select id, `name`, description, category_id, img, accountId, price from goods LIMIT ?
-2021-10-31 11:40:15.148 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==> Parameters: 9(Integer)
-2021-10-31 11:40:15.163 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, accountId, price
-2021-10-31 11:40:15.163 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 1, 橘子, 非常好吃, 2, null, 1, 10.0
-2021-10-31 11:40:15.163 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 2, 大橘子, 还可以, 2, null, 1, 8.0
-2021-10-31 11:40:15.163 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 3, 耳机, 几乎全新, 2, null, 2, 30.0
-2021-10-31 11:40:15.163 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 4, 旧耳机, 不新，但品质优秀, 2, null, 2, 30.0
-2021-10-31 11:40:15.163 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 5, 陆战队员, 对空对地, 4, null, 3, 50.0
-2021-10-31 11:40:15.163 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 6, 解放者, 对空aoe可架起高伤害对地, 4, null, 3, 300.0
-2021-10-31 11:40:15.163 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 7, 雷神, 重型机甲, 4, null, 3, 1000.0
-2021-10-31 11:40:15.163 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 8, 战列巡洋舰, 对空对地，可折跃, 4, null, 3, 1200.0
-2021-10-31 11:40:15.163 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 9, 攻城坦克, 架起可造成高额aoe伤害, 4, null, 3, 700.0
-2021-10-31 11:40:15.163 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m <==      Total: 9
-2021-10-31 11:40:15.163 INFO  com.agroup.store.service.GoodsService             :39   [32m                  [0;39m 总行数11
-2021-10-31 11:40:15.163 INFO  com.agroup.store.service.GoodsService             :40   [32m                  [0;39m 总页数2
-2021-10-31 11:40:15.179 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":1,"categoryId":2,"description":"非常好吃","id":1,"name":"橘子","price":10.0},{"accountid":1,"categoryId":2,"description":"还可以","id":2,"name":"大橘子","price":8.0},{"accountid":2,"categoryId":2,"description":"几乎全新","id":3,"name":"耳机","price":30.0},{"accountid":2,"categoryId":2,"description":"不新，但品质优秀","id":4,"name":"旧耳机","price":30.0},{"accountid":3,"categoryId":4,"description":"对空对地","id":5,"name":"陆战队员","price":50.0},{"accountid":3,"categoryId":4,"description":"对空aoe可架起高伤害对地","id":6,"name":"解放者","price":300.0},{"accountid":3,"categoryId":4,"description":"重型机甲","id":7,"name":"雷神","price":1000.0},{"accountid":3,"categoryId":4,"description":"对空对地，可折跃","id":8,"name":"战列巡洋舰","price":1200.0},{"accountid":3,"categoryId":4,"description":"架起可造成高额aoe伤害","id":9,"name":"攻城坦克","price":700.0}],"success":true}
-2021-10-31 11:40:15.179 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：391 ms -------------
-2021-10-31 12:04:39.431 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 24844 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
-2021-10-31 12:04:39.435 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
-2021-10-31 12:04:39.455 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-31 12:04:39.455 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-31 12:04:40.115 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
-2021-10-31 12:04:40.115 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
-2021-10-31 12:04:40.131 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
-2021-10-31 12:04:40.131 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-31 12:04:40.178 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
-2021-10-31 12:04:40.178 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 723 ms
-2021-10-31 12:04:40.709 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
-2021-10-31 12:04:40.709 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
-2021-10-31 12:04:40.724 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
-2021-10-31 12:04:40.740 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.541 seconds (JVM running for 1.999)
-2021-10-31 12:04:40.740 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
-2021-10-31 12:04:40.740 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
-2021-10-31 12:04:42.929 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-31 12:04:42.929 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
-2021-10-31 12:04:42.929 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
-2021-10-31 12:04:42.960 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 12:04:42.960 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 12:04:42.960 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 12:04:42.960 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 12:04:42.991 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"page":1,"size":0}]
-2021-10-31 12:04:43.022 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
-2021-10-31 12:04:43.343 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
-2021-10-31 12:04:43.358 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==>  Preparing: SELECT count(0) FROM goods
-2021-10-31 12:04:43.374 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==> Parameters: 
-2021-10-31 12:04:43.389 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==    Columns: count(0)
-2021-10-31 12:04:43.389 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==        Row: 11
-2021-10-31 12:04:43.389 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m <==      Total: 1
-2021-10-31 12:04:43.389 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==>  Preparing: select id, `name`, description, category_id, img, accountId, price from goods LIMIT ?
-2021-10-31 12:04:43.389 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==> Parameters: 10(Integer)
-2021-10-31 12:04:43.405 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, accountId, price
-2021-10-31 12:04:43.405 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 1, 橘子, 非常好吃, 2, null, 1, 10.0
-2021-10-31 12:04:43.405 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 2, 大橘子, 还可以, 2, null, 1, 8.0
-2021-10-31 12:04:43.405 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 3, 耳机, 几乎全新, 2, null, 2, 30.0
-2021-10-31 12:04:43.405 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 4, 旧耳机, 不新，但品质优秀, 2, null, 2, 30.0
-2021-10-31 12:04:43.405 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 5, 陆战队员, 对空对地, 4, null, 3, 50.0
-2021-10-31 12:04:43.405 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 6, 解放者, 对空aoe可架起高伤害对地, 4, null, 3, 300.0
-2021-10-31 12:04:43.405 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 7, 雷神, 重型机甲, 4, null, 3, 1000.0
-2021-10-31 12:04:43.405 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 8, 战列巡洋舰, 对空对地，可折跃, 4, null, 3, 1200.0
-2021-10-31 12:04:43.405 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 9, 攻城坦克, 架起可造成高额aoe伤害, 4, null, 3, 700.0
-2021-10-31 12:04:43.405 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 10, 女妖, 空中对地可隐形单位, 4, null, 3, 500.0
-2021-10-31 12:04:43.405 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m <==      Total: 10
-2021-10-31 12:04:43.405 INFO  com.agroup.store.service.GoodsService             :39   [32m                  [0;39m 总行数11
-2021-10-31 12:04:43.405 INFO  com.agroup.store.service.GoodsService             :40   [32m                  [0;39m 总页数2
-2021-10-31 12:04:43.421 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":[{"accountid":1,"categoryId":2,"description":"非常好吃","id":1,"name":"橘子","price":10.0},{"accountid":1,"categoryId":2,"description":"还可以","id":2,"name":"大橘子","price":8.0},{"accountid":2,"categoryId":2,"description":"几乎全新","id":3,"name":"耳机","price":30.0},{"accountid":2,"categoryId":2,"description":"不新，但品质优秀","id":4,"name":"旧耳机","price":30.0},{"accountid":3,"categoryId":4,"description":"对空对地","id":5,"name":"陆战队员","price":50.0},{"accountid":3,"categoryId":4,"description":"对空aoe可架起高伤害对地","id":6,"name":"解放者","price":300.0},{"accountid":3,"categoryId":4,"description":"重型机甲","id":7,"name":"雷神","price":1000.0},{"accountid":3,"categoryId":4,"description":"对空对地，可折跃","id":8,"name":"战列巡洋舰","price":1200.0},{"accountid":3,"categoryId":4,"description":"架起可造成高额aoe伤害","id":9,"name":"攻城坦克","price":700.0},{"accountid":3,"categoryId":4,"description":"空中对地可隐形单位","id":10,"name":"女妖","price":500.0}],"success":true}
-2021-10-31 12:04:43.421 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：461 ms -------------
-2021-10-31 12:41:08.121 WARN  com.zaxxer.hikari.pool.HikariPool                 :788  [32m                  [0;39m HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m24s383ms357µs700ns).
-2021-10-31 13:03:33.026 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 20900 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
-2021-10-31 13:03:33.026 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
-2021-10-31 13:03:33.053 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-31 13:03:33.053 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-31 13:03:33.691 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
-2021-10-31 13:03:33.707 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
-2021-10-31 13:03:33.707 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
-2021-10-31 13:03:33.707 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-31 13:03:33.753 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
-2021-10-31 13:03:33.753 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 700 ms
-2021-10-31 13:03:34.285 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
-2021-10-31 13:03:34.300 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
-2021-10-31 13:03:34.317 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
-2021-10-31 13:03:34.317 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.537 seconds (JVM running for 1.948)
-2021-10-31 13:03:34.317 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
-2021-10-31 13:03:34.317 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
-2021-10-31 13:04:12.859 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-31 13:04:12.859 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
-2021-10-31 13:04:12.859 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
-2021-10-31 13:04:12.890 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
-2021-10-31 13:04:12.890 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/list GET
-2021-10-31 13:04:12.890 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.list
-2021-10-31 13:04:12.890 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 127.0.0.1
-2021-10-31 13:04:12.921 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"page":1,"size":0}]
-2021-10-31 13:04:12.953 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
-2021-10-31 13:04:13.249 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
-2021-10-31 13:04:13.249 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==>  Preparing: SELECT count(0) FROM goods
-2021-10-31 13:04:13.265 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m ==> Parameters: 
-2021-10-31 13:04:13.281 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==    Columns: count(0)
-2021-10-31 13:04:13.281 TRACE c.a.store.mapper.GoodsMapper.selectByExample_COUNT:143  [32m                  [0;39m <==        Row: 11
-2021-10-31 13:04:13.281 DEBUG c.a.store.mapper.GoodsMapper.selectByExample_COUNT:137  [32m                  [0;39m <==      Total: 1
-2021-10-31 13:04:13.281 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==>  Preparing: select id, `name`, description, category_id, img, accountId, price from goods LIMIT ?
-2021-10-31 13:04:13.281 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m ==> Parameters: 10(Integer)
-2021-10-31 13:04:13.296 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, accountId, price
-2021-10-31 13:04:13.296 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 1, 橘子, 非常好吃, 2, null, 1, 10.0
-2021-10-31 13:04:13.296 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 2, 大橘子, 还可以, 2, null, 1, 8.0
-2021-10-31 13:04:13.296 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 3, 耳机, 几乎全新, 2, null, 2, 30.0
-2021-10-31 13:04:13.296 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 4, 旧耳机, 不新，但品质优秀, 2, null, 2, 30.0
-2021-10-31 13:04:13.296 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 5, 陆战队员, 对空对地, 4, null, 3, 50.0
-2021-10-31 13:04:13.296 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 6, 解放者, 对空aoe可架起高伤害对地, 4, null, 3, 300.0
-2021-10-31 13:04:13.296 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 7, 雷神, 重型机甲, 4, null, 3, 1000.0
-2021-10-31 13:04:13.296 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 8, 战列巡洋舰, 对空对地，可折跃, 4, null, 3, 1200.0
-2021-10-31 13:04:13.296 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 9, 攻城坦克, 架起可造成高额aoe伤害, 4, null, 3, 700.0
-2021-10-31 13:04:13.296 TRACE c.agroup.store.mapper.GoodsMapper.selectByExample :143  [32m                  [0;39m <==        Row: 10, 女妖, 空中对地可隐形单位, 4, null, 3, 500.0
-2021-10-31 13:04:13.296 DEBUG c.agroup.store.mapper.GoodsMapper.selectByExample :137  [32m                  [0;39m <==      Total: 10
-2021-10-31 13:04:13.296 INFO  com.agroup.store.service.GoodsService             :40   [32m                  [0;39m 总行数11
-2021-10-31 13:04:13.296 INFO  com.agroup.store.service.GoodsService             :41   [32m                  [0;39m 总页数2
-2021-10-31 13:04:13.312 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"content":{"list":[{"accountid":1,"categoryId":2,"description":"非常好吃","id":1,"name":"橘子","price":10.0},{"accountid":1,"categoryId":2,"description":"还可以","id":2,"name":"大橘子","price":8.0},{"accountid":2,"categoryId":2,"description":"几乎全新","id":3,"name":"耳机","price":30.0},{"accountid":2,"categoryId":2,"description":"不新，但品质优秀","id":4,"name":"旧耳机","price":30.0},{"accountid":3,"categoryId":4,"description":"对空对地","id":5,"name":"陆战队员","price":50.0},{"accountid":3,"categoryId":4,"description":"对空aoe可架起高伤害对地","id":6,"name":"解放者","price":300.0},{"accountid":3,"categoryId":4,"description":"重型机甲","id":7,"name":"雷神","price":1000.0},{"accountid":3,"categoryId":4,"description":"对空对地，可折跃","id":8,"name":"战列巡洋舰","price":1200.0},{"accountid":3,"categoryId":4,"description":"架起可造成高额aoe伤害","id":9,"name":"攻城坦克","price":700.0},{"accountid":3,"categoryId":4,"description":"空中对地可隐形单位","id":10,"name":"女妖","price":500.0}],"total":11},"success":true}
-2021-10-31 13:04:13.312 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：422 ms -------------
+2021-11-15 00:48:23.193 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-11-15 00:48:23.203 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/save POST
+2021-11-15 00:48:23.203 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.save
+2021-11-15 00:48:23.203 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-11-15 00:48:23.206 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"accountId":1,"categoryId":3,"description":"fafasdfas","name":"火蟑螂","price":123.0}]
+2021-11-15 00:48:23.227 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==>  Preparing: insert into goods (id, `name`, description, category_id, img, account_id, price) values (?, ?, ?, ?, ?, ?, ?)
+2021-11-15 00:48:23.228 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==> Parameters: null, 火蟑螂(String), fafasdfas(String), 3(Integer), null, 1(Integer), 123.0(Float)
+2021-11-15 00:48:23.246 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m <==    Updates: 1
+2021-11-15 00:48:23.246 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"success":true}
+2021-11-15 00:48:23.246 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：53 ms -------------
+2021-11-15 00:54:53.774 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-11-15 00:54:53.775 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/save POST
+2021-11-15 00:54:53.775 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.save
+2021-11-15 00:54:53.775 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-11-15 00:54:53.775 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"accountId":1,"categoryId":3,"description":"fafasdfas","name":"跳虫","price":123.0}]
+2021-11-15 00:54:53.785 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==>  Preparing: insert into goods (id, `name`, description, category_id, img, account_id, price) values (?, ?, ?, ?, ?, ?, ?)
+2021-11-15 00:54:53.785 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==> Parameters: null, 跳虫(String), fafasdfas(String), 3(Integer), null, 1(Integer), 123.0(Float)
+2021-11-15 00:54:53.800 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m <==    Updates: 1
+2021-11-15 00:54:53.801 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"success":true}
+2021-11-15 00:54:53.801 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：27 ms -------------
+2021-11-15 00:57:01.077 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 15704 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
+2021-11-15 00:57:01.077 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.2.0.Final
+2021-11-15 00:57:01.077 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2021-11-15 00:57:01.098 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-11-15 00:57:01.098 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-11-15 00:57:01.476 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :262  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-11-15 00:57:01.476 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :132  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-11-15 00:57:01.491 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :201  [32m                  [0;39m Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2021-11-15 00:57:01.913 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
+2021-11-15 00:57:01.913 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
+2021-11-15 00:57:01.913 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2021-11-15 00:57:01.913 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-15 00:57:01.988 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2021-11-15 00:57:01.988 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 890 ms
+2021-11-15 00:57:02.701 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2021-11-15 00:57:02.701 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
+2021-11-15 00:57:02.719 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
+2021-11-15 00:57:02.735 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.894 seconds (JVM running for 2.347)
+2021-11-15 00:57:02.735 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
+2021-11-15 00:57:02.735 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
+2021-11-15 00:57:05.271 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-15 00:57:05.271 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2021-11-15 00:57:05.271 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
+2021-11-15 00:57:05.352 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-11-15 00:57:05.353 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/save POST
+2021-11-15 00:57:05.353 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.save
+2021-11-15 00:57:05.353 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-11-15 00:57:05.381 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"accountId":1,"categoryId":3,"description":"fafasdfas","name":"跳虫","price":123.0}]
+2021-11-15 00:57:05.398 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
+2021-11-15 00:57:05.603 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
+2021-11-15 00:57:05.613 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==>  Preparing: insert into goods (id, `name`, description, category_id, img, account_id, price) values (?, ?, ?, ?, ?, ?, ?)
+2021-11-15 00:57:05.625 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==> Parameters: null, 跳虫(String), fafasdfas(String), 3(Integer), null, 1(Integer), 123.0(Float)
+2021-11-15 00:57:05.641 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m <==    Updates: 1
+2021-11-15 00:57:05.647 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"success":true}
+2021-11-15 00:57:05.647 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：295 ms -------------
+2021-11-15 00:58:37.460 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.2.0.Final
+2021-11-15 00:58:37.460 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 8456 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
+2021-11-15 00:58:37.461 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2021-11-15 00:58:37.484 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-11-15 00:58:37.484 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-11-15 00:58:37.839 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :262  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-11-15 00:58:37.839 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :132  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-11-15 00:58:37.854 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :201  [32m                  [0;39m Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2021-11-15 00:58:38.267 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
+2021-11-15 00:58:38.267 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
+2021-11-15 00:58:38.267 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2021-11-15 00:58:38.267 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-15 00:58:38.350 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2021-11-15 00:58:38.350 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 866 ms
+2021-11-15 00:58:39.102 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2021-11-15 00:58:39.118 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
+2021-11-15 00:58:39.133 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
+2021-11-15 00:58:39.133 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.922 seconds (JVM running for 2.484)
+2021-11-15 00:58:39.133 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
+2021-11-15 00:58:39.133 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
+2021-11-15 00:58:44.931 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-15 00:58:44.932 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2021-11-15 00:58:44.933 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 1 ms
+2021-11-15 00:58:45.013 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-11-15 00:58:45.014 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/save POST
+2021-11-15 00:58:45.014 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.save
+2021-11-15 00:58:45.014 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-11-15 00:58:45.043 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"accountId":1,"categoryId":3,"description":"fafasdfas","name":"跳虫","price":123.0}]
+2021-11-15 00:58:45.047 INFO  com.agroup.store.service.GoodsService             :38   [32m                  [0;39m 请求图片null
+2021-11-15 00:58:45.047 INFO  com.agroup.store.service.GoodsService             :60   [32m                  [0;39m GoodsSaveReq{id=null, name='跳虫', description='fafasdfas', categoryId=3, accountId=1, img='null', price=123.0}
+2021-11-15 00:58:45.060 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
+2021-11-15 00:58:45.252 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
+2021-11-15 00:58:45.256 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==>  Preparing: insert into goods (id, `name`, description, category_id, img, account_id, price) values (?, ?, ?, ?, ?, ?, ?)
+2021-11-15 00:58:45.268 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==> Parameters: null, 跳虫(String), fafasdfas(String), 3(Integer), null, 1(Integer), 123.0(Float)
+2021-11-15 00:58:45.281 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m <==    Updates: 1
+2021-11-15 00:58:45.283 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"success":true}
+2021-11-15 00:58:45.284 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：272 ms -------------
+2021-11-15 01:04:24.196 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-11-15 01:04:24.196 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/save POST
+2021-11-15 01:04:24.196 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.save
+2021-11-15 01:04:24.196 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-11-15 01:04:24.196 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"accountId":1,"categoryId":3,"description":"sfasdfa","name":"火蟑螂","price":123.0}]
+2021-11-15 01:04:24.197 INFO  com.agroup.store.service.GoodsService             :38   [32m                  [0;39m 请求图片null
+2021-11-15 01:04:24.197 INFO  com.agroup.store.service.GoodsService             :60   [32m                  [0;39m GoodsSaveReq{id=null, name='火蟑螂', description='sfasdfa', categoryId=3, accountId=1, img='null', price=123.0}
+2021-11-15 01:04:24.207 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==>  Preparing: insert into goods (id, `name`, description, category_id, img, account_id, price) values (?, ?, ?, ?, ?, ?, ?)
+2021-11-15 01:04:24.208 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==> Parameters: null, 火蟑螂(String), sfasdfa(String), 3(Integer), null, 1(Integer), 123.0(Float)
+2021-11-15 01:04:24.225 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m <==    Updates: 1
+2021-11-15 01:04:24.226 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"success":true}
+2021-11-15 01:04:24.227 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：31 ms -------------
+2021-11-15 01:05:55.759 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-11-15 01:05:55.759 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/goods/save POST
+2021-11-15 01:05:55.759 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.GoodsController.save
+2021-11-15 01:05:55.760 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-11-15 01:05:55.760 INFO  com.agroup.store.aspect.LogAspect                 :63   [32m                  [0;39m 请求参数: [{"accountId":1,"categoryId":4,"description":"fsadfas","name":"火蟑螂","price":123.0}]
+2021-11-15 01:05:55.760 INFO  com.agroup.store.service.GoodsService             :38   [32m                  [0;39m 请求图片null
+2021-11-15 01:05:55.760 INFO  com.agroup.store.service.GoodsService             :60   [32m                  [0;39m GoodsSaveReq{id=null, name='火蟑螂', description='fsadfas', categoryId=4, accountId=1, img='null', price=123.0}
+2021-11-15 01:05:55.769 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==>  Preparing: insert into goods (id, `name`, description, category_id, img, account_id, price) values (?, ?, ?, ?, ?, ?, ?)
+2021-11-15 01:05:55.769 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m ==> Parameters: null, 火蟑螂(String), fsadfas(String), 4(Integer), null, 1(Integer), 123.0(Float)
+2021-11-15 01:05:55.786 DEBUG com.agroup.store.mapper.GoodsMapper.insert        :137  [32m                  [0;39m <==    Updates: 1
+2021-11-15 01:05:55.786 INFO  com.agroup.store.aspect.LogAspect                 :75   [32m                  [0;39m 返回结果: {"success":true}
+2021-11-15 01:05:55.786 INFO  com.agroup.store.aspect.LogAspect                 :76   [32m                  [0;39m ------------- 结束 耗时：27 ms -------------
+2021-11-15 01:23:25.276 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 14.0.2 on DESKTOP-J46V7U1 with PID 9536 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
+2021-11-15 01:23:25.276 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.2.0.Final
+2021-11-15 01:23:25.276 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2021-11-15 01:23:25.301 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-11-15 01:23:25.301 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-11-15 01:23:25.653 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :262  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-11-15 01:23:25.653 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :132  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-11-15 01:23:25.669 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :201  [32m                  [0;39m Finished Spring Data repository scanning in 5 ms. Found 0 Redis repository interfaces.
+2021-11-15 01:23:26.076 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
+2021-11-15 01:23:26.076 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
+2021-11-15 01:23:26.076 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2021-11-15 01:23:26.076 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-15 01:23:26.139 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2021-11-15 01:23:26.139 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 838 ms
+2021-11-15 01:23:26.871 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2021-11-15 01:23:26.886 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
+2021-11-15 01:23:26.902 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
+2021-11-15 01:23:26.902 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.875 seconds (JVM running for 2.414)
+2021-11-15 01:23:26.902 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
+2021-11-15 01:23:26.902 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
+2021-11-15 01:23:28.788 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-15 01:23:28.789 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2021-11-15 01:23:28.789 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 0 ms
+2021-11-15 01:23:28.876 ERROR c.a.store.controller.ControllerExceptionHandler   :25   [32m                  [0;39m 系统异常：
+org.springframework.web.multipart.MultipartException: Current request is not a multipart request
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValueInternal(RequestParamMethodArgumentResolver.java:210)
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValue(RequestParamMethodArgumentResolver.java:193)
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:114)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-11-15 01:23:28.888 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver   :207  [32m                  [0;39m Resolved [org.springframework.web.multipart.MultipartException: Current request is not a multipart request]
+2021-11-15 01:25:46.792 ERROR c.a.store.controller.ControllerExceptionHandler   :25   [32m                  [0;39m 系统异常：
+org.springframework.web.multipart.MultipartException: Current request is not a multipart request
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValueInternal(RequestParamMethodArgumentResolver.java:210)
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValue(RequestParamMethodArgumentResolver.java:193)
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:114)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-11-15 01:25:46.795 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver   :207  [32m                  [0;39m Resolved [org.springframework.web.multipart.MultipartException: Current request is not a multipart request]
+2021-11-15 01:38:39.906 ERROR c.a.store.controller.ControllerExceptionHandler   :25   [32m                  [0;39m 系统异常：
+org.springframework.web.multipart.MultipartException: Current request is not a multipart request
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValueInternal(RequestParamMethodArgumentResolver.java:210)
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValue(RequestParamMethodArgumentResolver.java:193)
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:114)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-11-15 01:38:39.908 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver   :207  [32m                  [0;39m Resolved [org.springframework.web.multipart.MultipartException: Current request is not a multipart request]
+2021-11-15 01:42:22.935 ERROR c.a.store.controller.ControllerExceptionHandler   :25   [32m                  [0;39m 系统异常：
+org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:206)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:160)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:133)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-11-15 01:42:22.943 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver   :207  [32m                  [0;39m Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]

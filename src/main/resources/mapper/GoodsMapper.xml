@@ -7,7 +7,7 @@
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="category_id" jdbcType="INTEGER" property="categoryId" />
     <result column="img" jdbcType="VARCHAR" property="img" />
-    <result column="accountId" jdbcType="INTEGER" property="accountid" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
     <result column="price" jdbcType="REAL" property="price" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, description, category_id, img, accountId, price
+    id, `name`, description, category_id, img, account_id, price
   </sql>
   <select id="selectByExample" parameterType="com.agroup.store.domain.GoodsExample" resultMap="BaseResultMap">
     select
@@ -103,10 +103,10 @@
   </delete>
   <insert id="insert" parameterType="com.agroup.store.domain.Goods">
     insert into goods (id, `name`, description, 
-      category_id, img, accountId, 
+      category_id, img, account_id, 
       price)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{categoryId,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR}, #{accountid,jdbcType=INTEGER}, 
+      #{categoryId,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR}, #{accountId,jdbcType=INTEGER}, 
       #{price,jdbcType=REAL})
   </insert>
   <insert id="insertSelective" parameterType="com.agroup.store.domain.Goods">
@@ -127,8 +127,8 @@
       <if test="img != null">
         img,
       </if>
-      <if test="accountid != null">
-        accountId,
+      <if test="accountId != null">
+        account_id,
       </if>
       <if test="price != null">
         price,
@@ -150,8 +150,8 @@
       <if test="img != null">
         #{img,jdbcType=VARCHAR},
       </if>
-      <if test="accountid != null">
-        #{accountid,jdbcType=INTEGER},
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
       </if>
       <if test="price != null">
         #{price,jdbcType=REAL},
@@ -182,8 +182,8 @@
       <if test="record.img != null">
         img = #{record.img,jdbcType=VARCHAR},
       </if>
-      <if test="record.accountid != null">
-        accountId = #{record.accountid,jdbcType=INTEGER},
+      <if test="record.accountId != null">
+        account_id = #{record.accountId,jdbcType=INTEGER},
       </if>
       <if test="record.price != null">
         price = #{record.price,jdbcType=REAL},
@@ -200,7 +200,7 @@
       description = #{record.description,jdbcType=VARCHAR},
       category_id = #{record.categoryId,jdbcType=INTEGER},
       img = #{record.img,jdbcType=VARCHAR},
-      accountId = #{record.accountid,jdbcType=INTEGER},
+      account_id = #{record.accountId,jdbcType=INTEGER},
       price = #{record.price,jdbcType=REAL}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -221,8 +221,8 @@
       <if test="img != null">
         img = #{img,jdbcType=VARCHAR},
       </if>
-      <if test="accountid != null">
-        accountId = #{accountid,jdbcType=INTEGER},
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
       </if>
       <if test="price != null">
         price = #{price,jdbcType=REAL},
@@ -236,7 +236,7 @@
       description = #{description,jdbcType=VARCHAR},
       category_id = #{categoryId,jdbcType=INTEGER},
       img = #{img,jdbcType=VARCHAR},
-      accountId = #{accountid,jdbcType=INTEGER},
+      account_id = #{accountId,jdbcType=INTEGER},
       price = #{price,jdbcType=REAL}
     where id = #{id,jdbcType=INTEGER}
   </update>

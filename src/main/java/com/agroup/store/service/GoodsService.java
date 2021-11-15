@@ -4,6 +4,7 @@ import com.agroup.store.domain.Goods;
 import com.agroup.store.domain.GoodsExample;
 import com.agroup.store.mapper.GoodsMapper;
 import com.agroup.store.req.GoodsReq;
+import com.agroup.store.req.GoodsSaveReq;
 import com.agroup.store.resp.GoodsResp;
 import com.agroup.store.resp.PageResp;
 import com.agroup.store.util.CopyUtil;
@@ -30,9 +31,16 @@ public class GoodsService {
         if (!ObjectUtils.isEmpty(req.getName())) {
             criteria.andNameLike("%" + req.getName() + "%");
         }
-
+        if (!ObjectUtils.isEmpty(req.getId())) {
+            criteria.andIdEqualTo(req.getId());
+        }
+        int page = 1;
+        if (!ObjectUtils.isEmpty(req.getPage())){
+            page = req.getPage();
+        }
         //启动分页
-        PageHelper.startPage(req.getPage(), 10);
+        PageHelper.startPage(page, 10);
+        LOG.info("传过来的page{}",req.getPage());
         List<Goods> lis = goodsMapper.selectByExample(goodsExample);
 
         //获取分页信息
@@ -46,5 +54,17 @@ public class GoodsService {
         pageResp.setTotal(pageInfo.getTotal());
         pageResp.setList(lisr);
         return pageResp;
+    }
+
+    public void save(GoodsSaveReq req) {
+        LOG.info("{}",req);
+        Goods goods = CopyUtil.copy(req, Goods.class);
+        if (ObjectUtils.isEmpty(req.getId())) {
+            // 新增
+            goodsMapper.insert(goods);
+        } else {
+            // 更新
+            goodsMapper.updateByPrimaryKey(goods);
+        }
     }
 }

@@ -11,7 +11,7 @@ public class Goods {
 
     private String img;
 
-    private Integer accountid;
+    private Integer accountId;
 
     private Float price;
 
@@ -55,12 +55,12 @@ public class Goods {
         this.img = img;
     }
 
-    public Integer getAccountid() {
-        return accountid;
+    public Integer getAccountId() {
+        return accountId;
     }
 
-    public void setAccountid(Integer accountid) {
-        this.accountid = accountid;
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
     }
 
     public Float getPrice() {
@@ -82,7 +82,7 @@ public class Goods {
         sb.append(", description=").append(description);
         sb.append(", categoryId=").append(categoryId);
         sb.append(", img=").append(img);
-        sb.append(", accountid=").append(accountid);
+        sb.append(", accountId=").append(accountId);
         sb.append(", price=").append(price);
         sb.append("]");
         return sb.toString();

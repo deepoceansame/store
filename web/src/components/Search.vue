@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
 export default {
   name: "Search",
@@ -16,8 +16,15 @@ export default {
       if(String(keyw.value)===''){
         keyw.value=' '
       }
-      router.push('/'+base[1]+`/category=${route.params.category}&keyword=${keyw.value}`)
+      router.push('/'+base[1]+`/page=1&category=${route.params.category}&keyword=${keyw.value}`)
     }
+    onMounted(
+        () => {
+          if(!(typeof(route.params.keyword) == 'undefined' || route.params.keyword.trim().length === 0)){
+            keyw.value = route.params.keyword
+          }
+        }
+    )
     return{
       keyw,
       handleSearch

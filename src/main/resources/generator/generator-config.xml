@@ -46,6 +46,6 @@
         <!--<table tableName="doc"/>-->
         <!--<table tableName="content"/>-->
         <!--<table tableName="user"/>-->
-        <table tableName="goods"/>
+        <table tableName="account"/>
     </context>
 </generatorConfiguration>

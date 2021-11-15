@@ -4,6 +4,12 @@
   <resultMap id="BaseResultMap" type="com.agroup.store.domain.Account">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="mail" jdbcType="VARCHAR" property="mail" />
+    <result column="recvAddress" jdbcType="VARCHAR" property="recvaddress" />
+    <result column="avator" jdbcType="VARCHAR" property="avator" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="money" jdbcType="REAL" property="money" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`
+    id, `name`, `password`, mail, recvAddress, avator, qq, money
   </sql>
   <select id="selectByExample" parameterType="com.agroup.store.domain.AccountExample" resultMap="BaseResultMap">
     select
@@ -97,8 +103,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.agroup.store.domain.Account">
-    insert into account (id, `name`)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+    insert into account (id, `name`, `password`, 
+      mail, recvAddress, avator, 
+      qq, money)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{mail,jdbcType=VARCHAR}, #{recvaddress,jdbcType=VARCHAR}, #{avator,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{money,jdbcType=REAL})
   </insert>
   <insert id="insertSelective" parameterType="com.agroup.store.domain.Account">
     insert into account
@@ -109,6 +119,24 @@
       <if test="name != null">
         `name`,
       </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="mail != null">
+        mail,
+      </if>
+      <if test="recvaddress != null">
+        recvAddress,
+      </if>
+      <if test="avator != null">
+        avator,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -116,6 +144,24 @@
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null">
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="recvaddress != null">
+        #{recvaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="avator != null">
+        #{avator,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=REAL},
       </if>
     </trim>
   </insert>
@@ -134,6 +180,24 @@
       <if test="record.name != null">
         `name` = #{record.name,jdbcType=VARCHAR},
       </if>
+      <if test="record.password != null">
+        `password` = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mail != null">
+        mail = #{record.mail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recvaddress != null">
+        recvAddress = #{record.recvaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.avator != null">
+        avator = #{record.avator,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null">
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.money != null">
+        money = #{record.money,jdbcType=REAL},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -142,7 +206,13 @@
   <update id="updateByExample" parameterType="map">
     update account
     set id = #{record.id,jdbcType=INTEGER},
-      `name` = #{record.name,jdbcType=VARCHAR}
+      `name` = #{record.name,jdbcType=VARCHAR},
+      `password` = #{record.password,jdbcType=VARCHAR},
+      mail = #{record.mail,jdbcType=VARCHAR},
+      recvAddress = #{record.recvaddress,jdbcType=VARCHAR},
+      avator = #{record.avator,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      money = #{record.money,jdbcType=REAL}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -153,12 +223,36 @@
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null">
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="recvaddress != null">
+        recvAddress = #{recvaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="avator != null">
+        avator = #{avator,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=REAL},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.agroup.store.domain.Account">
     update account
-    set `name` = #{name,jdbcType=VARCHAR}
+    set `name` = #{name,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      mail = #{mail,jdbcType=VARCHAR},
+      recvAddress = #{recvaddress,jdbcType=VARCHAR},
+      avator = #{avator,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      money = #{money,jdbcType=REAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

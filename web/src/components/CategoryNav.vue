@@ -21,7 +21,7 @@ export default {
     }
     const base = route.path.split('/')
     const handle = (num) => {
-      router.push('/'+base[1]+`/category=${num}&keyword=${route.params.keyword}`)
+      router.push('/'+base[1]+`/page=1&category=${num}&keyword=${route.params.keyword}`)
     }
     return{
       handle, getDisabled

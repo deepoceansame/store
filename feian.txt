@@ -78,3 +78,8 @@ setup(){
        return {
          getColor
        }
+          "@vue/cli-plugin-typescript": "~4.5.0",
+       "@vue/eslint-config-typescript": "^7.0.0",
+       "typescript": "~4.1.5"
+       "@typescript-eslint/eslint-plugin": "^4.18.0",
+           "@typescript-eslint/parser": "^4.18.0",
