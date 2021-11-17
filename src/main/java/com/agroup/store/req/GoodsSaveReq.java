@@ -16,8 +16,6 @@ public class GoodsSaveReq {
 
     private Integer accountId;
 
-    private MultipartFile img;
-
     private Float price;
 
     public Integer getId() {
@@ -52,14 +50,6 @@ public class GoodsSaveReq {
         this.categoryId = categoryId;
     }
 
-    public MultipartFile getImg() {
-        return img;
-    }
-
-    public void setImg(MultipartFile img) {
-        this.img = img;
-    }
-
     public Integer getAccountId() {
         return accountId;
     }
@@ -76,6 +66,9 @@ public class GoodsSaveReq {
         this.price = price;
     }
 
+    public GoodsSaveReq() {
+    }
+
     @Override
     public String toString() {
         return "GoodsSaveReq{" +
@@ -84,7 +77,6 @@ public class GoodsSaveReq {
                 ", description='" + description + '\'' +
                 ", categoryId=" + categoryId +
                 ", accountId=" + accountId +
-                ", img='" + img + '\'' +
                 ", price=" + price +
                 '}';
     }

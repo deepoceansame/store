@@ -70,7 +70,13 @@ public class LogAspect {
     @Around("controllerPointcut()")
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
-        Object result = proceedingJoinPoint.proceed();
+        Object result = null;
+        try{
+            result = proceedingJoinPoint.proceed();
+        } catch (Exception e){
+            LOG.info(e.toString());
+        }
+
         // 排除字段，敏感字段或太长的字段不显示
         String[] excludeProperties = {"password", "file"};
         PropertyPreFilters filters = new PropertyPreFilters();

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -31,11 +32,10 @@ public class GoodsController {
     }
 
     @PostMapping("goods/save")
-
-    public CommonResp save(@Valid @RequestBody GoodsSaveReq req, @RequestParam MultipartFile multipartFile) {
-        LOG.info("请求图片{}", multipartFile);
+    public CommonResp save(@RequestParam("goods") String saveReq, @RequestParam("img") MultipartFile[] imgs) throws IOException {
+        Integer goodsId = goodsService.save(saveReq, imgs);
         CommonResp resp = new CommonResp<>();
-        goodsService.save(req);
+        resp.setContent(goodsId);
         return resp;
     }
 }

@@ -101,7 +101,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.agroup.store.domain.Goods">
+  <insert id="insert" parameterType="com.agroup.store.domain.Goods" useGeneratedKeys="true" keyProperty="id">
     insert into goods (id, `name`, description, 
       category_id, img, account_id, 
       price)
