@@ -8,16 +8,23 @@ import com.agroup.store.req.GoodsSaveReq;
 import com.agroup.store.resp.GoodsResp;
 import com.agroup.store.resp.PageResp;
 import com.agroup.store.util.CopyUtil;
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+
 @Service
 public class GoodsService {
     @Resource
@@ -56,15 +63,27 @@ public class GoodsService {
         return pageResp;
     }
 
-    public void save(GoodsSaveReq req) {
-        LOG.info("{}",req);
-        Goods goods = CopyUtil.copy(req, Goods.class);
-        if (ObjectUtils.isEmpty(req.getId())) {
-            // 新增
-            goodsMapper.insert(goods);
-        } else {
-            // 更新
-            goodsMapper.updateByPrimaryKey(goods);
+    public Integer save(String req, MultipartFile[] imgs) throws IOException {
+        String path = "D:/important/code/java/store/web/src/assets/";
+        LOG.info("收到了String{}",req);
+        GoodsSaveReq saveReq = JSON.parseObject(req, GoodsSaveReq.class);
+        Goods goods = CopyUtil.copy(saveReq, Goods.class);
+        LOG.info("转化为saveReq{}", saveReq);
+        for (MultipartFile img: imgs){
+            LOG.info("{}", img.getSize());
+            String fileName = img.getOriginalFilename();
+            String filePath = path + fileName;
+            LOG.info("要保存到的路径{}",filePath);
+            File dest = new File(filePath);
+            Files.copy(img.getInputStream(), dest.toPath());
         }
+        if (saveReq.getId() == null){
+            goodsMapper.insert(goods);
+            LOG.info("插入goods后产生的ID为{}", goods.getId());
+        }
+        else{
+            goodsMapper.updateByPrimaryKeySelective(goods);
+        }
+        return goods.getId();
     }
 }

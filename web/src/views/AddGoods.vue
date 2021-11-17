@@ -43,12 +43,18 @@
   </a-form>
 
   <button @click="handleClick">Click</button>
+
+
+
 </template>
 
 <script>
 import { reactive, ref, toRaw } from 'vue';
 import axios from "axios";
 import {message} from 'ant-design-vue';
+import FormData from 'form-data'
+import store from "@/store";
+
 export default ({
   name: "AddGoods",
   setup() {
@@ -58,7 +64,7 @@ export default ({
       category: undefined,
       price: undefined,
       description: '',
-      image: undefined,
+      img: undefined,
     });
     const rules = {
       name: [{
@@ -93,6 +99,7 @@ export default ({
       price: undefined,
       accountId: undefined,
       description:  undefined,
+      img: undefined
     });
 
     const onSubmit = () => {
@@ -101,16 +108,20 @@ export default ({
         goods.categoryId = formState.category;
         goods.name = formState.name;
         goods.price = formState.price;
-        goods.accountId = 1;
+        goods.accountId = store.state.account.id;
         goods.description = formState.description;
         const fd = new FormData();
-        fd.append('image', formState.image, formState.image.name);
-        goods.image = fd;
+        fd.append('goods', JSON.stringify(goods))
+        fd.append('img', formState.image, formState.image.name);
         console.log(goods)
-        axios.post("goods/save", "fsdfsf", fd).then((response) => {
+        axios.post("goods/save", fd, {
+          headers:{
+            'Content-Type': `multipart/form-data`
+          }
+        }).then((response) => {
           console.log(response);
           if (response.data.success){
-            message.info('添加成功')
+            message.info('添加成功'+response.data.content)
           }
           else{
             message.info('添加失败')

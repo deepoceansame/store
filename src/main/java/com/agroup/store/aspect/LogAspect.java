@@ -60,19 +60,34 @@ public class LogAspect {
         PropertyPreFilters filters = new PropertyPreFilters();
         PropertyPreFilters.MySimplePropertyPreFilter excludefilter = filters.addFilter();
         excludefilter.addExcludes(excludeProperties);
-        LOG.info("请求参数: {}", JSONObject.toJSONString(arguments, excludefilter));
+        try{
+            LOG.info("请求参数: {}", JSONObject.toJSONString(arguments, excludefilter));
+        } catch(Exception e){
+            LOG.info("输入不能转化为json字符串");
+        }
     }
 
     @Around("controllerPointcut()")
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
-        Object result = proceedingJoinPoint.proceed();
+        Object result = null;
+        try{
+            result = proceedingJoinPoint.proceed();
+        } catch (Exception e){
+            LOG.info(e.toString());
+        }
+
         // 排除字段，敏感字段或太长的字段不显示
         String[] excludeProperties = {"password", "file"};
         PropertyPreFilters filters = new PropertyPreFilters();
         PropertyPreFilters.MySimplePropertyPreFilter excludefilter = filters.addFilter();
         excludefilter.addExcludes(excludeProperties);
-        LOG.info("返回结果: {}", JSONObject.toJSONString(result, excludefilter));
+        try{
+            LOG.info("返回结果: {}", JSONObject.toJSONString(result, excludefilter));
+        } catch (Exception e){
+            LOG.info("输出不能转化为json字符串");
+        }
+
         LOG.info("------------- 结束 耗时：{} ms -------------", System.currentTimeMillis() - startTime);
         return result;
     }

@@ -11,6 +11,7 @@
     "ant-design-vue": "^2.2.8",
     "axios": "^0.23.0",
     "element-plus": "^1.0.2-beta.68",
+    "form-data": "^4.0.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
