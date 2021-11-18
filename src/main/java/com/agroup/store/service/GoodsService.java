@@ -13,11 +13,13 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -30,6 +32,9 @@ public class GoodsService {
     @Resource
     private GoodsMapper goodsMapper;
     private static final Logger LOG = LoggerFactory.getLogger(GoodsService.class);
+
+    @Value("${picturesPath}")
+    private String picturesPath;
 
     public PageResp<GoodsResp> list(GoodsReq req){
         //筛查
@@ -64,7 +69,6 @@ public class GoodsService {
     }
 
     public Integer save(String req, MultipartFile[] imgs) throws IOException {
-        String path = "D:/important/code/java/store/web/src/assets/";
         LOG.info("收到了String{}",req);
         GoodsSaveReq saveReq = JSON.parseObject(req, GoodsSaveReq.class);
         Goods goods = CopyUtil.copy(saveReq, Goods.class);
@@ -72,10 +76,15 @@ public class GoodsService {
         for (MultipartFile img: imgs){
             LOG.info("{}", img.getSize());
             String fileName = img.getOriginalFilename();
-            String filePath = path + fileName;
+            String filePath = picturesPath + fileName;
+            goods.setImg(fileName);
             LOG.info("要保存到的路径{}",filePath);
-            File dest = new File(filePath);
-            Files.copy(img.getInputStream(), dest.toPath());
+            try{
+                File dest = new File(filePath);
+                Files.copy(img.getInputStream(), dest.toPath());
+            } catch (Exception e){
+                LOG.info(e.getMessage());
+            }
         }
         if (saveReq.getId() == null){
             goodsMapper.insert(goods);

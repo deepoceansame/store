@@ -14,11 +14,6 @@ create table account(
     primary key (id)
 );
 
-insert into account(id, name, password, mail, recvAddress) values(1, "aa", "dsd1", '3333@mail.com', '荔园');
-insert into account(id, name, password, mail, recvAddress) values(2, "ds", "1234", '4444@mail.com', '13栋');
-insert into account(id, name, password, mail, recvAddress) values(3, "me", "7781", '5555@mail.com', '图书馆');
-
-
 create table goods(
   id int unsigned auto_increment,
   name varchar(50),
@@ -30,6 +25,11 @@ create table goods(
   primary key (id),
   foreign key (account_id) references account(id) on delete cascade
 );
+
+
+insert into account(id, name, password, mail, recvAddress) values(1, "aa", "dsd1", '3333@mail.com', '荔园');
+insert into account(id, name, password, mail, recvAddress) values(2, "ds", "1234", '4444@mail.com', '13栋');
+insert into account(id, name, password, mail, recvAddress) values(3, "me", "7781", '5555@mail.com', '图书馆');
 
 insert into goods(name, description, account_Id, category_id, price) value ('橘子', '非常好吃', 1, 2, 10);
 insert into goods(name, description, account_Id, category_id, price) value ('大橘子', '还可以', 1, 2, 8);

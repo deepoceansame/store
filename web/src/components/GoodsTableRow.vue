@@ -1,6 +1,6 @@
 <template>
   <tr class="row">
-    <td class="pic" @click="handleClick"><img class="pic" src="../assets/logo.png" alt="图片"/></td>
+    <td class="pic" @click="handleClick"><img class="pic" :src="'http://127.0.0.1:8083/' + goods.img" alt="图片"/></td>
     <td class="goodsname">{{goods.name}}</td>
     <td class="price">{{goods.price}}</td>
     <td class="accountId">

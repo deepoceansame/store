@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import {ref, onMounted} from "vue";
+import {ref, onMounted, watch} from "vue";
 import {useRoute, useRouter} from 'vue-router'
 export default {
   props:['total'],
@@ -34,6 +34,11 @@ export default {
 
     onMounted(
         () => {
+          current.value = Number(route.params.page);
+        }
+    )
+
+    watch(() => route.params,(newv, oldv) => {
           current.value = Number(route.params.page);
         }
     )
