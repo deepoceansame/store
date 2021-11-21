@@ -9,6 +9,7 @@ import com.agroup.store.resp.GoodsResp;
 import com.agroup.store.resp.PageResp;
 import com.agroup.store.util.CopyUtil;
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.uuid.Generators;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Service
@@ -39,13 +41,23 @@ public class GoodsService {
     public PageResp<GoodsResp> list(GoodsReq req){
         //筛查
         GoodsExample goodsExample = new GoodsExample();
-        GoodsExample.Criteria criteria = goodsExample.createCriteria();
+        GoodsExample.Criteria criteria1 = goodsExample.createCriteria();
+        GoodsExample.Criteria criteria2 = goodsExample.createCriteria();
         if (!ObjectUtils.isEmpty(req.getName())) {
-            criteria.andNameLike("%" + req.getName() + "%");
+            criteria1.andNameLike("%" + req.getName().trim() + "%");
+            criteria2.andDescriptionLike("%" + req.getName().trim() + "%");
         }
         if (!ObjectUtils.isEmpty(req.getId())) {
-            criteria.andIdEqualTo(req.getId());
+            criteria1.andIdEqualTo(req.getId());
+            criteria2.andIdEqualTo(req.getId());
         }
+        LOG.info("收到的categoryId:{}",req.getCategoryId());
+        if (req.getCategoryId()!=null && req.getCategoryId()!=1){
+            criteria1.andCategoryIdEqualTo(req.getCategoryId());
+            criteria2.andCategoryIdEqualTo(req.getCategoryId());
+        }
+        goodsExample.or(criteria2);
+
         int page = 1;
         if (!ObjectUtils.isEmpty(req.getPage())){
             page = req.getPage();
@@ -73,11 +85,14 @@ public class GoodsService {
         GoodsSaveReq saveReq = JSON.parseObject(req, GoodsSaveReq.class);
         Goods goods = CopyUtil.copy(saveReq, Goods.class);
         LOG.info("转化为saveReq{}", saveReq);
+        UUID timebaseUUID = null;
         for (MultipartFile img: imgs){
             LOG.info("{}", img.getSize());
-            String fileName = img.getOriginalFilename();
-            String filePath = picturesPath + fileName;
-            goods.setImg(fileName);
+            timebaseUUID = Generators.timeBasedGenerator().generate();
+            LOG.info("生成的图片名字{}",timebaseUUID.toString());
+            String fileName = timebaseUUID.toString();
+            String filePath = picturesPath + fileName+".jpg";
+            goods.setImg(fileName+".jpg");
             LOG.info("要保存到的路径{}",filePath);
             try{
                 File dest = new File(filePath);
@@ -96,3 +111,5 @@ public class GoodsService {
         return goods.getId();
     }
 }
+
+

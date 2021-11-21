@@ -9,6 +9,7 @@
 
 <script>
 import {useRoute, useRouter} from 'vue-router'
+import {ref,} from "vue";
 
 export default {
   props:['posi'],
@@ -19,12 +20,18 @@ export default {
     const getDisabled = (num) => {
       return num===Number(route.params.category)
     }
+    const val = ref(1)
     const base = route.path.split('/')
     const handle = (num) => {
-      router.push('/'+base[1]+`/page=1&category=${num}&keyword=${route.params.keyword}`)
-    }
+      if (typeof(route.params.keyword) !== 'undefined'){
+        router.push('/'+base[1]+`/page=1&category=${num}&keyword=${route.params.keyword}`)
+      } else{
+        router.push('/'+base[1]+`/page=1&category=${num}&keyword=`)
+      }
+    };
+
     return{
-      handle, getDisabled
+      handle, getDisabled,
     }
   }
 }

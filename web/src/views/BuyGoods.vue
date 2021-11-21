@@ -37,10 +37,10 @@ export default {
     watch(() => route.params,(newv, oldv) => {
           console.log(newv.keyword)
           if(typeof(newv.keyword) == 'undefined' || newv.keyword.trim().length === 0){
-            handleQuery({page: newv.page})
+            handleQuery({page: newv.page, categoryId: newv.category})
           }
           else{
-            handleQuery({page: newv.page, name: newv.keyword})
+            handleQuery({page: newv.page, name: newv.keyword, categoryId: newv.category})
           }
         }
     )
@@ -49,7 +49,8 @@ export default {
       axios.get("/goods/list",{
         params:{
           page: params.page,
-          name: params.name
+          name: params.name,
+          categoryId: params.categoryId
         }
       }).then(
           (response) =>  {
@@ -68,10 +69,10 @@ export default {
         () => {
           console.log('mounted')
           if(typeof(route.params.keyword) == 'undefined' || route.params.keyword.trim().length === 0){
-            handleQuery({page: route.params.page});
+            handleQuery({page: route.params.page, categoryId: route.params.category});
           }
           else{
-            handleQuery({page: route.params.page, name:route.params.keyword})
+            handleQuery({page: route.params.page, name:route.params.keyword, categoryId: route.params.catagory})
           }
         }
     )
