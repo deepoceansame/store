@@ -1,5 +1,6 @@
-GET http://localhost:8081/goods/list?id=1
+GET http://localhost:8081/goods/list?page=3
 ###
 
 POST http://localhost:8081/goods/save?{"name"=寒冷即是虚无}
 ###
+

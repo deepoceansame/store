@@ -63,10 +63,9 @@ public class GoodsService {
             page = req.getPage();
         }
         //启动分页
-        PageHelper.startPage(page, 10);
+        PageHelper.startPage(page, 3);
         LOG.info("传过来的page{}",req.getPage());
         List<Goods> lis = goodsMapper.selectByExample(goodsExample);
-
         //获取分页信息
         PageInfo<Goods> pageInfo = new PageInfo<>(lis);
         LOG.info("总行数{}",pageInfo.getTotal());
