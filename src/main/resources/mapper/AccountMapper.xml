@@ -255,4 +255,25 @@
       money = #{money,jdbcType=REAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <insert id="insertBuyGoodRecord" >
+    insert into purchaserecord values (#{accountId},#{GoodId});
+  </insert>
+  
+  <resultMap id="goodsMap" type="com.agroup.store.domain.Goods">
+    <id column="buyerId"></id>
+    <result column="goodId" property="id"></result>
+    <result column="name" property="name"></result>
+    <result column="description" property="description"></result>
+    <result column="img" property="img"></result>
+    <result column="category_id" property="categoryId"></result>
+    <result column="account_id" property="accountId"></result>
+    <result column="price" property="price"></result>
+
+  </resultMap>
+  
+  <select id="selectGoodsByAccountId" parameterType="java.lang.Integer" resultMap="goodsMap">
+    select * from purchaserecord join goods g on g.id = purchaseRecord.goodId where buyerId= #{accountId}
+  </select>
+
 </mapper>

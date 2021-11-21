@@ -16,8 +16,15 @@ GET http://localhost:8880/hello
 POST http://localhost:8880/hello/post
 Content-Type: application/x-www-form-urlencoded
 
+###
+GET http://localhost:8081/account/buyGood?accountId=1&goodId=9
+###
+
 name=TEST
 
 ###
 
 GET http://localhost:8081/account/list
+###
+
+GET http://localhost:8081/account/showPurchaseRecords?accountId=2

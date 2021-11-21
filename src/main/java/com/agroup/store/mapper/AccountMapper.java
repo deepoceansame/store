@@ -3,6 +3,8 @@ package com.agroup.store.mapper;
 import com.agroup.store.domain.Account;
 import com.agroup.store.domain.AccountExample;
 import java.util.List;
+
+import com.agroup.store.domain.Goods;
 import org.apache.ibatis.annotations.Param;
 
 public interface AccountMapper {
@@ -27,4 +29,8 @@ public interface AccountMapper {
     int updateByPrimaryKeySelective(Account record);
 
     int updateByPrimaryKey(Account record);
+
+    int insertBuyGoodRecord(@Param("accountId") Integer accountId, @Param("GoodId") Integer GoodId);
+
+    List<Goods> selectGoodsByAccountId(Integer accountId);
 }
