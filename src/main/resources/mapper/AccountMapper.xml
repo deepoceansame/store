@@ -256,24 +256,29 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <insert id="insertBuyGoodRecord" >
-    insert into purchaserecord values (#{accountId},#{GoodId});
+  <insert id="insertPurchaseRecordWithoutEffect" >
+    insert into purchaserecord values (#{accountId},#{goodsId},'false');
   </insert>
-  
-  <resultMap id="goodsMap" type="com.agroup.store.domain.Goods">
+
+  <update id="updatePurchaseRecord">
+    update purchaserecord set effective='true' where buyerId= #{accountId} and goodsId=#{goodsId}
+  </update>
+
+  <resultMap id="goodsMap" type="com.agroup.store.resp.GoodsPurchaseRecordResp">
     <id column="buyerId"></id>
-    <result column="goodId" property="id"></result>
+    <result column="goodsId" property="id"></result>
     <result column="name" property="name"></result>
     <result column="description" property="description"></result>
     <result column="img" property="img"></result>
     <result column="category_id" property="categoryId"></result>
     <result column="account_id" property="accountId"></result>
     <result column="price" property="price"></result>
+    <result column="effective" property="effective"></result>
 
   </resultMap>
   
   <select id="selectGoodsByAccountId" parameterType="java.lang.Integer" resultMap="goodsMap">
-    select * from purchaserecord join goods g on g.id = purchaseRecord.goodId where buyerId= #{accountId}
+    select * from purchaserecord join goods g on g.id = purchaseRecord.goodsId where buyerId= #{accountId}
   </select>
 
 </mapper>

@@ -17,7 +17,7 @@ POST http://localhost:8880/hello/post
 Content-Type: application/x-www-form-urlencoded
 
 ###
-GET http://localhost:8081/account/buyGood?accountId=1&goodId=9
+GET http://localhost:8081/account/requestGoods?accountId=2&goodId=6
 ###
 
 name=TEST
@@ -27,4 +27,7 @@ name=TEST
 GET http://localhost:8081/account/list
 ###
 
-GET http://localhost:8081/account/showPurchaseRecords?accountId=2
+GET http://localhost:8081/account/showPurchaseRecordsByAccountId?accountId=2&page=1
+###
+
+GET http://localhost:8081/account/purchaseGoods?accountId=2&goodId=5

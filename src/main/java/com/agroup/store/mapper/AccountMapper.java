@@ -5,6 +5,7 @@ import com.agroup.store.domain.AccountExample;
 import java.util.List;
 
 import com.agroup.store.domain.Goods;
+import com.agroup.store.resp.GoodsPurchaseRecordResp;
 import org.apache.ibatis.annotations.Param;
 
 public interface AccountMapper {
@@ -30,7 +31,9 @@ public interface AccountMapper {
 
     int updateByPrimaryKey(Account record);
 
-    int insertBuyGoodRecord(@Param("accountId") Integer accountId, @Param("GoodId") Integer GoodId);
+    int insertPurchaseRecordWithoutEffect(@Param("accountId") Integer accountId, @Param("goodsId") Integer goodsId);
 
-    List<Goods> selectGoodsByAccountId(Integer accountId);
+    int updatePurchaseRecord(@Param("accountId") Integer accountId, @Param("goodsId") Integer goodsId);
+
+    List<GoodsPurchaseRecordResp> selectGoodsByAccountId(Integer accountId);
 }

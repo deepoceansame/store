@@ -4,12 +4,9 @@ import com.agroup.store.domain.Account;
 import com.agroup.store.domain.Goods;
 import com.agroup.store.req.AccountLoginReq;
 import com.agroup.store.req.AccountSaveReq;
-import com.agroup.store.req.BuyGoodReq;
 import com.agroup.store.req.PurchaseRecordReq;
-import com.agroup.store.resp.AccountLoginResp;
-import com.agroup.store.resp.CommonResp;
-import com.agroup.store.resp.GoodsResp;
-import com.agroup.store.resp.PageResp;
+import com.agroup.store.req.RequestGoodsReq;
+import com.agroup.store.resp.*;
 import com.agroup.store.service.AccountService;
 import com.agroup.store.util.SnowFlake;
 import com.alibaba.fastjson.JSON;
@@ -82,15 +79,22 @@ public class AccountController {
         return resp;
     }
 
-    @GetMapping("account/buyGood")
-    public CommonResp buyGood(@Valid BuyGoodReq req){
-        return accountService.buyGood(req);
+    //参与购买
+    @GetMapping("account/requestGoods")
+    public CommonResp requestGoods(@Valid RequestGoodsReq req){
+        return accountService.requestGoods(req);
     }
 
-    @GetMapping("account/showPurchaseRecords")
-    public CommonResp showPurchaseRecordsById(@Valid PurchaseRecordReq req){
-        CommonResp<PageResp<Goods>> resp = new CommonResp<>();
-        resp.setContent(accountService.showPurchaseRecordById(req));
+    //购买生效:effective: false->true
+    @GetMapping("account/purchaseGoods")
+    public CommonResp purchaseGoods(@Valid RequestGoodsReq req){
+        return accountService.purchaseGoods(req);
+    }
+
+    @GetMapping("account/showPurchaseRecordsByAccountId")
+    public CommonResp showPurchaseRecordsByAccountId(@Valid PurchaseRecordReq req){
+        CommonResp<PageResp<GoodsPurchaseRecordResp>> resp = new CommonResp<>();
+        resp.setContent(accountService.showPurchaseRecordsByAccountId(req));
         return resp;
     }
 

@@ -26,6 +26,14 @@ create table goods(
   foreign key (account_id) references account(id) on delete cascade
 );
 
+create table purchaseRecord(
+   buyerId int(10) unsigned ,
+   goodsId int(10) unsigned,
+   effective varchar(5) check ( effective in ('true','false')),
+   primary key (buyerId,goodsId),
+   foreign key (buyerId) references account(id),
+   foreign key (goodsId) references goods(id)
+);
 
 insert into account(id, name, password, mail, recvAddress) values(1, "aa", "dsd1", '3333@mail.com', '荔园');
 insert into account(id, name, password, mail, recvAddress) values(2, "ds", "1234", '4444@mail.com', '13栋');

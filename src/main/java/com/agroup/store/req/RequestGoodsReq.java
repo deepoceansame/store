@@ -1,13 +1,13 @@
 package com.agroup.store.req;
 import javax.validation.constraints.NotEmpty;
 
-public class BuyGoodReq {
+public class RequestGoodsReq {
     private Integer accountId;
     private Integer goodId;
 
     @Override
     public String toString() {
-        return "BuyGoodReq{" +
+        return "RequestGoodsReq{" +
                 "accountId=" + accountId +
                 ", goodId=" + goodId +
                 '}';
