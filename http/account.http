@@ -31,3 +31,7 @@ GET http://localhost:8081/account/showPurchaseRecordsByAccountId?accountId=2&pag
 ###
 
 GET http://localhost:8081/account/purchaseGoods?accountId=2&goodId=5
+###
+
+GET http://localhost:8081/account/getbyid/1
+###

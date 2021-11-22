@@ -1,6 +1,6 @@
 drop table if exists goods;
 drop table if exists account cascade;
-
+drop table if exists purchaseRecord;
 
 create table account(
     id int unsigned auto_increment,
@@ -31,8 +31,8 @@ create table purchaseRecord(
    goodsId int(10) unsigned,
    effective varchar(5) check ( effective in ('true','false')),
    primary key (buyerId,goodsId),
-   foreign key (buyerId) references account(id),
-   foreign key (goodsId) references goods(id)
+   foreign key (buyerId) references account(id) on delete cascade,
+   foreign key (goodsId) references goods(id) on delete cascade
 );
 
 insert into account(id, name, password, mail, recvAddress) values(1, "aa", "dsd1", '3333@mail.com', '荔园');

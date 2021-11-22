@@ -63,7 +63,7 @@ public class GoodsService {
             page = req.getPage();
         }
         //启动分页
-        PageHelper.startPage(page, 3);
+        PageHelper.startPage(page, 10);
         LOG.info("传过来的page{}",req.getPage());
         List<Goods> lis = goodsMapper.selectByExample(goodsExample);
         //获取分页信息
@@ -109,6 +109,9 @@ public class GoodsService {
         }
         return goods.getId();
     }
+
+
+
 }
 
 

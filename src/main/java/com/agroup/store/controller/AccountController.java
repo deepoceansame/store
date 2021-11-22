@@ -48,6 +48,14 @@ public class AccountController {
         return accountService.list();
     }
 
+    @GetMapping("account/getbyid/{id}")
+    public CommonResp getById(@PathVariable Integer id){
+        CommonResp resp = new CommonResp<>();
+        Account account = accountService.selectById(id);
+        resp.setContent(account);
+        return resp;
+    }
+
     @PostMapping("account/save")
     public CommonResp save(@Valid @RequestBody AccountSaveReq req){
         if(!ObjectUtils.isEmpty(req.getRepPassword())){

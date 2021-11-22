@@ -35,8 +35,6 @@ public class AccountService {
         return resp;
     }
 
-
-
     public void save(AccountSaveReq req) {
         Account account = CopyUtil.copy(req, Account.class);
         if (ObjectUtils.isEmpty(req.getId())) {
@@ -62,6 +60,18 @@ public class AccountService {
         AccountExample accountExample = new AccountExample();
         AccountExample.Criteria criteria = accountExample.createCriteria();
         criteria.andMailEqualTo(mail);
+        List<Account> accountList = accountMapper.selectByExample(accountExample);
+        if (CollectionUtils.isEmpty(accountList)) {
+            return null;
+        } else {
+            return accountList.get(0);
+        }
+    }
+
+    public Account selectById(Integer id){
+        AccountExample accountExample = new AccountExample();
+        AccountExample.Criteria criteria = accountExample.createCriteria();
+        criteria.andIdEqualTo(id);
         List<Account> accountList = accountMapper.selectByExample(accountExample);
         if (CollectionUtils.isEmpty(accountList)) {
             return null;
