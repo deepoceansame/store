@@ -27,16 +27,11 @@ export default {
     })
 
     const handleQuery = (params) => {
-      axios.get("/goods/list",{
-        params:{
-          page: 0,
-          id: params.id
-        }
-      }).then(
+      axios.get("/goods/getbyid/"+route.params.goodsid).then(
           (response) =>  {
             const data = response.data
             if (data.success){
-              goods.value = data.content.list[0];
+              goods.value = data.content;
               axios.get("/account/getbyid/"+goods.value.accountId).then(
                   (response) => {
                     const data = response.data.content

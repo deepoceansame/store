@@ -20,10 +20,11 @@ import BuyNav from "@/components/BuyNav";
 import CategoryNav from "@/components/CategoryNav";
 import Search from "@/components/Search";
 import Pagina from "@/components/Pagina";
-import {onMounted, ref, watch} from 'vue';
+import {computed, onMounted, ref, watch} from 'vue';
 import {useRoute, useRouter} from 'vue-router'
 import axios from "axios";
 import {message} from 'ant-design-vue';
+import store from "@/store";
 
 export default {
   name: "BuyGoods",
@@ -33,24 +34,27 @@ export default {
     //const router = useRouter()
     const goodsList = ref([]);
     const total = ref();
-
+    const account = computed(() => {
+      return store.state.account
+    })
     watch(() => route.params,(newv, oldv) => {
           console.log(newv.keyword)
           if(typeof(newv.keyword) == 'undefined' || newv.keyword.trim().length === 0){
-            handleQuery({page: newv.page, categoryId: newv.category})
+            handleQuery({page: newv.page, categoryId: newv.category, accountId: account.value.id})
           }
           else{
-            handleQuery({page: newv.page, name: newv.keyword, categoryId: newv.category})
+            handleQuery({page: newv.page, name: newv.keyword, categoryId: newv.category, accountId: account.value.id})
           }
         }
     )
     const handleQuery = (params) => {
       goodsList.value = [];
-      axios.get("/goods/list",{
+      axios.get("/goods/getothersgoods",{
         params:{
           page: params.page,
           name: params.name,
-          categoryId: params.categoryId
+          categoryId: params.categoryId,
+          accountId: params.accountId
         }
       }).then(
           (response) =>  {
@@ -69,10 +73,10 @@ export default {
         () => {
           console.log('mounted')
           if(typeof(route.params.keyword) == 'undefined' || route.params.keyword.trim().length === 0){
-            handleQuery({page: route.params.page, categoryId: route.params.category});
+            handleQuery({page: route.params.page, categoryId: route.params.category, accountId: account.value.id});
           }
           else{
-            handleQuery({page: route.params.page, name:route.params.keyword, categoryId: route.params.catagory})
+            handleQuery({page: route.params.page, name:route.params.keyword, categoryId: route.params.catagory, accountId: account.value.id})
           }
         }
     )

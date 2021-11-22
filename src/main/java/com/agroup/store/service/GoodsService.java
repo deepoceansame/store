@@ -1,8 +1,11 @@
 package com.agroup.store.service;
 
+import com.agroup.store.domain.Account;
+import com.agroup.store.domain.AccountExample;
 import com.agroup.store.domain.Goods;
 import com.agroup.store.domain.GoodsExample;
 import com.agroup.store.mapper.GoodsMapper;
+import com.agroup.store.req.GetOthersGoodsReq;
 import com.agroup.store.req.GoodsReq;
 import com.agroup.store.req.GoodsSaveReq;
 import com.agroup.store.resp.GoodsResp;
@@ -16,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,7 +42,7 @@ public class GoodsService {
     @Value("${picturesPath}")
     private String picturesPath;
 
-    public PageResp<GoodsResp> list(GoodsReq req){
+    public PageResp<GoodsResp> getOthersGoods(GetOthersGoodsReq req){
         //筛查
         GoodsExample goodsExample = new GoodsExample();
         GoodsExample.Criteria criteria1 = goodsExample.createCriteria();
@@ -56,8 +60,10 @@ public class GoodsService {
             criteria1.andCategoryIdEqualTo(req.getCategoryId());
             criteria2.andCategoryIdEqualTo(req.getCategoryId());
         }
-        goodsExample.or(criteria2);
+        criteria1.andAccountIdNotEqualTo(req.getAccountId());
+        criteria2.andAccountIdNotEqualTo(req.getAccountId());
 
+        goodsExample.or(criteria2);
         int page = 1;
         if (!ObjectUtils.isEmpty(req.getPage())){
             page = req.getPage();
@@ -110,6 +116,17 @@ public class GoodsService {
         return goods.getId();
     }
 
+    public Goods selectById(Integer id){
+        GoodsExample goodsExample = new GoodsExample();
+        GoodsExample.Criteria criteria = goodsExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        List<Goods> goodsList = goodsMapper.selectByExample(goodsExample);
+        if (CollectionUtils.isEmpty(goodsList)) {
+            return null;
+        } else {
+            return goodsList.get(0);
+        }
+    }
 
 
 }

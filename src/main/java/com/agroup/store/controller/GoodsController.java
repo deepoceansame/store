@@ -1,5 +1,7 @@
 package com.agroup.store.controller;
 
+import com.agroup.store.domain.Goods;
+import com.agroup.store.req.GetOthersGoodsReq;
 import com.agroup.store.req.GoodsReq;
 import com.agroup.store.req.GoodsSaveReq;
 import com.agroup.store.resp.CommonResp;
@@ -24,10 +26,10 @@ public class GoodsController {
     @Resource
     GoodsService goodsService = new GoodsService();
 
-    @GetMapping("goods/list")
-    public CommonResp list(GoodsReq req){
+    @GetMapping("goods/getothersgoods")
+    public CommonResp getOthersGoods(GetOthersGoodsReq req){
         CommonResp<PageResp<GoodsResp>> resp = new CommonResp<>();
-        resp.setContent(goodsService.list(req));
+        resp.setContent(goodsService.getOthersGoods(req));
         return resp;
     }
 
@@ -36,6 +38,14 @@ public class GoodsController {
         Integer goodsId = goodsService.save(saveReq, imgs);
         CommonResp resp = new CommonResp<>();
         resp.setContent(goodsId);
+        return resp;
+    }
+
+    @GetMapping("goods/getbyid/{id}")
+    public CommonResp getById(@PathVariable Integer id){
+        Goods goods = goodsService.selectById(id);
+        CommonResp resp = new CommonResp();
+        resp.setContent(goods);
         return resp;
     }
 }
