@@ -38,6 +38,9 @@ export default {
       return store.state.account
     })
     watch(() => route.params,(newv, oldv) => {
+          if (typeof(newv.page) == 'undefined'){
+            return
+          }
           console.log(newv.keyword)
           if(typeof(newv.keyword) == 'undefined' || newv.keyword.trim().length === 0){
             handleQuery({page: newv.page, categoryId: newv.category, accountId: account.value.id})

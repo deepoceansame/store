@@ -10,6 +10,7 @@ import axios from "axios";
 import {computed, onMounted, reactive, ref} from "vue";
 import {useRoute}  from 'vue-router'
 import store from "@/store";
+import {message} from 'ant-design-vue';
 
 export default {
   name: "BuyerSeeGoods",
@@ -64,7 +65,12 @@ export default {
         }
       }).then(
           (response) => {
-            console.log(response.data)
+            if(typeof(response.data.message)=='undefined'){
+              message.info('参与过了')
+            }
+            else{
+              message.info('成功参与')
+            }
           }
       )
     }
