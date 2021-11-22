@@ -7,10 +7,7 @@ import com.agroup.store.exception.BusinessException;
 import com.agroup.store.exception.BusinessExceptionCode;
 import com.agroup.store.mapper.AccountMapper;
 import com.agroup.store.req.*;
-import com.agroup.store.resp.AccountLoginResp;
-import com.agroup.store.resp.CommonResp;
-import com.agroup.store.resp.GoodsResp;
-import com.agroup.store.resp.PageResp;
+import com.agroup.store.resp.*;
 import com.agroup.store.util.CopyUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -93,8 +90,20 @@ public class AccountService {
         }
     }
 
-    public CommonResp buyGood(BuyGoodReq req){
-        boolean success=accountMapper.insertBuyGoodRecord(req.getAccountId(),req.getGoodId())==1;
+    public CommonResp requestGoods(RequestGoodsReq req){
+        boolean success=accountMapper.insertPurchaseRecordWithoutEffect(req.getAccountId(),req.getGoodId())==1;
+        CommonResp resp=new CommonResp();
+        resp.setSuccess(success);
+        if(success){
+            resp.setMessage("已参与购买，待卖家回复");
+        }else {
+            resp.setMessage("购买失败！");
+        }
+        return resp;
+    }
+
+    public CommonResp purchaseGoods(RequestGoodsReq req){
+        boolean success=accountMapper.updatePurchaseRecord(req.getAccountId(),req.getGoodId())==1;
         CommonResp resp=new CommonResp();
         resp.setSuccess(success);
         if(success){
@@ -105,7 +114,7 @@ public class AccountService {
         return resp;
     }
 
-    public PageResp<Goods> showPurchaseRecordById(PurchaseRecordReq req){
+    public PageResp<GoodsPurchaseRecordResp> showPurchaseRecordsByAccountId(PurchaseRecordReq req){
         Integer accountId=req.getAccountId();
         int page=1;
         if(req.getPage()!=0){
@@ -113,14 +122,14 @@ public class AccountService {
         }
         PageHelper.startPage(page, 3);
         LOG.info("传过来的page{}",req.getPage());
-        List<Goods> goodsList=accountMapper.selectGoodsByAccountId(accountId);
-        PageInfo<Goods> pageInfo = new PageInfo<>(goodsList);
+        List<GoodsPurchaseRecordResp> goodsList=accountMapper.selectGoodsByAccountId(accountId);
+        PageInfo<GoodsPurchaseRecordResp> pageInfo = new PageInfo<>(goodsList);
         LOG.info("总行数{}",pageInfo.getTotal());
         LOG.info("总页数{}",pageInfo.getPages());
 
-        List<Goods> lisr = CopyUtil.copyList(goodsList, Goods.class);
+        List<GoodsPurchaseRecordResp> lisr = CopyUtil.copyList(goodsList, GoodsPurchaseRecordResp.class);
 
-        PageResp<Goods> pageResp = new PageResp<>();
+        PageResp<GoodsPurchaseRecordResp> pageResp = new PageResp<>();
         pageResp.setTotal(pageInfo.getTotal());
         pageResp.setList(lisr);
 
