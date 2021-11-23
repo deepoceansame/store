@@ -111,10 +111,10 @@ export default ({
         goods.accountId = store.state.account.id;
         goods.description = formState.description;
         const fd = new FormData();
-        fd.append('goods', JSON.stringify(goods))
+        fd.append('desiredGoods', JSON.stringify(goods))
         fd.append('img', formState.image, formState.image.name);
         console.log(goods)
-        axios.post("goods/save", fd, {
+        axios.post("desiredGoods/addDesiredGoods", fd, {
           headers:{
             'Content-Type': `multipart/form-data`
           }

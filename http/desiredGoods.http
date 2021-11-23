@@ -1,5 +1,5 @@
-GET http://localhost:8081/desireGoods/addDesiredGoods?name=校园卡&accountId=1&price=999.2&categoryId=3
+GET http://localhost:8081/desiredGoods/addDesiredGoods?name=校园卡&accountId=1&price=999.2&categoryId=3
 ###
 
-GET http://localhost:8081/desireGoods/showDesiredGoodsListByAccountId?accountId=2&page=1
+GET http://localhost:8081/desiredGoods/showDesiredGoodsListByAccountId?accountId=2&page=4
 ###

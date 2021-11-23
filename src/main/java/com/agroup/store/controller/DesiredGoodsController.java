@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -30,13 +31,13 @@ public class DesiredGoodsController {
     private DesiredGoodsService desiredGoodsService;
 
     //添加求购
-    @GetMapping("desireGoods/addDesiredGoods")
-    public CommonResp addDesiredGoods(@Valid DesiredGoodsReq req){
-        return desiredGoodsService.addDesiredGoods(req);
+    @PostMapping("desiredGoods/addDesiredGoods")
+    public CommonResp addDesiredGoods(@Valid @RequestParam("desiredGoods") String req, @RequestParam("img") MultipartFile[] imgs){
+        return desiredGoodsService.addDesiredGoods(req, imgs);
     }
 
     //展示本用户的求购列表
-    @GetMapping("desireGoods/showDesiredGoodsListByAccountId")
+    @GetMapping("desiredGoods/showDesiredGoodsListByAccountId")
     public CommonResp showDesiredGoodsListByAccountId(@Valid DesiredGoodsListReq req){
         CommonResp<PageResp<DesiredGoods>> resp = new CommonResp<>();
         resp.setContent(desiredGoodsService.showDesiredGoodsListByAccountId(req));
