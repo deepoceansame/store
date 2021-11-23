@@ -1,11 +1,9 @@
 package com.agroup.store.controller;
 
 import com.agroup.store.domain.Account;
+import com.agroup.store.domain.DesiredGoods;
 import com.agroup.store.domain.Goods;
-import com.agroup.store.req.AccountLoginReq;
-import com.agroup.store.req.AccountSaveReq;
-import com.agroup.store.req.PurchaseRecordReq;
-import com.agroup.store.req.RequestGoodsReq;
+import com.agroup.store.req.*;
 import com.agroup.store.resp.*;
 import com.agroup.store.service.AccountService;
 import com.agroup.store.util.SnowFlake;
@@ -103,6 +101,20 @@ public class AccountController {
     public CommonResp showPurchaseRecordsByAccountId(@Valid PurchaseRecordReq req){
         CommonResp<PageResp<GoodsPurchaseRecordResp>> resp = new CommonResp<>();
         resp.setContent(accountService.showPurchaseRecordsByAccountId(req));
+        return resp;
+    }
+
+    //添加求购
+    @GetMapping("account/addDesiredGoods")
+    public CommonResp addDesiredGoods(@Valid DesiredGoodsReq req){
+        return accountService.addDesiredGoods(req);
+    }
+
+    //展示本用户的求购列表
+    @GetMapping("account/showDesiredGoodsListByAccountId")
+    public CommonResp showDesiredGoodsListByAccountId(@Valid DesiredGoodsListReq req){
+        CommonResp<PageResp<DesiredGoods>> resp = new CommonResp<>();
+        resp.setContent(accountService.showDesiredGoodsListByAccountId(req));
         return resp;
     }
 

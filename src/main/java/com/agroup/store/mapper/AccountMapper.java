@@ -4,7 +4,10 @@ import com.agroup.store.domain.Account;
 import com.agroup.store.domain.AccountExample;
 import java.util.List;
 
+import com.agroup.store.domain.DesiredGoods;
 import com.agroup.store.domain.Goods;
+import com.agroup.store.req.DesiredGoodsReq;
+import com.agroup.store.req.GoodsReq;
 import com.agroup.store.resp.GoodsPurchaseRecordResp;
 import org.apache.ibatis.annotations.Param;
 
@@ -36,4 +39,8 @@ public interface AccountMapper {
     int updatePurchaseRecord(@Param("accountId") Integer accountId, @Param("goodsId") Integer goodsId);
 
     List<GoodsPurchaseRecordResp> selectGoodsByAccountId(Integer accountId);
+
+    int insertDesiredGoods(DesiredGoods desiredGoods);
+
+    List<DesiredGoods> selectDesiredGoodsByAccountId(Integer accountId);
 }
