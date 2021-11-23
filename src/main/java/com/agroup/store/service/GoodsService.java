@@ -91,19 +91,21 @@ public class GoodsService {
         Goods goods = CopyUtil.copy(saveReq, Goods.class);
         LOG.info("转化为saveReq{}", saveReq);
         UUID timebaseUUID = null;
-        for (MultipartFile img: imgs){
-            LOG.info("{}", img.getSize());
-            timebaseUUID = Generators.timeBasedGenerator().generate();
-            LOG.info("生成的图片名字{}",timebaseUUID.toString());
-            String fileName = timebaseUUID.toString();
-            String filePath = picturesPath + fileName+".jpg";
-            goods.setImg(fileName+".jpg");
-            LOG.info("要保存到的路径{}",filePath);
-            try{
-                File dest = new File(filePath);
-                Files.copy(img.getInputStream(), dest.toPath());
-            } catch (Exception e){
-                LOG.info(e.getMessage());
+        if (imgs != null){
+            for (MultipartFile img: imgs){
+                LOG.info("{}", img.getSize());
+                timebaseUUID = Generators.timeBasedGenerator().generate();
+                LOG.info("生成的图片名字{}",timebaseUUID.toString());
+                String fileName = timebaseUUID.toString();
+                String filePath = picturesPath + fileName+".jpg";
+                goods.setImg(fileName+".jpg");
+                LOG.info("要保存到的路径{}",filePath);
+                try{
+                    File dest = new File(filePath);
+                    Files.copy(img.getInputStream(), dest.toPath());
+                } catch (Exception e){
+                    LOG.info(e.getMessage());
+                }
             }
         }
         if (saveReq.getId() == null){

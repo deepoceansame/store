@@ -40,5 +40,4 @@ public interface AccountMapper {
 
     List<GoodsPurchaseRecordResp> selectGoodsByAccountId(Integer accountId);
 
-
 }
