@@ -40,7 +40,5 @@ public interface AccountMapper {
 
     List<GoodsPurchaseRecordResp> selectGoodsByAccountId(Integer accountId);
 
-    int insertDesiredGoods(DesiredGoods desiredGoods);
 
-    List<DesiredGoods> selectDesiredGoodsByAccountId(Integer accountId);
 }

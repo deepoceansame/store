@@ -147,38 +147,6 @@ public class AccountService {
         return pageResp;
     }
 
-    public CommonResp addDesiredGoods(DesiredGoodsReq req){
-        DesiredGoods desiredGoods = CopyUtil.copy(req, DesiredGoods.class);
-        boolean success=accountMapper.insertDesiredGoods(desiredGoods)==1;
-        CommonResp resp=new CommonResp();
-        resp.setSuccess(success);
-        if(success){
-            resp.setMessage("添加求购成功！");
-        }else {
-            resp.setMessage("添加求购失败！");
-        }
-        return resp;
-    }
 
-    public PageResp<DesiredGoods> showDesiredGoodsListByAccountId(@Valid DesiredGoodsListReq req){
-        Integer accountId=req.getAccountId();
-        int page=1;
-        if(req.getPage()!=0){
-            page=req.getPage();
-        }
-        PageHelper.startPage(page, 3);
-        LOG.info("传过来的page{}",req.getPage());
-        List<DesiredGoods> goodsList=accountMapper.selectDesiredGoodsByAccountId(accountId);
-        PageInfo<DesiredGoods> pageInfo = new PageInfo<>(goodsList);
-        LOG.info("总行数{}",pageInfo.getTotal());
-        LOG.info("总页数{}",pageInfo.getPages());
-
-
-        PageResp<DesiredGoods> pageResp = new PageResp<>();
-        pageResp.setTotal(pageInfo.getTotal());
-        pageResp.setList(goodsList);
-
-        return pageResp;
-    }
 
 }

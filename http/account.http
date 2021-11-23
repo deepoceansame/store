@@ -36,8 +36,3 @@ GET http://localhost:8081/account/purchaseGoods?accountId=2&goodId=5
 GET http://localhost:8081/account/getbyid/1
 ###
 
-GET http://localhost:8081/account/addDesiredGoods?name=食品&accountId=1&price=999.2&categoryId=3
-###
-
-GET http://localhost:8081/account/showDesiredGoodsListByAccountId?accountId=2&page=2
-###

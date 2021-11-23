@@ -104,18 +104,6 @@ public class AccountController {
         return resp;
     }
 
-    //添加求购
-    @GetMapping("account/addDesiredGoods")
-    public CommonResp addDesiredGoods(@Valid DesiredGoodsReq req){
-        return accountService.addDesiredGoods(req);
-    }
 
-    //展示本用户的求购列表
-    @GetMapping("account/showDesiredGoodsListByAccountId")
-    public CommonResp showDesiredGoodsListByAccountId(@Valid DesiredGoodsListReq req){
-        CommonResp<PageResp<DesiredGoods>> resp = new CommonResp<>();
-        resp.setContent(accountService.showDesiredGoodsListByAccountId(req));
-        return resp;
-    }
 
 }
