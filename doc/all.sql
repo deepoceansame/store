@@ -1,6 +1,7 @@
 drop table if exists goods;
 drop table if exists account cascade;
 drop table if exists purchaseRecord;
+drop table if exists message;
 
 create table account(
     id int unsigned auto_increment,
@@ -49,7 +50,18 @@ create table DesiredGoods(
              on delete cascade
 );
 
-
+create table message(
+    senderid int unsigned,
+    receiverid int unsigned,
+    goodsid int unsigned,
+    sendtime TIMESTAMP,
+    type int,
+    content varchar(200),
+    foreign key (senderid) references account(id) on delete cascade,
+    foreign key (receiverid) references account(id) on delete cascade,
+    foreign key (goodsid) references goods(id) on delete cascade,
+    primary key (senderid, receiverid, goodsid, sendtime)
+);
 
 insert into account(id, name, password, mail, recvAddress) values(1, "aa", "dsd1", '3333@mail.com', '荔园');
 insert into account(id, name, password, mail, recvAddress) values(2, "ds", "1234", '4444@mail.com', '13栋');

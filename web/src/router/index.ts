@@ -8,6 +8,7 @@ import BuyInqury from '../views/BuyInqury.vue'
 import AddGoods from '../views/AddGoods.vue'
 import BuyerSeeGoods from '../views/BuyerSeeGoods.vue'
 import Signup from '../views/Signup.vue'
+import Chatroom from '../views/Chatroom.vue'
 import store from "@/store";
 import axios from "axios";
 import {message} from "ant-design-vue";
@@ -112,6 +113,11 @@ const routes: Array<RouteRecordRaw> = [
       }
       else next()
     },
+  },
+  {
+    path:'/chatroom/goodsid=:goodsid&senderid=:senderid&receiverid=:receiverid',
+    name:'chatroom',
+    component: Chatroom,
   }
 ]
 

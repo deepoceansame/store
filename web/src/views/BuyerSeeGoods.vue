@@ -3,12 +3,13 @@
   <br/>
   <div>sellerInfo:{{sellerAccount}}</div>
   <button @click="enroll">参与购买</button>
+  <button @click="goToChatRoom">联系卖家</button>
 </template>
 
 <script>
 import axios from "axios";
 import {computed, onMounted, reactive, ref} from "vue";
-import {useRoute}  from 'vue-router'
+import {useRoute, useRouter}  from 'vue-router'
 import store from "@/store";
 import {message} from 'ant-design-vue';
 
@@ -16,8 +17,10 @@ export default {
   name: "BuyerSeeGoods",
   setup(){
     const route = useRoute();
+    const router = useRouter()
     const goods = ref();
     const sellerAccount = reactive({
+      id: undefined,
       name: '',
       qq: '',
       mail: '',
@@ -36,6 +39,7 @@ export default {
               axios.get("/account/getbyid/"+goods.value.accountId).then(
                   (response) => {
                     const data = response.data.content
+                    sellerAccount.id = data.id
                     sellerAccount.name = data.name
                     sellerAccount.qq = data.qq
                     sellerAccount.mail = data.mail
@@ -48,6 +52,10 @@ export default {
           }
       )
     };
+
+    const goToChatRoom = () => {
+      router.push(`/chatroom/goodsid=${goods.value.id}&senderid=${account.value.id}&receiverid=${sellerAccount.id}`)
+    }
 
     onMounted(
         () => {
@@ -78,7 +86,8 @@ export default {
     return {
       goods,
       sellerAccount,
-      enroll
+      enroll,
+      goToChatRoom,
     }
   }
 }

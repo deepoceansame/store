@@ -1,0 +1,3 @@
+
+GET http://localhost:8081/message/test?senderid=1& receiverid=2 & goodsid=2
+###
