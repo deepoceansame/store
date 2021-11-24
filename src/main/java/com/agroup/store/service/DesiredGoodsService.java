@@ -51,27 +51,29 @@ public class DesiredGoodsService {
         DesiredGoods desiredGoods = CopyUtil.copy(saveReq, DesiredGoods.class);
         LOG.info("转化为saveReq{}", saveReq);
         UUID timebaseUUID = null;
-        for (MultipartFile img: imgs){
-            LOG.info("{}", img.getSize());
-            timebaseUUID = Generators.timeBasedGenerator().generate();
-            LOG.info("生成的图片名字{}",timebaseUUID.toString());
-            String fileName = timebaseUUID.toString();
-            String filePath = picturesPath + fileName+".jpg";
-            desiredGoods.setImg(fileName+".jpg");
-            LOG.info("要保存到的路径{}",filePath);
-            try{
-                File dest = new File(filePath);
-                Files.copy(img.getInputStream(), dest.toPath());
-            } catch (Exception e){
-                LOG.info(e.getMessage());
+        if (imgs != null) {
+            for (MultipartFile img : imgs) {
+                LOG.info("{}", img.getSize());
+                timebaseUUID = Generators.timeBasedGenerator().generate();
+                LOG.info("生成的图片名字{}", timebaseUUID.toString());
+                String fileName = timebaseUUID.toString();
+                String filePath = picturesPath + fileName + ".jpg";
+                desiredGoods.setImg(fileName + ".jpg");
+                LOG.info("要保存到的路径{}", filePath);
+                try {
+                    File dest = new File(filePath);
+                    Files.copy(img.getInputStream(), dest.toPath());
+                } catch (Exception e) {
+                    LOG.info(e.getMessage());
+                }
             }
         }
-        boolean success=desiredGoodsMapper.insertDesiredGoods(desiredGoods)==1;
-        CommonResp resp=new CommonResp();
+        boolean success = desiredGoodsMapper.insertDesiredGoods(desiredGoods) == 1;
+        CommonResp resp = new CommonResp();
         resp.setSuccess(success);
-        if(success){
+        if (success) {
             resp.setMessage("添加求购成功！");
-        }else {
+        } else {
             resp.setMessage("添加求购失败！");
         }
         return resp;

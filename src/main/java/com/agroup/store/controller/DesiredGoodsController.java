@@ -32,7 +32,7 @@ public class DesiredGoodsController {
 
     //添加求购
     @PostMapping("desiredGoods/addDesiredGoods")
-    public CommonResp addDesiredGoods(@Valid @RequestParam("desiredGoods") String req, @RequestParam("img") MultipartFile[] imgs){
+    public CommonResp addDesiredGoods(@Valid @RequestParam("desiredGoods") String req, MultipartFile[] imgs){
         return desiredGoodsService.addDesiredGoods(req, imgs);
     }
 
