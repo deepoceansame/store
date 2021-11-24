@@ -63,6 +63,13 @@ create table message(
     primary key (senderid, receiverid, goodsid, sendtime)
 );
 
+create table goodsimage(
+    goodsid int unsigned,
+    img varchar(200),
+    foreign key (goodsid) references goods(id) on delete cascade,
+    primary key (goodsid, img)
+);
+
 insert into account(id, name, password, mail, recvAddress) values(1, "aa", "dsd1", '3333@mail.com', '荔园');
 insert into account(id, name, password, mail, recvAddress) values(2, "ds", "1234", '4444@mail.com', '13栋');
 insert into account(id, name, password, mail, recvAddress) values(3, "me", "7781", '5555@mail.com', '图书馆');

@@ -31,10 +31,9 @@
     </a-form-item>
 
     <a-form-item label="image" name="image">
-      <input type="file" name="image" accept="image/png, image/jpeg" @change="onFileChange" enctype="multipart/form-data"/>
-      <img :src="showImage">
+      <input type="file" name="image" accept="image/png, image/jpeg" @change="onFileChange" multiple="multiple"/>
     </a-form-item>
-
+    <img v-for="(imgurl, index) in showImages" :src="imgurl" :key="index" style="max-width: 150px" />
 
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
       <a-button type="primary" @click="onSubmit">Create</a-button>
@@ -64,7 +63,7 @@ export default ({
       category: undefined,
       price: undefined,
       description: '',
-      img: undefined,
+      images: undefined,
     });
     const rules = {
       name: [{
@@ -92,7 +91,7 @@ export default ({
         trigger: 'change'
       }]
     };
-    const showImage = ref();
+    const showImages = ref([]);
     const goods = reactive({
       name:  undefined,
       categoryId: undefined,
@@ -112,9 +111,10 @@ export default ({
         goods.description = formState.description;
         const fd = new FormData();
         fd.append('goods', JSON.stringify(goods))
-        console.log(formState.img)
-        if(formState.image !== undefined){
-          fd.append('imgs', formState.image, formState.image.name);
+        if(formState.images !== undefined){
+          for(let i=0; i<formState.images.length; i++){
+            fd.append('imgs', formState.images[i], formState.images[i].name);
+          }
         }
         else{
           fd.append('imgs', undefined)
@@ -144,19 +144,22 @@ export default ({
 
 
     const handleClick = ()=>{
-      console.log(typeof (formState.image))
+      console.log(typeof (formState.images))
     }
 
     const onFileChange = (e)=>{
-      console.log(e)
-      formState.image = e.target.files[0]
-      var reader = new FileReader()
-      reader.onload = (e) => {
-        console.log(e)
-        showImage.value = e.target.result;
+      showImages.value = []
+      formState.images = e.target.files
+      for(let i=0; i<formState.images.length; i++){
+        let reader = new FileReader()
+        reader.onload = (e) => {
+          console.log(e)
+          showImages.value.push(e.target.result);
+        }
+        let img = formState.images[i]
+        reader.readAsDataURL(img)
       }
-      reader.readAsDataURL(formState.image)
-      console.log(formState.image)
+      console.log(formState.images)
     }
 
     return {
@@ -174,7 +177,7 @@ export default ({
       resetForm,
       handleClick,
       onFileChange,
-      showImage,
+      showImages,
     };
   },
 
