@@ -5,6 +5,7 @@ import com.agroup.store.mapper.MessageMapper;
 import com.agroup.store.req.GetMessageReq;
 import com.agroup.store.resp.CommonResp;
 import com.agroup.store.service.GoodsService;
+import com.agroup.store.service.MessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,8 @@ import java.util.List;
 public class MessageController {
     @Resource
     private MessageMapper messageMapper;
-
+    @Resource
+    private MessageService messageService;
     private static final Logger LOG = LoggerFactory.getLogger(GoodsService.class);
     @GetMapping("message/test")
     public void tess(Message message){
@@ -45,8 +47,11 @@ public class MessageController {
     }
 
     @PostMapping("message/addpicmessage")
-    public void addPicMessage(@RequestParam String message, @RequestParam MultipartFile img){
-
+    public void addPicMessage(@RequestParam("message") String message, MultipartFile img){
+        LOG.info("收到的图片的大小{}", img.getSize());
+        if (img != null){
+            messageService.addPicMessage(message, img);
+        }
     }
 
     @GetMapping("message/getmessage")

@@ -1,6 +1,15 @@
 <template>
   <div>
-    {{mess.content}}   靠右{{atRight}}
+    <div v-if="Number(mess.type)===1&&mess.temp===undefined">
+      {{mess.content}} 靠右{{atRight}}
+    </div>
+    <div v-if="Number(mess.type)===2&&mess.temp===undefined">
+      <img  :src="'http://127.0.0.1:8083/'+mess.content" style="max-width: 150px">
+      靠右{{atRight}}
+    </div>
+    <div v-if="mess.temp===true">
+      <img  :src=mess.content style="max-width: 150px"> 靠右{{atRight}}
+    </div>
   </div>
 </template>
 
