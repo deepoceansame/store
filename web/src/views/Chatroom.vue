@@ -4,9 +4,9 @@
   <br/>
   <input v-model="tt"/>{{tt}}<button @click="submitText">提交</button>
   <br/>
-  <button>给对方转账</button><br/>
-  <input type="file" name="image" accept="image/png, image/jpeg" @change="onFileChange"/>
+  <input type="file" :value="imgToSubmit" name="image" accept="image/png, image/jpeg" @change="onFileChange"/>
   <button @click="submitImage">提交图片</button>
+  <br/><button>给对方转账</button>
   {{messageList}}
 </template>
 
@@ -57,8 +57,9 @@ export default {
     };
 
     const submitText = ()=>{
-      console.log(tt  );
+      console.log(tt.value);
       if(tt.value.trim().length !== 0){
+        console.log(tt.value)
         addTxtContent(tt.value);
         messageList.value.push({
           goodsid: route.params.goodsid,
@@ -72,7 +73,7 @@ export default {
     }
 
     const submitImage = ()=>{
-      if(tempImage.trim().length !== 0) {
+      if(tempImage==null || tempImage.trim().length !== 0) {
         messageList.value.push({
           goodsid: route.params.goodsid,
           senderid: route.params.senderid,
@@ -99,6 +100,8 @@ export default {
         }).then((response) => {
           console.log(response);
         })
+        imgToSubmit = null
+        tempImage = ''
       }
     }
 
@@ -128,6 +131,7 @@ export default {
       messageList,
       onFileChange,
       submitImage,
+      imgToSubmit,
     }
   }
 }
