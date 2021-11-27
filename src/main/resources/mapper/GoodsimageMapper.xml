@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.agroup.store.mapper.GoodsimageMapper">
+
+    <insert id="insert" parameterType="com.agroup.store.domain.Goodsimage">
+        insert into goodsimage (goodsid, img)
+        values (#{goodsid,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="getimages" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select img
+        from goodsimage
+        where goodsid=#{goodsid, jdbcType=INTEGER}
+    </select>
+</mapper>

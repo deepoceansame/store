@@ -19,6 +19,7 @@ export default {
     const route = useRoute();
     const router = useRouter()
     const goods = ref();
+    const goodsimgs = ref([]);
     const sellerAccount = reactive({
       id: undefined,
       name: '',
@@ -49,6 +50,15 @@ export default {
             } else{
               const a=0
             }
+          }
+      )
+      axios.get("/goods/getimages", {
+        params:{
+          goodsid: route.params.goodsid
+        }
+      }).then(
+          (response) => {
+            goodsimgs.value = response.data.content
           }
       )
     };

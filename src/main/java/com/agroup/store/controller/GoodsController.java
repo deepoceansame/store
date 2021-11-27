@@ -1,6 +1,9 @@
 package com.agroup.store.controller;
 
 import com.agroup.store.domain.Goods;
+import com.agroup.store.domain.Goodsimage;
+import com.agroup.store.mapper.GoodsMapper;
+import com.agroup.store.mapper.GoodsimageMapper;
 import com.agroup.store.req.GetOthersGoodsReq;
 import com.agroup.store.req.GoodsReq;
 import com.agroup.store.req.GoodsSaveReq;
@@ -25,6 +28,8 @@ public class GoodsController {
     private static final Logger LOG = LoggerFactory.getLogger(GoodsService.class);
     @Resource
     GoodsService goodsService = new GoodsService();
+    @Resource
+    private GoodsimageMapper goodsimageMapper;
 
     @GetMapping("goods/getothersgoods")
     public CommonResp getOthersGoods(GetOthersGoodsReq req){
@@ -46,6 +51,14 @@ public class GoodsController {
         Goods goods = goodsService.selectById(id);
         CommonResp resp = new CommonResp();
         resp.setContent(goods);
+        return resp;
+    }
+
+    @GetMapping("goods/getimages")
+    public CommonResp getImages(@RequestParam("goodsid") Integer goodsid){
+        List<String> lis = goodsimageMapper.getimages(goodsid);
+        CommonResp resp = new CommonResp();
+        resp.setContent(lis);
         return resp;
     }
 }

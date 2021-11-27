@@ -1,10 +1,8 @@
 package com.agroup.store.service;
 
-import com.agroup.store.domain.Account;
-import com.agroup.store.domain.AccountExample;
-import com.agroup.store.domain.Goods;
-import com.agroup.store.domain.GoodsExample;
+import com.agroup.store.domain.*;
 import com.agroup.store.mapper.GoodsMapper;
+import com.agroup.store.mapper.GoodsimageMapper;
 import com.agroup.store.req.GetOthersGoodsReq;
 import com.agroup.store.req.GoodsReq;
 import com.agroup.store.req.GoodsSaveReq;
@@ -37,6 +35,10 @@ import java.util.concurrent.atomic.AtomicReference;
 public class GoodsService {
     @Resource
     private GoodsMapper goodsMapper;
+
+    @Resource
+    private GoodsimageMapper goodsimageMapper;
+
     private static final Logger LOG = LoggerFactory.getLogger(GoodsService.class);
 
     @Value("${picturesPath}")
@@ -88,32 +90,49 @@ public class GoodsService {
     public Integer save(String req, MultipartFile[] imgs) throws IOException {
         LOG.info("收到了String{}",req);
         GoodsSaveReq saveReq = JSON.parseObject(req, GoodsSaveReq.class);
-        Goods goods = CopyUtil.copy(saveReq, Goods.class);
         LOG.info("转化为saveReq{}", saveReq);
+        Goods goods = CopyUtil.copy(saveReq, Goods.class);
         UUID timebaseUUID = null;
-        if (imgs != null){
-            for (MultipartFile img: imgs){
-                LOG.info("{}", img.getSize());
+
+        if (imgs != null && imgs.length>0){
+            MultipartFile img = imgs[0];
+            LOG.info("{}", img.getSize());
+            timebaseUUID = Generators.timeBasedGenerator().generate();
+            LOG.info("列表图片名字{}",timebaseUUID.toString());
+            String fileName = timebaseUUID.toString();
+            String filePath = picturesPath + fileName+".jpg";
+            goods.setImg(fileName+".jpg");
+            LOG.info("要保存到的路径{}",filePath);
+            try{
+                File dest = new File(filePath);
+                Files.copy(img.getInputStream(), dest.toPath());
+            } catch (Exception e){
+                LOG.info(e.getMessage());
+            }
+            goodsMapper.insert(goods);
+            LOG.info("插入goods后产生的ID为{}", goods.getId());
+            Goodsimage gi = new Goodsimage();
+            gi.setGoodsid(goods.getId());
+            gi.setImg(fileName+".jpg");
+            goodsimageMapper.insert(gi);
+            for (int i=1;i<imgs.length;i++){
+                img = imgs[i];
                 timebaseUUID = Generators.timeBasedGenerator().generate();
-                LOG.info("生成的图片名字{}",timebaseUUID.toString());
-                String fileName = timebaseUUID.toString();
-                String filePath = picturesPath + fileName+".jpg";
-                goods.setImg(fileName+".jpg");
-                LOG.info("要保存到的路径{}",filePath);
+                fileName = timebaseUUID.toString();
+                filePath = picturesPath + fileName + ".jpg";
+                gi.setImg(fileName+".jpg");
+                goodsimageMapper.insert(gi);
                 try{
                     File dest = new File(filePath);
                     Files.copy(img.getInputStream(), dest.toPath());
-                } catch (Exception e){
+                }catch (Exception e){
                     LOG.info(e.getMessage());
                 }
             }
         }
-        if (saveReq.getId() == null){
+        else{
             goodsMapper.insert(goods);
             LOG.info("插入goods后产生的ID为{}", goods.getId());
-        }
-        else{
-            goodsMapper.updateByPrimaryKeySelective(goods);
         }
         return goods.getId();
     }
