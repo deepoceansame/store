@@ -64,6 +64,12 @@ export default {
     };
 
     const goToChatRoom = () => {
+      axios.get('account/requestGoods',{
+        params:{
+          accountId: account.value.id,
+          goodId: goods.value.id
+        }
+      })
       router.push(`/chatroom/goodsid=${goods.value.id}&senderid=${account.value.id}&receiverid=${sellerAccount.id}`)
     }
 

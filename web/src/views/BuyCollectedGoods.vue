@@ -1,23 +1,71 @@
 <template>
   <div>
-    <category-nav></category-nav>
-    <br/>
-    <search/>
     <buy-nav></buy-nav>
     buy-collected-goods list here
+    <table>
+      <GoodsTableRow v-for="(goods, index) in goodsList" :goods="goods" :key="index"></GoodsTableRow>
+    </table>
   </div>
+  {{goodsList}}
 </template>
 
 <script>
 import BuyNav from "@/components/BuyNav";
-import CategoryNav from "@/components/CategoryNav";
-import Search from "@/components/Search";
+import axios from "axios";
+import {message} from "ant-design-vue";
+import {computed, onMounted, ref} from "vue";
+import {useRoute, useRouter} from 'vue-router'
+import store from "@/store";
+import GoodsTableRow from "@/components/GoodsTableRow";
 export default {
   name: "BuyCollectedGoods",
-  components: {
-    Search,
-    BuyNav, CategoryNav
+  components:{
+    BuyNav, GoodsTableRow
+  },
+  setup(){
+
+    const goodsList = ref([])
+    const route = useRoute()
+    const account = computed(() => {
+      return store.state.account
+    })
+
+    const handleQuery = (params) => {
+      goodsList.value = [];
+      axios.get("/account/showPurchaseRecordsByAccountId",{
+        params:{
+          accountId: params.accountId
+        }
+      }).then(
+          (response) =>  {
+            const data = response.data
+            if (data.success){
+              goodsList.value = data.content.list;
+            } else{
+              message.error(data.message)
+            }
+          }
+      )
+    }
+
+    onMounted(
+        () => {
+          console.log('mounted')
+          if(typeof(route.params.keyword) == 'undefined' || route.params.keyword.trim().length === 0){
+            handleQuery({accountId: account.value.id});
+          }
+          else{
+            handleQuery({accountId: account.value.id})
+          }
+        }
+    )
+
+    return {
+      goodsList
+    }
   }
+
+
 }
 </script>
 

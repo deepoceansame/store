@@ -4,9 +4,8 @@
   <search></search>
   <buy-nav></buy-nav>
   <div>buy-goods list here</div>
-    <GoodsTableRow v-for="(goods, index) in goodsList" :goods="goods" :key="index"></GoodsTableRow>
   <table>
-
+    <GoodsTableRow v-for="(goods, index) in goodsList" :goods="goods" :key="index"></GoodsTableRow>
   </table>
 
   <pagina :total="total"></pagina>

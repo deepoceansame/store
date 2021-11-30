@@ -96,6 +96,31 @@ export default {
       }
     };
 
+
+    let validateMail = async (_rule: any, value: string) => {
+      if (value === '') {
+        return Promise.reject('Please input the mail');
+      } else {
+        const MAIL_REGEX_1= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!MAIL_REGEX_1.test(value)) {
+          return Promise.reject('wrong mail format')
+        }
+        return Promise.resolve();
+      }
+    };
+
+    let validateQQ = async (_rule: any, value: string) => {
+      if (value === '') {
+        return Promise.reject('Please input the qq');
+      } else {
+        const QQ_REGEX_1= /^\d{0,8}$/;
+        if (!QQ_REGEX_1.test(value)) {
+          return Promise.reject('wrong qq format')
+        }
+        return Promise.resolve();
+      }
+    };
+
     const handleClick = () => {
       console.log(formState.password)
       console.log( hexMd5(formState.password + KEY) )
@@ -105,6 +130,7 @@ export default {
       mail: [
         {
           required: true,
+          validator: validateMail,
           trigger: 'blur',
         }
       ],
@@ -117,6 +143,7 @@ export default {
       qq:[
         {
           required:true,
+          validator: validateQQ,
           trigger:'blur'
         }
       ],

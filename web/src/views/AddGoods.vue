@@ -33,13 +33,15 @@
     <a-form-item label="image" name="image">
       <input type="file" name="image" accept="image/png, image/jpeg" @change="onFileChange" multiple="multiple"/>
     </a-form-item>
-    <img v-for="(imgurl, index) in showImages" :src="imgurl" :key="index" style="max-width: 150px" />
+    <img v-for="(imgurl, index) in showImages" :src="imgurl" :key="index" style="max-height: 150px" />
 
     <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
       <a-button type="primary" @click="onSubmit">Create</a-button>
       <a-button style="margin-left: 10px" @click="resetForm">Reset</a-button>
     </a-form-item>
   </a-form>
+
+
 
   <button @click="handleClick">Click</button>
 
@@ -65,10 +67,24 @@ export default ({
       description: '',
       images: undefined,
     });
+
+    let validatePrice = async (_rule, value) => {
+      const intRegx = /^\d{0,8}$/
+      const floatRegex = /^\d{0,8}\.\d{0,6}$/
+      if (value === '') {
+        return Promise.reject('Please input price');
+      } else if (!(intRegx.test(value) || floatRegex.test(value))) {
+        return Promise.reject("bad price");
+      } else {
+        return Promise.resolve();
+      }
+    };
+
+
     const rules = {
       name: [{
         required: true,
-        message: 'Please input Activity name',
+        message: 'Please input goods name',
         trigger: 'blur',
       }, {
         min: 0,
@@ -78,11 +94,12 @@ export default ({
       }],
       category: [{
         required: true,
-        message: 'Please select Activity zone',
+        message: 'Please select category',
         trigger: 'change',
       }],
       price:[{
         required: true,
+        validator: validatePrice,
         trigger:'change',
       }],
       description:[{
@@ -103,6 +120,9 @@ export default ({
 
     const onSubmit = () => {
       formRef.value.validate().then(() => {
+        if (formState.images == null){
+          formState.images = []
+        }
         console.log('values', formState, toRaw(formState));
         goods.categoryId = formState.category;
         goods.name = formState.name;
@@ -145,15 +165,22 @@ export default ({
 
     const handleClick = ()=>{
       console.log(typeof (formState.images))
+      console.log(formState.images)
     }
+
 
     const onFileChange = (e)=>{
       showImages.value = []
+      if (e.target.files.length > 4){
+        alert('too many images')
+        formState.images = null
+        return
+      }
+      console.log('====================')
       formState.images = e.target.files
       for(let i=0; i<formState.images.length; i++){
         let reader = new FileReader()
         reader.onload = (e) => {
-          console.log(e)
           showImages.value.push(e.target.result);
         }
         let img = formState.images[i]
