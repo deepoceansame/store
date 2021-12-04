@@ -281,4 +281,26 @@
     select * from purchaserecord join goods g on g.id = purchaseRecord.goodsId where buyerId= #{accountId}
   </select>
 
+  <insert id="insertSupplyRecord" >
+    insert into supplyrecord values (#{accountId},#{desiredgoodsId});
+  </insert>
+
+  <select id="getSupplyingGoodsByAccountId" parameterType="java.lang.Integer" resultType="com.agroup.store.domain.DesiredGoods">
+    select g.*
+    from (
+         select *
+         from supplyrecord
+         where accountid = #{accountid}
+           ) as s join desiredgoods g on s.desiredgoodsid = g.id
+  </select>
+
+  <select id="getSupplyingAccountByDesiredGoodsId" parameterType="java.lang.Integer" resultType="com.agroup.store.domain.Account">
+    select a.*
+    from (
+           select *
+           from supplyrecord
+           where desiredgoodsid = #{desiredgoodsid}
+         ) as s join account a on s.accountid = a.id
+  </select>
+
 </mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.agroup.store.mapper.MessagedMapper">
+
+    <insert id="addMessage" parameterType="com.agroup.store.domain.Messaged">
+        insert into messaged (senderid, receiverid, desiredgoodsid, sendtime, type, content)
+        values (#{senderid,jdbcType=INTEGER}, #{receiverid,jdbcType=INTEGER}, #{desiredgoodsid, jdbcType=INTEGER},
+                #{sendtime, jdbcType=TIMESTAMP}, #{type, jdbcType=INTEGER}, #{content, jdbcType=VARCHAR})
+    </insert>
+
+    <select id="getMessageListByThreeId" parameterType="map" resultType="com.agroup.store.domain.Messaged">
+        select *
+        from(
+                select * from messaged
+                where ( senderid = #{senderid} and receiverid = #{receiverid} and desiredgoodsid=#{desiredgoodsid})
+                   or ( senderid = #{receiverid} and receiverid = #{senderid} and desiredgoodsid= #{desiredgoodsid})
+                order by sendtime desc limit 200
+            ) as T
+        order by sendtime
+    </select>
+</mapper>

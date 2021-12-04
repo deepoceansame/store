@@ -40,4 +40,9 @@ public interface AccountMapper {
 
     List<GoodsPurchaseRecordResp> selectGoodsByAccountId(Integer accountId);
 
+    int insertSupplyRecord(@Param("accountId") Integer accountId, @Param("desiredgoodsId") Integer desiredgoodsId);
+
+    List<DesiredGoods> getSupplyingGoodsByAccountId(Integer accountid);
+
+    List<Account> getSupplyingAccountByDesiredGoodsId(Integer desiredgoodsid);
 }

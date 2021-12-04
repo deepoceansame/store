@@ -2,7 +2,11 @@ drop table if exists goods;
 drop table if exists account cascade;
 drop table if exists purchaseRecord;
 drop table if exists message;
-drop table if exists goodsimage
+drop table if exists goodsimage;
+drop table if exists messaged;
+drop table if exists desiredgoodsimage;
+drop table if exists supplyrecord;
+drop table if exists purchaseRecord;
 
 create table account(
     id int unsigned auto_increment,
@@ -64,6 +68,19 @@ create table message(
     primary key (senderid, receiverid, goodsid, sendtime)
 );
 
+create table messaged(
+    senderid int unsigned,
+    receiverid int unsigned,
+    desiredgoodsid int unsigned,
+    sendtime TIMESTAMP,
+    type int,
+    content varchar(200),
+    foreign key (senderid) references account(id) on delete cascade,
+    foreign key (receiverid) references account(id) on delete cascade,
+    foreign key (desiredgoodsid) references desiredgoods(id) on delete cascade,
+    primary key (senderid, receiverid, desiredgoodsid, sendtime)
+);
+
 create table goodsimage(
     goodsid int unsigned,
     img varchar(200),
@@ -77,6 +94,15 @@ create table desiredgoodsimage(
     foreign key (desiredgoodsid) references desiredgoods(id) on delete cascade,
     primary key (desiredgoodsid, img)
 );
+
+create table supplyrecord(
+    accountid int unsigned,
+    desiredgoodsid int unsigned,
+    primary key (accountid,desiredgoodsid),
+    foreign key (accountid) references account(id) on delete cascade,
+    foreign key (desiredgoodsid) references goods(id) on delete cascade
+);
+
 
 insert into account(id, name, password, mail, recvAddress) values(1, "aa", "dsd1", '3333@mail.com', '荔园');
 insert into account(id, name, password, mail, recvAddress) values(2, "ds", "1234", '4444@mail.com', '13栋');
@@ -93,4 +119,6 @@ insert into goods(name, description, account_Id, category_id, price) value ('战
 insert into goods(name, description, account_Id, category_id, price) value ('攻城坦克', '架起可造成高额aoe伤害', 3, 4, 700);
 insert into goods(name, description, account_Id, category_id, price) value ('女妖', '空中对地可隐形单位', 3, 4, 500);
 insert into goods(name, description, account_Id, category_id, price) value ('雷兽', '高血量高护甲', 2, 5, 1000);
+
+select g.* from supplyrecord join desiredgoods g on g.id = supplyrecord.desiredgoodsid
 
