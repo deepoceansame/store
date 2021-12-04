@@ -61,5 +61,4 @@
     <select id="selectDesiredGoodsByAccountId" parameterType="java.lang.Integer" resultMap="desiredGoodsMap">
         select * from desiredgoods where account_id= #{accountId}
     </select>
-
 </mapper>
