@@ -33,7 +33,9 @@ public class DesiredGoodsController {
     //添加求购
     @PostMapping("desiredGoods/addDesiredGoods")
     public CommonResp addDesiredGoods(@Valid @RequestParam("desiredGoods") String req, MultipartFile[] imgs){
-        return desiredGoodsService.addDesiredGoods(req, imgs);
+        CommonResp resp = new CommonResp();
+        resp.setContent(desiredGoodsService.addDesiredGoods(req, imgs));
+        return resp;
     }
 
     //展示本用户的求购列表

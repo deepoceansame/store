@@ -1,6 +1,7 @@
 <template>
   <buy-nav></buy-nav>
   <div>buy inqury list here</div>
+  <button @click="goToAddDesiredGoods">添加求购</button>
   {{DesiredGoodsList}}
 </template>
 
@@ -9,7 +10,7 @@ import BuyNav from "@/components/BuyNav";
 import CategoryNav from "@/components/CategoryNav";
 import Search from "@/components/Search";
 import {computed, onMounted, ref} from "vue";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import store from "@/store";
 import axios from "axios";
 import {message} from "ant-design-vue";
@@ -19,9 +20,9 @@ export default {
     BuyNav,
   },
   setup(){
-
     const DesiredGoodsList = ref([])
     const route = useRoute()
+    const router = useRouter()
     const account = computed(() => {
       return store.state.account
     })
@@ -56,8 +57,13 @@ export default {
         }
     )
 
+    const goToAddDesiredGoods = () => {
+      router.push('/adddesiredgoods')
+    }
+
     return {
-      DesiredGoodsList
+      DesiredGoodsList,
+      goToAddDesiredGoods
     }
   }
 }

@@ -9,6 +9,7 @@ import AddGoods from '../views/AddGoods.vue'
 import BuyerSeeGoods from '../views/BuyerSeeGoods.vue'
 import Signup from '../views/Signup.vue'
 import Chatroom from '../views/Chatroom.vue'
+import AddDesiredGoods from '../views/AddDesiredGoods.vue'
 import store from "@/store";
 import axios from "axios";
 import {message} from "ant-design-vue";
@@ -93,9 +94,14 @@ const routes: Array<RouteRecordRaw> = [
     component:BuyInqury
   },
   {
-    path:'/tes',
-    name: 'tes',
+    path:'/addgoods',
+    name: 'addgoods',
     component: AddGoods
+  },
+  {
+    path:'/adddesiredgoods',
+    name: 'adddesiredgoods',
+    component: AddDesiredGoods
   },
   {
     path:'/buyerseegoods/goodsid=:goodsid',

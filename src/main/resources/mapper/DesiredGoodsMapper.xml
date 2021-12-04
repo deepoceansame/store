@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.agroup.store.mapper.DesiredGoodsMapper">
 
-    <insert id="insertDesiredGoods" parameterType="com.agroup.store.domain.DesiredGoods">
+    <insert id="insertDesiredGoods" parameterType="com.agroup.store.domain.DesiredGoods" useGeneratedKeys="true" keyProperty="id">
         insert into desiredgoods
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="name != null">
@@ -60,5 +60,16 @@
     </resultMap>
     <select id="selectDesiredGoodsByAccountId" parameterType="java.lang.Integer" resultMap="desiredGoodsMap">
         select * from desiredgoods where account_id= #{accountId}
+    </select>
+
+    <insert id="insertDesiredGoodsImg" parameterType="com.agroup.store.domain.Goodsimage">
+        insert into desiredgoodsimage (desiredgoodsid, img)
+        values (#{goodsid,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="getDesiredGoodsImgs" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select img
+        from desiredgoodsimage
+        where goodsid=#{goodsid, jdbcType=INTEGER}
     </select>
 </mapper>

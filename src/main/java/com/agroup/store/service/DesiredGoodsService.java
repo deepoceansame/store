@@ -1,9 +1,6 @@
 package com.agroup.store.service;
 
-import com.agroup.store.domain.Account;
-import com.agroup.store.domain.AccountExample;
-import com.agroup.store.domain.DesiredGoods;
-import com.agroup.store.domain.Goods;
+import com.agroup.store.domain.*;
 import com.agroup.store.exception.BusinessException;
 import com.agroup.store.exception.BusinessExceptionCode;
 import com.agroup.store.mapper.AccountMapper;
@@ -45,38 +42,54 @@ public class DesiredGoodsService {
     private String picturesPath;
 
 
-    public CommonResp addDesiredGoods(String req, MultipartFile[] imgs){
+    public Integer addDesiredGoods(String req, MultipartFile[] imgs){
         LOG.info("收到了String{}",req);
-        DesiredGoodsReq saveReq = JSON.parseObject(req, DesiredGoodsReq.class);
-        DesiredGoods desiredGoods = CopyUtil.copy(saveReq, DesiredGoods.class);
+        GoodsSaveReq saveReq = JSON.parseObject(req, GoodsSaveReq.class);
         LOG.info("转化为saveReq{}", saveReq);
+        DesiredGoods goods = CopyUtil.copy(saveReq, DesiredGoods.class);
         UUID timebaseUUID = null;
-        if (imgs != null) {
-            for (MultipartFile img : imgs) {
-                LOG.info("{}", img.getSize());
+
+        if (imgs != null && imgs.length>0){
+            MultipartFile img = imgs[0];
+            LOG.info("{}", img.getSize());
+            timebaseUUID = Generators.timeBasedGenerator().generate();
+            LOG.info("列表图片名字{}",timebaseUUID.toString());
+            String fileName = timebaseUUID.toString();
+            String filePath = picturesPath + fileName+".jpg";
+            goods.setImg(fileName+".jpg");
+            LOG.info("要保存到的路径{}",filePath);
+            try{
+                File dest = new File(filePath);
+                Files.copy(img.getInputStream(), dest.toPath());
+            } catch (Exception e){
+                LOG.info(e.getMessage());
+            }
+            desiredGoodsMapper.insertDesiredGoods(goods);
+            LOG.info("插入goods后产生的ID为{}", goods.getId());
+            Goodsimage gi = new Goodsimage();
+            gi.setGoodsid(goods.getId());
+            gi.setImg(fileName+".jpg");
+            desiredGoodsMapper.insertDesiredGoodsImg(gi);
+            for (int i=1;i<imgs.length;i++){
+                img = imgs[i];
                 timebaseUUID = Generators.timeBasedGenerator().generate();
-                LOG.info("生成的图片名字{}", timebaseUUID.toString());
-                String fileName = timebaseUUID.toString();
-                String filePath = picturesPath + fileName + ".jpg";
-                desiredGoods.setImg(fileName + ".jpg");
-                LOG.info("要保存到的路径{}", filePath);
-                try {
+                fileName = timebaseUUID.toString();
+                filePath = picturesPath + fileName + ".jpg";
+                gi.setImg(fileName+".jpg");
+                desiredGoodsMapper.insertDesiredGoodsImg(gi);
+                try{
                     File dest = new File(filePath);
                     Files.copy(img.getInputStream(), dest.toPath());
-                } catch (Exception e) {
+                }catch (Exception e){
                     LOG.info(e.getMessage());
                 }
             }
         }
-        boolean success = desiredGoodsMapper.insertDesiredGoods(desiredGoods) == 1;
-        CommonResp resp = new CommonResp();
-        resp.setSuccess(success);
-        if (success) {
-            resp.setMessage("添加求购成功！");
-        } else {
-            resp.setMessage("添加求购失败！");
+        else{
+            desiredGoodsMapper.insertDesiredGoods(goods);
+            LOG.info("插入desiredgoods后产生的ID为{}", goods.getId());
         }
-        return resp;
+        return goods.getId();
     }
 
     public PageResp<DesiredGoods> showDesiredGoodsListByAccountId(@Valid DesiredGoodsListReq req){
@@ -85,16 +98,16 @@ public class DesiredGoodsService {
         if(req.getPage()!=0){
             page=req.getPage();
         }
-        PageHelper.startPage(page, 3);
-        LOG.info("传过来的page{}",req.getPage());
+//        PageHelper.startPage(page, 3);
+//        LOG.info("传过来的page{}",req.getPage());
         List<DesiredGoods> goodsList=desiredGoodsMapper.selectDesiredGoodsByAccountId(accountId);
-        PageInfo<DesiredGoods> pageInfo = new PageInfo<>(goodsList);
-        LOG.info("总行数{}",pageInfo.getTotal());
-        LOG.info("总页数{}",pageInfo.getPages());
+//        PageInfo<DesiredGoods> pageInfo = new PageInfo<>(goodsList);
+//        LOG.info("总行数{}",pageInfo.getTotal());
+//        LOG.info("总页数{}",pageInfo.getPages());
 
 
         PageResp<DesiredGoods> pageResp = new PageResp<>();
-        pageResp.setTotal(pageInfo.getTotal());
+        pageResp.setTotal(goodsList.size());
         pageResp.setList(goodsList);
 
         return pageResp;

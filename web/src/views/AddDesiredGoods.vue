@@ -58,7 +58,7 @@ import FormData from 'form-data'
 import store from "@/store";
 
 export default ({
-  name: "AddGoods",
+  name: "AddDesiredGoods",
   setup() {
     const formRef = ref();
     const formState = reactive({
@@ -131,7 +131,7 @@ export default ({
         goods.accountId = store.state.account.id;
         goods.description = formState.description;
         const fd = new FormData();
-        fd.append('goods', JSON.stringify(goods))
+        fd.append('desiredGoods', JSON.stringify(goods))
         if(formState.images !== undefined){
           for(let i=0; i<formState.images.length; i++){
             fd.append('imgs', formState.images[i], formState.images[i].name);
@@ -141,7 +141,7 @@ export default ({
           fd.append('imgs', undefined)
         }
         console.log(goods)
-        axios.post("goods/save", fd, {
+        axios.post("desiredGoods/addDesiredGoods", fd, {
           headers:{
             'Content-Type': `multipart/form-data`
           }
