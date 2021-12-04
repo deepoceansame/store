@@ -2,11 +2,15 @@
   <buy-nav></buy-nav>
   <div>buy inqury list here</div>
   <button @click="goToAddDesiredGoods">添加求购</button>
-  {{DesiredGoodsList}}
+  <table>
+    <DesiredGoodsTableRow v-for="(goods, index) in desiredGoodsList" :goods="goods" :key="index"></DesiredGoodsTableRow>
+  </table>
+  {{desiredGoodsList}}
 </template>
 
 <script>
 import BuyNav from "@/components/BuyNav";
+import DesiredGoodsTableRow from "@/components/DesiredGoodsTableRow";
 import CategoryNav from "@/components/CategoryNav";
 import Search from "@/components/Search";
 import {computed, onMounted, ref} from "vue";
@@ -18,9 +22,10 @@ export default {
   name: "BuyInqury",
   components:{
     BuyNav,
+    DesiredGoodsTableRow,
   },
   setup(){
-    const DesiredGoodsList = ref([])
+    const desiredGoodsList = ref([])
     const route = useRoute()
     const router = useRouter()
     const account = computed(() => {
@@ -28,7 +33,7 @@ export default {
     })
 
     const handleQuery = (params) => {
-      DesiredGoodsList.value = [];
+      desiredGoodsList.value = [];
       axios.get("/desiredGoods/showDesiredGoodsListByAccountId",{
         params:{
           accountId: params.accountId
@@ -37,7 +42,7 @@ export default {
           (response) =>  {
             const data = response.data
             if (data.success){
-              DesiredGoodsList.value = data.content.list;
+              desiredGoodsList.value = data.content.list;
             } else{
               message.error(data.message)
             }
@@ -62,7 +67,7 @@ export default {
     }
 
     return {
-      DesiredGoodsList,
+      desiredGoodsList,
       goToAddDesiredGoods
     }
   }

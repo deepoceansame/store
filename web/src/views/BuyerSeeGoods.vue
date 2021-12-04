@@ -4,6 +4,7 @@
   <div>sellerInfo:{{sellerAccount}}</div>
   <button @click="enroll">参与购买</button>
   <button @click="goToChatRoom">联系卖家</button>
+  {{goodsimgs}}
 </template>
 
 <script>
@@ -104,6 +105,7 @@ export default {
       sellerAccount,
       enroll,
       goToChatRoom,
+      goodsimgs,
     }
   }
 }

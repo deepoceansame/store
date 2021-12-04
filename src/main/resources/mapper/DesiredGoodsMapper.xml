@@ -70,6 +70,12 @@
     <select id="getDesiredGoodsImgs" parameterType="java.lang.Integer" resultType="java.lang.String">
         select img
         from desiredgoodsimage
-        where goodsid=#{goodsid, jdbcType=INTEGER}
+        where desiredgoodsid=#{desiredgoodsid, jdbcType=INTEGER}
+    </select>
+
+    <select id="selectById" parameterType="java.lang.Integer" resultType="com.agroup.store.domain.DesiredGoods">
+        select *
+        from desiredgoods
+        where id = #{id. jdbcType=INTEGER}
     </select>
 </mapper>

@@ -113,4 +113,11 @@ public class DesiredGoodsService {
         return pageResp;
     }
 
+    public DesiredGoods selectById(Integer id){
+        return desiredGoodsMapper.selectById(id);
+    }
+
+    public List<String> getimages(Integer desiredgoodsid){
+        return desiredGoodsMapper.getDesiredGoodsImgs(desiredgoodsid);
+    }
 }

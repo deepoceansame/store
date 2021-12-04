@@ -14,4 +14,6 @@ public interface DesiredGoodsMapper {
     int insertDesiredGoodsImg(Goodsimage goodsimage);
 
     List<String> getDesiredGoodsImgs(Integer desiredgoodsid);
+
+    DesiredGoods selectById(Integer id);
 }

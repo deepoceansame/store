@@ -547,3 +547,300 @@ org.springframework.web.bind.MissingServletRequestParameterException: Required r
 2021-12-04 20:44:39.868 INFO  com.agroup.store.service.AccountService           :106  [32m                  [0;39m 总页数2
 2021-12-04 20:44:39.869 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":{"list":[{"accountId":1,"categoryId":3,"id":2,"name":"食品","price":999.2},{"accountId":1,"categoryId":3,"id":6,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":3,"id":7,"name":"校园卡","price":999.2}],"total":6},"success":true}
 2021-12-04 20:44:39.870 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：27 ms -------------
+2021-12-04 20:48:22.977 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.2.0.Final
+2021-12-04 20:48:22.976 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 11.0.11 on DESKTOP-J46V7U1 with PID 22316 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
+2021-12-04 20:48:22.979 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2021-12-04 20:48:23.005 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-04 20:48:23.005 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-04 20:48:23.367 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :262  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-12-04 20:48:23.368 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :132  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-04 20:48:23.382 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :201  [32m                  [0;39m Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2021-12-04 20:48:23.789 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
+2021-12-04 20:48:23.795 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
+2021-12-04 20:48:23.795 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2021-12-04 20:48:23.795 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-04 20:48:23.860 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2021-12-04 20:48:23.860 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 855 ms
+2021-12-04 20:48:24.612 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2021-12-04 20:48:24.623 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
+2021-12-04 20:48:24.635 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
+2021-12-04 20:48:24.642 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.926 seconds (JVM running for 2.684)
+2021-12-04 20:48:24.644 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
+2021-12-04 20:48:24.644 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
+2021-12-04 20:48:29.201 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-04 20:48:29.201 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2021-12-04 20:48:29.202 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 1 ms
+2021-12-04 20:48:29.246 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 20:48:29.246 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/showDesiredGoodsListByAccountId GET
+2021-12-04 20:48:29.247 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.showDesiredGoodsListByAccountId
+2021-12-04 20:48:29.247 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 20:48:29.279 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [{"accountId":1,"page":0,"size":0}]
+2021-12-04 20:48:29.294 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
+2021-12-04 20:48:29.476 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
+2021-12-04 20:48:29.481 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==>  Preparing: select * from desiredgoods where account_id= ?
+2021-12-04 20:48:29.495 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==> Parameters: 1(Integer)
+2021-12-04 20:48:29.511 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, account_id, price
+2021-12-04 20:48:29.511 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 2, 食品, null, 3, null, 1, 999.2
+2021-12-04 20:48:29.512 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 6, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 20:48:29.512 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 7, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 20:48:29.513 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 22, 二手单车, 能跑就行, 2, 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg, 1, 150.0
+2021-12-04 20:48:29.513 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 23, 二手单车, 能跑就行, 2, f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg, 1, 150.0
+2021-12-04 20:48:29.513 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 24, 二手单车, 能跑就行, 2, null, 1, 150.0
+2021-12-04 20:48:29.514 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m <==      Total: 6
+2021-12-04 20:48:29.521 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":{"list":[{"accountId":1,"categoryId":3,"id":2,"name":"食品","price":999.2},{"accountId":1,"categoryId":3,"id":6,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":3,"id":7,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":2,"description":"能跑就行","id":22,"img":"72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":23,"img":"f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":24,"name":"二手单车","price":150.0}],"total":6},"success":true}
+2021-12-04 20:48:29.522 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：277 ms -------------
+2021-12-04 20:48:50.386 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 20:48:50.386 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/showDesiredGoodsListByAccountId GET
+2021-12-04 20:48:50.387 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.showDesiredGoodsListByAccountId
+2021-12-04 20:48:50.387 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 20:48:50.387 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [{"accountId":1,"page":0,"size":0}]
+2021-12-04 20:48:50.400 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==>  Preparing: select * from desiredgoods where account_id= ?
+2021-12-04 20:48:50.400 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==> Parameters: 1(Integer)
+2021-12-04 20:48:50.466 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, account_id, price
+2021-12-04 20:48:50.467 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 2, 食品, null, 3, null, 1, 999.2
+2021-12-04 20:48:50.467 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 6, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 20:48:50.468 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 7, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 20:48:50.468 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 22, 二手单车, 能跑就行, 2, 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg, 1, 150.0
+2021-12-04 20:48:50.469 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 23, 二手单车, 能跑就行, 2, f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg, 1, 150.0
+2021-12-04 20:48:50.470 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 24, 二手单车, 能跑就行, 2, null, 1, 150.0
+2021-12-04 20:48:50.470 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m <==      Total: 6
+2021-12-04 20:48:50.471 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":{"list":[{"accountId":1,"categoryId":3,"id":2,"name":"食品","price":999.2},{"accountId":1,"categoryId":3,"id":6,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":3,"id":7,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":2,"description":"能跑就行","id":22,"img":"72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":23,"img":"f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":24,"name":"二手单车","price":150.0}],"total":6},"success":true}
+2021-12-04 20:48:50.471 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：85 ms -------------
+2021-12-04 20:49:18.746 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 20:49:18.746 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/addDesiredGoods POST
+2021-12-04 20:49:18.747 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.addDesiredGoods
+2021-12-04 20:49:18.747 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 20:49:18.751 INFO  com.agroup.store.aspect.LogAspect                 :66   [32m                  [0;39m 输入不能转化为json字符串
+2021-12-04 20:49:18.752 INFO  com.agroup.store.service.AccountService           :46   [32m                  [0;39m 收到了String{"name":"键盘","categoryId":"4","price":"150","accountId":1,"description":"要镀金的"}
+2021-12-04 20:49:18.755 INFO  com.agroup.store.service.AccountService           :48   [32m                  [0;39m 转化为saveReqGoodsSaveReq{id=null, name='键盘', description='要镀金的', categoryId=4, accountId=1, price=150.0}
+2021-12-04 20:49:18.759 INFO  com.agroup.store.service.AccountService           :54   [32m                  [0;39m 11365
+2021-12-04 20:49:18.761 INFO  com.agroup.store.service.AccountService           :56   [32m                  [0;39m 列表图片名字9871f9e6-5500-11ec-8e58-c7b2b2f92f73
+2021-12-04 20:49:18.761 INFO  com.agroup.store.service.AccountService           :60   [32m                  [0;39m 要保存到的路径D:/important/code/java/store/web/src/assets/9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg
+2021-12-04 20:49:18.776 DEBUG c.a.s.mapper.DesiredGoodsMapper.insertDesiredGoods:137  [32m                  [0;39m ==>  Preparing: insert into desiredgoods ( `name`, `description`, category_id, img, account_id, price ) values ( ?, ?, ?, ?, ?, ? )
+2021-12-04 20:49:18.777 DEBUG c.a.s.mapper.DesiredGoodsMapper.insertDesiredGoods:137  [32m                  [0;39m ==> Parameters: 键盘(String), 要镀金的(String), 4(Integer), 9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg(String), 1(Integer), 150.0(Float)
+2021-12-04 20:49:18.788 DEBUG c.a.s.mapper.DesiredGoodsMapper.insertDesiredGoods:137  [32m                  [0;39m <==    Updates: 1
+2021-12-04 20:49:18.789 INFO  com.agroup.store.service.AccountService           :68   [32m                  [0;39m 插入goods后产生的ID为25
+2021-12-04 20:49:18.790 DEBUG c.a.s.m.DesiredGoodsMapper.insertDesiredGoodsImg  :137  [32m                  [0;39m ==>  Preparing: insert into desiredgoodsimage (desiredgoodsid, img) values (?, ?)
+2021-12-04 20:49:18.790 DEBUG c.a.s.m.DesiredGoodsMapper.insertDesiredGoodsImg  :137  [32m                  [0;39m ==> Parameters: 25(Integer), 9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg(String)
+2021-12-04 20:49:18.801 DEBUG c.a.s.m.DesiredGoodsMapper.insertDesiredGoodsImg  :137  [32m                  [0;39m <==    Updates: 1
+2021-12-04 20:49:18.801 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":25,"success":true}
+2021-12-04 20:49:18.801 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：55 ms -------------
+2021-12-04 20:49:21.183 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 20:49:21.183 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/showDesiredGoodsListByAccountId GET
+2021-12-04 20:49:21.183 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.showDesiredGoodsListByAccountId
+2021-12-04 20:49:21.183 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 20:49:21.184 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [{"accountId":1,"page":0,"size":0}]
+2021-12-04 20:49:21.249 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==>  Preparing: select * from desiredgoods where account_id= ?
+2021-12-04 20:49:21.249 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==> Parameters: 1(Integer)
+2021-12-04 20:49:21.335 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, account_id, price
+2021-12-04 20:49:21.336 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 2, 食品, null, 3, null, 1, 999.2
+2021-12-04 20:49:21.337 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 6, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 20:49:21.337 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 7, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 20:49:21.338 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 22, 二手单车, 能跑就行, 2, 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg, 1, 150.0
+2021-12-04 20:49:21.339 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 23, 二手单车, 能跑就行, 2, f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg, 1, 150.0
+2021-12-04 20:49:21.339 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 24, 二手单车, 能跑就行, 2, null, 1, 150.0
+2021-12-04 20:49:21.339 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 25, 键盘, 要镀金的, 4, 9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg, 1, 150.0
+2021-12-04 20:49:21.340 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m <==      Total: 7
+2021-12-04 20:49:21.340 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":{"list":[{"accountId":1,"categoryId":3,"id":2,"name":"食品","price":999.2},{"accountId":1,"categoryId":3,"id":6,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":3,"id":7,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":2,"description":"能跑就行","id":22,"img":"72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":23,"img":"f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":24,"name":"二手单车","price":150.0},{"accountId":1,"categoryId":4,"description":"要镀金的","id":25,"img":"9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg","name":"键盘","price":150.0}],"total":7},"success":true}
+2021-12-04 20:49:21.340 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：157 ms -------------
+2021-12-04 21:05:29.410 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 21:05:29.410 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/showDesiredGoodsListByAccountId GET
+2021-12-04 21:05:29.411 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.showDesiredGoodsListByAccountId
+2021-12-04 21:05:29.411 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 21:05:29.411 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [{"accountId":1,"page":0,"size":0}]
+2021-12-04 21:05:29.419 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==>  Preparing: select * from desiredgoods where account_id= ?
+2021-12-04 21:05:29.419 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==> Parameters: 1(Integer)
+2021-12-04 21:05:29.424 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, account_id, price
+2021-12-04 21:05:29.425 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 2, 食品, null, 3, null, 1, 999.2
+2021-12-04 21:05:29.425 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 6, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 21:05:29.425 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 7, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 21:05:29.426 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 22, 二手单车, 能跑就行, 2, 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg, 1, 150.0
+2021-12-04 21:05:29.426 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 23, 二手单车, 能跑就行, 2, f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg, 1, 150.0
+2021-12-04 21:05:29.426 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 24, 二手单车, 能跑就行, 2, null, 1, 150.0
+2021-12-04 21:05:29.426 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 25, 键盘, 要镀金的, 4, 9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg, 1, 150.0
+2021-12-04 21:05:29.427 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m <==      Total: 7
+2021-12-04 21:05:29.427 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":{"list":[{"accountId":1,"categoryId":3,"id":2,"name":"食品","price":999.2},{"accountId":1,"categoryId":3,"id":6,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":3,"id":7,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":2,"description":"能跑就行","id":22,"img":"72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":23,"img":"f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":24,"name":"二手单车","price":150.0},{"accountId":1,"categoryId":4,"description":"要镀金的","id":25,"img":"9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg","name":"键盘","price":150.0}],"total":7},"success":true}
+2021-12-04 21:05:29.427 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：17 ms -------------
+2021-12-04 21:50:12.192 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 21:50:12.192 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/showDesiredGoodsListByAccountId GET
+2021-12-04 21:50:12.192 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.showDesiredGoodsListByAccountId
+2021-12-04 21:50:12.192 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 21:50:12.192 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [{"accountId":1,"page":0,"size":0}]
+2021-12-04 21:50:12.199 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==>  Preparing: select * from desiredgoods where account_id= ?
+2021-12-04 21:50:12.199 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==> Parameters: 1(Integer)
+2021-12-04 21:50:12.206 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, account_id, price
+2021-12-04 21:50:12.206 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 2, 食品, null, 3, null, 1, 999.2
+2021-12-04 21:50:12.206 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 6, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 21:50:12.207 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 7, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 21:50:12.207 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 22, 二手单车, 能跑就行, 2, 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg, 1, 150.0
+2021-12-04 21:50:12.207 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 23, 二手单车, 能跑就行, 2, f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg, 1, 150.0
+2021-12-04 21:50:12.207 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 24, 二手单车, 能跑就行, 2, null, 1, 150.0
+2021-12-04 21:50:12.208 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 25, 键盘, 要镀金的, 4, 9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg, 1, 150.0
+2021-12-04 21:50:12.208 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m <==      Total: 7
+2021-12-04 21:50:12.208 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":{"list":[{"accountId":1,"categoryId":3,"id":2,"name":"食品","price":999.2},{"accountId":1,"categoryId":3,"id":6,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":3,"id":7,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":2,"description":"能跑就行","id":22,"img":"72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":23,"img":"f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":24,"name":"二手单车","price":150.0},{"accountId":1,"categoryId":4,"description":"要镀金的","id":25,"img":"9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg","name":"键盘","price":150.0}],"total":7},"success":true}
+2021-12-04 21:50:12.209 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：18 ms -------------
+2021-12-04 21:58:55.883 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 11.0.11 on DESKTOP-J46V7U1 with PID 22140 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
+2021-12-04 21:58:55.884 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.2.0.Final
+2021-12-04 21:58:55.885 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2021-12-04 21:58:55.910 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-04 21:58:55.910 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-04 21:58:56.267 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :262  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-12-04 21:58:56.268 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :132  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-04 21:58:56.283 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :201  [32m                  [0;39m Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2021-12-04 21:58:56.680 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
+2021-12-04 21:58:56.686 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
+2021-12-04 21:58:56.686 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2021-12-04 21:58:56.686 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-04 21:58:56.750 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2021-12-04 21:58:56.750 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 839 ms
+2021-12-04 21:58:57.529 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2021-12-04 21:58:57.539 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
+2021-12-04 21:58:57.552 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
+2021-12-04 21:58:57.559 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.938 seconds (JVM running for 2.712)
+2021-12-04 21:58:57.561 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
+2021-12-04 21:58:57.561 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
+2021-12-04 21:59:03.006 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-04 21:59:03.006 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2021-12-04 21:59:03.007 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 1 ms
+2021-12-04 21:59:03.032 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 21:59:03.032 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 21:59:03.033 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/getimages GET
+2021-12-04 21:59:03.033 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/getbyid/22 GET
+2021-12-04 21:59:03.033 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.getById
+2021-12-04 21:59:03.033 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.getImages
+2021-12-04 21:59:03.033 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 21:59:03.033 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 21:59:03.056 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [22]
+2021-12-04 21:59:03.056 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [22]
+2021-12-04 21:59:03.073 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
+2021-12-04 21:59:03.312 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
+2021-12-04 21:59:03.318 DEBUG c.a.store.mapper.DesiredGoodsMapper.selectById    :137  [32m                  [0;39m ==>  Preparing: select * from desiredgoods where id = ?
+2021-12-04 21:59:03.332 DEBUG c.a.store.mapper.DesiredGoodsMapper.selectById    :137  [32m                  [0;39m ==> Parameters: 22(Integer)
+2021-12-04 21:59:03.348 TRACE c.a.store.mapper.DesiredGoodsMapper.selectById    :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, account_id, price
+2021-12-04 21:59:03.349 TRACE c.a.store.mapper.DesiredGoodsMapper.selectById    :143  [32m                  [0;39m <==        Row: 22, 二手单车, 能跑就行, 2, 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg, 1, 150.0
+2021-12-04 21:59:03.350 DEBUG c.a.store.mapper.DesiredGoodsMapper.selectById    :137  [32m                  [0;39m <==      Total: 1
+2021-12-04 21:59:03.353 DEBUG c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :137  [32m                  [0;39m ==>  Preparing: select img from desiredgoodsimage where goodsid=?
+2021-12-04 21:59:03.354 DEBUG c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :137  [32m                  [0;39m ==> Parameters: 22(Integer)
+2021-12-04 21:59:03.368 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":{"description":"能跑就行","id":22,"img":"72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","name":"二手单车","price":150.0},"success":true}
+2021-12-04 21:59:03.368 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：337 ms -------------
+2021-12-04 21:59:03.420 INFO  com.agroup.store.aspect.LogAspect                 :77   [32m                  [0;39m org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'goodsid' in 'where clause'
+### The error may exist in file [D:\important\code\java\store\target\classes\mapper\DesiredGoodsMapper.xml]
+### The error may involve com.agroup.store.mapper.DesiredGoodsMapper.getDesiredGoodsImgs-Inline
+### The error occurred while setting parameters
+### SQL: select img         from desiredgoodsimage         where goodsid=?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'goodsid' in 'where clause'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'goodsid' in 'where clause'
+2021-12-04 21:59:03.420 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: null
+2021-12-04 21:59:03.420 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：389 ms -------------
+2021-12-04 22:00:37.306 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.2.0.Final
+2021-12-04 22:00:37.306 INFO  com.agroup.store.StoreApplication                 :55   [32m                  [0;39m Starting StoreApplication using Java 11.0.11 on DESKTOP-J46V7U1 with PID 23856 (D:\important\code\java\store\target\classes started by TXY in D:\important\code\java\store)
+2021-12-04 22:00:37.308 INFO  com.agroup.store.StoreApplication                 :659  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2021-12-04 22:00:37.332 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-04 22:00:37.332 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :255  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-04 22:00:37.678 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :262  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-12-04 22:00:37.679 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :132  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-04 22:00:37.693 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :201  [32m                  [0;39m Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2021-12-04 22:00:38.084 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8081 (http)
+2021-12-04 22:00:38.089 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8081"]
+2021-12-04 22:00:38.089 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2021-12-04 22:00:38.089 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-04 22:00:38.154 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2021-12-04 22:00:38.154 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :290  [32m                  [0;39m Root WebApplicationContext: initialization completed in 822 ms
+2021-12-04 22:00:38.908 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2021-12-04 22:00:38.919 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8081"]
+2021-12-04 22:00:38.931 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8081 (http) with context path ''
+2021-12-04 22:00:38.938 INFO  com.agroup.store.StoreApplication                 :61   [32m                  [0;39m Started StoreApplication in 1.891 seconds (JVM running for 2.7)
+2021-12-04 22:00:38.940 INFO  com.agroup.store.StoreApplication                 :18   [32m                  [0;39m 启动成功!!
+2021-12-04 22:00:38.940 INFO  com.agroup.store.StoreApplication                 :19   [32m                  [0;39m 地址：	http://127.0.0.1:8081
+2021-12-04 22:00:42.355 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-04 22:00:42.355 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2021-12-04 22:00:42.356 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 1 ms
+2021-12-04 22:00:42.381 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 22:00:42.381 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 22:00:42.382 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/getbyid/22 GET
+2021-12-04 22:00:42.382 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/getimages GET
+2021-12-04 22:00:42.382 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.getById
+2021-12-04 22:00:42.382 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.getImages
+2021-12-04 22:00:42.382 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 22:00:42.382 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 22:00:42.405 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [22]
+2021-12-04 22:00:42.405 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [22]
+2021-12-04 22:00:42.422 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m                  [0;39m HikariPool-1 - Starting...
+2021-12-04 22:00:42.574 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m                  [0;39m HikariPool-1 - Start completed.
+2021-12-04 22:00:42.580 DEBUG c.a.store.mapper.DesiredGoodsMapper.selectById    :137  [32m                  [0;39m ==>  Preparing: select * from desiredgoods where id = ?
+2021-12-04 22:00:42.595 DEBUG c.a.store.mapper.DesiredGoodsMapper.selectById    :137  [32m                  [0;39m ==> Parameters: 22(Integer)
+2021-12-04 22:00:42.620 TRACE c.a.store.mapper.DesiredGoodsMapper.selectById    :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, account_id, price
+2021-12-04 22:00:42.620 TRACE c.a.store.mapper.DesiredGoodsMapper.selectById    :143  [32m                  [0;39m <==        Row: 22, 二手单车, 能跑就行, 2, 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg, 1, 150.0
+2021-12-04 22:00:42.622 DEBUG c.a.store.mapper.DesiredGoodsMapper.selectById    :137  [32m                  [0;39m <==      Total: 1
+2021-12-04 22:00:42.625 DEBUG c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :137  [32m                  [0;39m ==>  Preparing: select img from desiredgoodsimage where desiredgoodsid=?
+2021-12-04 22:00:42.625 DEBUG c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :137  [32m                  [0;39m ==> Parameters: 22(Integer)
+2021-12-04 22:00:42.631 TRACE c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :143  [32m                  [0;39m <==    Columns: img
+2021-12-04 22:00:42.631 TRACE c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :143  [32m                  [0;39m <==        Row: 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg
+2021-12-04 22:00:42.632 TRACE c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :143  [32m                  [0;39m <==        Row: 72b52180-54f0-11ec-a262-670b4087d9ac.jpg
+2021-12-04 22:00:42.632 DEBUG c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :137  [32m                  [0;39m <==      Total: 2
+2021-12-04 22:00:42.637 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":["72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","72b52180-54f0-11ec-a262-670b4087d9ac.jpg"],"success":true}
+2021-12-04 22:00:42.637 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：257 ms -------------
+2021-12-04 22:00:42.639 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":{"description":"能跑就行","id":22,"img":"72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","name":"二手单车","price":150.0},"success":true}
+2021-12-04 22:00:42.640 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：260 ms -------------
+2021-12-04 22:00:56.322 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 22:00:56.322 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/showDesiredGoodsListByAccountId GET
+2021-12-04 22:00:56.322 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.showDesiredGoodsListByAccountId
+2021-12-04 22:00:56.322 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 22:00:56.323 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [{"accountId":1,"page":0,"size":0}]
+2021-12-04 22:00:56.329 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==>  Preparing: select * from desiredgoods where account_id= ?
+2021-12-04 22:00:56.329 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==> Parameters: 1(Integer)
+2021-12-04 22:00:56.334 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, account_id, price
+2021-12-04 22:00:56.335 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 2, 食品, null, 3, null, 1, 999.2
+2021-12-04 22:00:56.335 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 6, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 22:00:56.335 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 7, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 22:00:56.336 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 22, 二手单车, 能跑就行, 2, 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg, 1, 150.0
+2021-12-04 22:00:56.336 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 23, 二手单车, 能跑就行, 2, f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg, 1, 150.0
+2021-12-04 22:00:56.337 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 24, 二手单车, 能跑就行, 2, null, 1, 150.0
+2021-12-04 22:00:56.337 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 25, 键盘, 要镀金的, 4, 9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg, 1, 150.0
+2021-12-04 22:00:56.337 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m <==      Total: 7
+2021-12-04 22:00:56.339 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":{"list":[{"accountId":1,"categoryId":3,"id":2,"name":"食品","price":999.2},{"accountId":1,"categoryId":3,"id":6,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":3,"id":7,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":2,"description":"能跑就行","id":22,"img":"72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":23,"img":"f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":24,"name":"二手单车","price":150.0},{"accountId":1,"categoryId":4,"description":"要镀金的","id":25,"img":"9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg","name":"键盘","price":150.0}],"total":7},"success":true}
+2021-12-04 22:00:56.339 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：17 ms -------------
+2021-12-04 22:01:06.996 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 22:01:06.996 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/getbyid/22 GET
+2021-12-04 22:01:06.997 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.getById
+2021-12-04 22:01:06.997 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 22:01:06.997 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [22]
+2021-12-04 22:01:07.004 DEBUG c.a.store.mapper.DesiredGoodsMapper.selectById    :137  [32m                  [0;39m ==>  Preparing: select * from desiredgoods where id = ?
+2021-12-04 22:01:07.004 DEBUG c.a.store.mapper.DesiredGoodsMapper.selectById    :137  [32m                  [0;39m ==> Parameters: 22(Integer)
+2021-12-04 22:01:07.005 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 22:01:07.005 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/getimages GET
+2021-12-04 22:01:07.005 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.getImages
+2021-12-04 22:01:07.005 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 22:01:07.006 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [22]
+2021-12-04 22:01:07.013 TRACE c.a.store.mapper.DesiredGoodsMapper.selectById    :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, account_id, price
+2021-12-04 22:01:07.013 TRACE c.a.store.mapper.DesiredGoodsMapper.selectById    :143  [32m                  [0;39m <==        Row: 22, 二手单车, 能跑就行, 2, 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg, 1, 150.0
+2021-12-04 22:01:07.013 DEBUG c.a.store.mapper.DesiredGoodsMapper.selectById    :137  [32m                  [0;39m <==      Total: 1
+2021-12-04 22:01:07.014 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":{"description":"能跑就行","id":22,"img":"72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","name":"二手单车","price":150.0},"success":true}
+2021-12-04 22:01:07.014 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：18 ms -------------
+2021-12-04 22:01:07.015 DEBUG c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :137  [32m                  [0;39m ==>  Preparing: select img from desiredgoodsimage where desiredgoodsid=?
+2021-12-04 22:01:07.015 DEBUG c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :137  [32m                  [0;39m ==> Parameters: 22(Integer)
+2021-12-04 22:01:07.024 TRACE c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :143  [32m                  [0;39m <==    Columns: img
+2021-12-04 22:01:07.024 TRACE c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :143  [32m                  [0;39m <==        Row: 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg
+2021-12-04 22:01:07.024 TRACE c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :143  [32m                  [0;39m <==        Row: 72b52180-54f0-11ec-a262-670b4087d9ac.jpg
+2021-12-04 22:01:07.024 DEBUG c.a.s.m.DesiredGoodsMapper.getDesiredGoodsImgs    :137  [32m                  [0;39m <==      Total: 2
+2021-12-04 22:01:07.025 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":["72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","72b52180-54f0-11ec-a262-670b4087d9ac.jpg"],"success":true}
+2021-12-04 22:01:07.025 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：20 ms -------------
+2021-12-04 22:01:09.265 INFO  com.agroup.store.aspect.LogAspect                 :40   [32m                  [0;39m ------------- 开始 -------------
+2021-12-04 22:01:09.266 INFO  com.agroup.store.aspect.LogAspect                 :41   [32m                  [0;39m 请求地址: http://localhost:8081/desiredGoods/showDesiredGoodsListByAccountId GET
+2021-12-04 22:01:09.266 INFO  com.agroup.store.aspect.LogAspect                 :42   [32m                  [0;39m 类名方法: com.agroup.store.controller.DesiredGoodsController.showDesiredGoodsListByAccountId
+2021-12-04 22:01:09.266 INFO  com.agroup.store.aspect.LogAspect                 :43   [32m                  [0;39m 远程地址: 0:0:0:0:0:0:0:1
+2021-12-04 22:01:09.266 INFO  com.agroup.store.aspect.LogAspect                 :64   [32m                  [0;39m 请求参数: [{"accountId":1,"page":0,"size":0}]
+2021-12-04 22:01:09.271 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==>  Preparing: select * from desiredgoods where account_id= ?
+2021-12-04 22:01:09.272 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m ==> Parameters: 1(Integer)
+2021-12-04 22:01:09.277 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==    Columns: id, name, description, category_id, img, account_id, price
+2021-12-04 22:01:09.277 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 2, 食品, null, 3, null, 1, 999.2
+2021-12-04 22:01:09.277 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 6, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 22:01:09.277 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 7, 校园卡, null, 3, null, 1, 999.2
+2021-12-04 22:01:09.278 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 22, 二手单车, 能跑就行, 2, 72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg, 1, 150.0
+2021-12-04 22:01:09.278 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 23, 二手单车, 能跑就行, 2, f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg, 1, 150.0
+2021-12-04 22:01:09.278 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 24, 二手单车, 能跑就行, 2, null, 1, 150.0
+2021-12-04 22:01:09.279 TRACE c.a.s.m.D.selectDesiredGoodsByAccountId           :143  [32m                  [0;39m <==        Row: 25, 键盘, 要镀金的, 4, 9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg, 1, 150.0
+2021-12-04 22:01:09.280 DEBUG c.a.s.m.D.selectDesiredGoodsByAccountId           :137  [32m                  [0;39m <==      Total: 7
+2021-12-04 22:01:09.280 INFO  com.agroup.store.aspect.LogAspect                 :86   [32m                  [0;39m 返回结果: {"content":{"list":[{"accountId":1,"categoryId":3,"id":2,"name":"食品","price":999.2},{"accountId":1,"categoryId":3,"id":6,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":3,"id":7,"name":"校园卡","price":999.2},{"accountId":1,"categoryId":2,"description":"能跑就行","id":22,"img":"72a9fdef-54f0-11ec-a262-333eed46f2d7.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":23,"img":"f84afa20-54f0-11ec-8f94-33f0889e14c8.jpg","name":"二手单车","price":150.0},{"accountId":1,"categoryId":2,"description":"能跑就行","id":24,"name":"二手单车","price":150.0},{"accountId":1,"categoryId":4,"description":"要镀金的","id":25,"img":"9871f9e6-5500-11ec-8e58-c7b2b2f92f73.jpg","name":"键盘","price":150.0}],"total":7},"success":true}
+2021-12-04 22:01:09.280 INFO  com.agroup.store.aspect.LogAspect                 :91   [32m                  [0;39m ------------- 结束 耗时：15 ms -------------

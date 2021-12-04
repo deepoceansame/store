@@ -2,6 +2,7 @@ package com.agroup.store.controller;
 
 import com.agroup.store.domain.Account;
 import com.agroup.store.domain.DesiredGoods;
+import com.agroup.store.domain.Goods;
 import com.agroup.store.req.*;
 import com.agroup.store.resp.AccountLoginResp;
 import com.agroup.store.resp.CommonResp;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @RestController
@@ -43,6 +45,22 @@ public class DesiredGoodsController {
     public CommonResp showDesiredGoodsListByAccountId(@Valid DesiredGoodsListReq req){
         CommonResp<PageResp<DesiredGoods>> resp = new CommonResp<>();
         resp.setContent(desiredGoodsService.showDesiredGoodsListByAccountId(req));
+        return resp;
+    }
+
+    @GetMapping("desiredGoods/getbyid/{id}")
+    public CommonResp getById(@PathVariable Integer id){
+        DesiredGoods goods = desiredGoodsService.selectById(id);
+        CommonResp resp = new CommonResp();
+        resp.setContent(goods);
+        return resp;
+    }
+
+    @GetMapping("desiredGoods/getimages")
+    public CommonResp getImages(@RequestParam("desiredgoodsid") Integer desiredgoodsid){
+        List<String> lis = desiredGoodsService.getimages(desiredgoodsid);
+        CommonResp resp = new CommonResp();
+        resp.setContent(lis);
         return resp;
     }
 

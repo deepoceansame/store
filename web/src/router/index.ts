@@ -7,9 +7,12 @@ import  BuyCollectedGoods from '../views/BuyCollectedGoods.vue'
 import BuyInqury from '../views/BuyInqury.vue'
 import AddGoods from '../views/AddGoods.vue'
 import BuyerSeeGoods from '../views/BuyerSeeGoods.vue'
+import BuyerSeeDesiredGoods from '../views/BuyerSeeDesiredGoods.vue'
 import Signup from '../views/Signup.vue'
 import Chatroom from '../views/Chatroom.vue'
 import AddDesiredGoods from '../views/AddDesiredGoods.vue'
+import Chatroomd from '../views/Chatroomd.vue'
+
 import store from "@/store";
 import axios from "axios";
 import {message} from "ant-design-vue";
@@ -109,6 +112,11 @@ const routes: Array<RouteRecordRaw> = [
     component: BuyerSeeGoods
   },
   {
+    path:'/buyerseedesiredgoods/desiredgoodsid=:desiredgoodsid',
+    name:'buyerseedesiredgoods',
+    component: BuyerSeeDesiredGoods
+  },
+  {
     path:'/signup',
     name:'signup',
     component: Signup,
@@ -124,6 +132,11 @@ const routes: Array<RouteRecordRaw> = [
     path:'/chatroom/goodsid=:goodsid&senderid=:senderid&receiverid=:receiverid',
     name:'chatroom',
     component: Chatroom,
+  },
+  {
+    path:'/chatroomd/desiredgoodsid=:desiredgoodsid&senderid=:senderid&receiverid=:receiverid',
+    name:'chatroomd',
+    component: Chatroomd,
   }
 ]
 
