@@ -56,8 +56,8 @@
         <result column="category_id" property="categoryId"></result>
         <result column="account_id" property="accountId"></result>
         <result column="price" property="price"></result>
-
     </resultMap>
+
     <select id="selectDesiredGoodsByAccountId" parameterType="java.lang.Integer" resultMap="desiredGoodsMap">
         select * from desiredgoods where account_id= #{accountId}
     </select>
@@ -73,9 +73,23 @@
         where desiredgoodsid=#{desiredgoodsid, jdbcType=INTEGER}
     </select>
 
-    <select id="selectById" parameterType="java.lang.Integer" resultType="com.agroup.store.domain.DesiredGoods">
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="desiredGoodsMap">
         select *
         from desiredgoods
-        where id = #{id. jdbcType=INTEGER}
+        where id = #{id, jdbcType=INTEGER}
+    </select>
+
+    <select id="selectList" parameterType="com.agroup.store.req.DesiredGoodsMainListReq" resultMap="desiredGoodsMap">
+        select *
+        from desiredgoods
+        <trim prefix="where" prefixOverrides="and |or">
+            <if test="categoryId != 1">
+                and category_id = #{categoryId, jdbcType=INTEGER}
+            </if>
+            <if test="keyword != null">
+                and (name like concat('%', #{keyword, jdbcType=VARCHAR}, '%') or description like concat('%', #{keyword, jdbcType=VARCHAR}, '%'))
+            </if>
+                and account_id != #{accountId, jdbcType=INTEGER}
+        </trim>
     </select>
 </mapper>

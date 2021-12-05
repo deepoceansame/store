@@ -120,5 +120,5 @@ insert into goods(name, description, account_Id, category_id, price) value ('攻
 insert into goods(name, description, account_Id, category_id, price) value ('女妖', '空中对地可隐形单位', 3, 4, 500);
 insert into goods(name, description, account_Id, category_id, price) value ('雷兽', '高血量高护甲', 2, 5, 1000);
 
-select g.* from supplyrecord join desiredgoods g on g.id = supplyrecord.desiredgoodsid
-
+select * from desiredgoods where (description like concat('%', '能', '%'));
+select concat('%','单车','%')

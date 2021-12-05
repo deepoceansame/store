@@ -40,6 +40,13 @@ public class DesiredGoodsController {
         return resp;
     }
 
+    @GetMapping("desiredgoods/getList")
+    public CommonResp getList(DesiredGoodsMainListReq req){
+        CommonResp resp = new CommonResp();
+        resp.setContent(desiredGoodsService.getList(req));
+        return resp;
+    }
+
     //展示本用户的求购列表
     @GetMapping("desiredGoods/showDesiredGoodsListByAccountId")
     public CommonResp showDesiredGoodsListByAccountId(@Valid DesiredGoodsListReq req){

@@ -12,6 +12,9 @@ import Signup from '../views/Signup.vue'
 import Chatroom from '../views/Chatroom.vue'
 import AddDesiredGoods from '../views/AddDesiredGoods.vue'
 import Chatroomd from '../views/Chatroomd.vue'
+import SellInquiry from '../views/SellInquiry.vue'
+import SellParticiSupply from '../views/SellParticiSupply.vue'
+import SellMyGoods from '../views/SellMyGoods.vue'
 
 import store from "@/store";
 import axios from "axios";
@@ -137,7 +140,37 @@ const routes: Array<RouteRecordRaw> = [
     path:'/chatroomd/desiredgoodsid=:desiredgoodsid&senderid=:senderid&receiverid=:receiverid',
     name:'chatroomd',
     component: Chatroomd,
-  }
+  },
+  {
+    path:'/inquiry/page=:page&category=:category&keyword=:keyword',
+    name:'inquiry',
+    component:SellInquiry,
+  },
+  {
+    path:'/inquiry/page=:page&category=:category&keyword=',
+    name:'inquiryi',
+    component:SellInquiry,
+  },
+  {
+    path:'/particiSupply/page=:page&category=:category&keyword=:keyword',
+    name:'particisupply',
+    component: SellParticiSupply,
+  },
+  {
+    path:'/particiSupply/page=:page&category=:category&keyword=',
+    name:'particisupplyi',
+    component: SellParticiSupply,
+  },
+  {
+    path:'/mygoods/page=:page&category=:category&keyword=:keyword',
+    name:'mygoods',
+    component: SellMyGoods,
+  },
+  {
+    path:'/mygoods/page=:page&category=:category&keyword=',
+    name:'mygoodsi',
+    component: SellMyGoods,
+  },
 ]
 
 const router = createRouter({

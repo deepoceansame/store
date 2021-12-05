@@ -1,8 +1,27 @@
-2021-12-04 18:22:01.458 ERROR c.a.store.controller.ControllerExceptionHandler   :25   [32m                  [0;39m 系统异常：
-org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'desiredGoods' for method parameter type String is not present
-	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValueInternal(RequestParamMethodArgumentResolver.java:218)
-	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValue(RequestParamMethodArgumentResolver.java:193)
-	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:114)
+2021-12-05 11:54:29.077 ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter  :40   [32m                  [0;39m 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'messagedMapper' could not be injected because it is a JDK dynamic proxy
+
+The bean is of type 'com.sun.proxy.$Proxy91' and implements:
+	com.agroup.store.mapper.MessagedMapper
+
+Expected a bean of type 'com.agroup.store.mapper.MessageMapper' which implements:
+
+
+Action:
+
+Consider injecting the bean as one of its interfaces or forcing the use of CGLib-based proxies by setting proxyTargetClass=true on @EnableAsync and/or @EnableCaching.
+
+2021-12-05 15:58:41.025 ERROR c.a.store.controller.ControllerExceptionHandler   :25   [32m                  [0;39m 系统异常：
+org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.agroup.store.resp.CommonResp com.agroup.store.controller.DesiredGoodsController.getList(com.agroup.store.req.DesiredGoodsMainListReq)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:163)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:133)
 	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
 	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179)
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146)
@@ -13,8 +32,8 @@ org.springframework.web.bind.MissingServletRequestParameterException: Required r
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)

@@ -120,4 +120,26 @@ public class DesiredGoodsService {
     public List<String> getimages(Integer desiredgoodsid){
         return desiredGoodsMapper.getDesiredGoodsImgs(desiredgoodsid);
     }
+
+    public PageResp getList(DesiredGoodsMainListReq req){
+        int page=1;
+        if(req.getPage()!=0){
+            page=req.getPage();
+        }
+        if (req.getKeyword()!=null && req.getKeyword().trim().isEmpty()){
+            req.setKeyword(null);
+        }
+        PageHelper.startPage(page, 10);
+        LOG.info("传过来的page{}",req.getPage());
+        List<DesiredGoods> list =  desiredGoodsMapper.selectList(req);
+        PageInfo<DesiredGoods> pageInfo = new PageInfo<>(list);
+        LOG.info("总行数{}",pageInfo.getTotal());
+        LOG.info("总页数{}",pageInfo.getPages());
+
+        PageResp<DesiredGoods> pageResp = new PageResp<>();
+        pageResp.setTotal(pageInfo.getTotal());
+        pageResp.setList(list);
+
+        return pageResp;
+    }
 }

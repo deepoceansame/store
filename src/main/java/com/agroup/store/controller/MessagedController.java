@@ -1,7 +1,9 @@
 package com.agroup.store.controller;
 
 import com.agroup.store.domain.Message;
+import com.agroup.store.domain.Messaged;
 import com.agroup.store.mapper.MessageMapper;
+import com.agroup.store.mapper.MessagedMapper;
 import com.agroup.store.req.GetMessageReq;
 import com.agroup.store.req.GetMessagedReq;
 import com.agroup.store.resp.CommonResp;
@@ -20,12 +22,12 @@ import java.util.List;
 @RestController
 public class MessagedController {
     @Resource
-    private MessageMapper messagedMapper;
+    private MessagedMapper messagedMapper;
     @Resource
     private MessagedService messagedService;
     private static final Logger LOG = LoggerFactory.getLogger(GoodsService.class);
     @GetMapping("messaged/test")
-    public void tess(Message message){
+    public void tess(Messaged message){
         LOG.info("senderid{}",message.getSenderid());
         LOG.info("receiverid{}",message.getReceiverid());
         message.setContent("这是什么");
@@ -35,12 +37,12 @@ public class MessagedController {
         message.setSendtime(ts);
         messagedMapper.addMessage(message);
 
-        List<Message> list = messagedMapper.getMessageListByThreeId(message.getSenderid(), message.getReceiverid(), message.getGoodsid());
+        List<Messaged> list = messagedMapper.getMessageListByThreeId(message.getSenderid(), message.getReceiverid(), message.getDesiredgoodsid());
         LOG.info("{},{}",list.get(0),list.get(0));
     }
 
     @PostMapping("messaged/addtextmessage")
-    public void addTextMessage(@RequestBody Message message){
+    public void addTextMessage(@RequestBody Messaged message){
         long now = System.currentTimeMillis();
         Timestamp ts = new Timestamp(now);
         message.setSendtime(ts);
@@ -58,8 +60,8 @@ public class MessagedController {
 
     @GetMapping("messaged/getmessage")
     public CommonResp getMessageByThreeId(GetMessagedReq req){
-        List<Message> list = messagedMapper.getMessageListByThreeId(req.getSenderid(), req.getReceiverid(), req.getDesiredgoodsid());
-        for(Message mess:list){
+        List<Messaged> list = messagedMapper.getMessageListByThreeId(req.getSenderid(), req.getReceiverid(), req.getDesiredgoodsid());
+        for(Messaged mess:list){
             LOG.info("{}",mess.toString());
         }
         CommonResp commonResp = new CommonResp();

@@ -3,11 +3,9 @@
   <CategoryNav></CategoryNav>
   <br/>
   <search></search>
-  <buy-nav></buy-nav>
+  <sell-nav></sell-nav>
   <div>buy-goods list here</div>
-  <table>
-    <GoodsTableRow v-for="(goods, index) in goodsList" :goods="goods" :key="index"></GoodsTableRow>
-  </table>
+  {{desiredgoodsList}}
 
   <pagina :total="total"></pagina>
 
@@ -16,7 +14,7 @@
 
 <script>
 import GoodsTableRow from "@/components/GoodsTableRow";
-import BuyNav from "@/components/BuyNav";
+import SellNav from "@/components/SellNav";
 import CategoryNav from "@/components/CategoryNav";
 import Search from "@/components/Search";
 import Pagina from "@/components/Pagina";
@@ -28,12 +26,12 @@ import {message} from 'ant-design-vue';
 import store from "@/store";
 
 export default {
-  name: "BuyGoods",
-  components: {BuyNav, CategoryNav, Search, GoodsTableRow, Pagina, BuySellExchange},
+  name: "SellInquiry",
+  components: {SellNav, CategoryNav, Search, Pagina, BuySellExchange},
   setup(){
     const route = useRoute()
     //const router = useRouter()
-    const goodsList = ref([]);
+    const desiredgoodsList = ref([]);
     const total = ref();
     const account = computed(() => {
       return store.state.account
@@ -47,16 +45,16 @@ export default {
             handleQuery({page: newv.page, categoryId: newv.category, accountId: account.value.id})
           }
           else{
-            handleQuery({page: newv.page, name: newv.keyword, categoryId: newv.category, accountId: account.value.id})
+            handleQuery({page: newv.page, keyword: newv.keyword, categoryId: newv.category, accountId: account.value.id})
           }
         }
     )
     const handleQuery = (params) => {
-      goodsList.value = [];
-      axios.get("/goods/getothersgoods",{
+      desiredgoodsList.value = [];
+      axios.get("/desiredgoods/getList",{
         params:{
           page: params.page,
-          name: params.name,
+          keyword: params.keyword,
           categoryId: params.categoryId,
           accountId: params.accountId
         }
@@ -64,7 +62,7 @@ export default {
           (response) =>  {
             const data = response.data
             if (data.success){
-              goodsList.value = data.content.list;
+              desiredgoodsList.value = data.content.list;
               total.value = data.content.total;
             } else{
               message.error(data.message)
@@ -80,7 +78,7 @@ export default {
             handleQuery({page: route.params.page, categoryId: route.params.category, accountId: account.value.id});
           }
           else{
-            handleQuery({page: route.params.page, name:route.params.keyword, categoryId: route.params.catagory, accountId: account.value.id})
+            handleQuery({page: route.params.page, keyword:route.params.keyword, categoryId: route.params.catagory, accountId: account.value.id})
           }
         }
     )
@@ -90,7 +88,7 @@ export default {
       console.log(route.name !== "Home" && route.name !== "signup")
     }
     return {
-      goodsList,
+      desiredgoodsList,
       total,
       click
     };
