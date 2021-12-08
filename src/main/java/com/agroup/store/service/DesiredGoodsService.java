@@ -129,6 +129,9 @@ public class DesiredGoodsService {
         if (req.getKeyword()!=null && req.getKeyword().trim().isEmpty()){
             req.setKeyword(null);
         }
+        if (req.getKeyword()!=null){
+            req.setKeyword(req.getKeyword().trim());
+        }
         PageHelper.startPage(page, 10);
         LOG.info("传过来的page{}",req.getPage());
         List<DesiredGoods> list =  desiredGoodsMapper.selectList(req);

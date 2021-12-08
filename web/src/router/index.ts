@@ -15,6 +15,7 @@ import Chatroomd from '../views/Chatroomd.vue'
 import SellInquiry from '../views/SellInquiry.vue'
 import SellParticiSupply from '../views/SellParticiSupply.vue'
 import SellMyGoods from '../views/SellMyGoods.vue'
+import SellerSeeDesiredGoods from '../views/SellerSeeDesiredGoods.vue'
 
 import store from "@/store";
 import axios from "axios";
@@ -171,6 +172,11 @@ const routes: Array<RouteRecordRaw> = [
     name:'mygoodsi',
     component: SellMyGoods,
   },
+  {
+    path:'/sellerseedesiredgoods/desiredgoodsid=:desiredgoodsid',
+    name:'sellerseedesiredgoods',
+    component: SellerSeeDesiredGoods,
+  }
 ]
 
 const router = createRouter({

@@ -8,6 +8,7 @@ import com.agroup.store.domain.DesiredGoods;
 import com.agroup.store.domain.Goods;
 import com.agroup.store.req.DesiredGoodsReq;
 import com.agroup.store.req.GoodsReq;
+import com.agroup.store.req.QuitBuyReq;
 import com.agroup.store.resp.GoodsPurchaseRecordResp;
 import org.apache.ibatis.annotations.Param;
 
@@ -45,4 +46,6 @@ public interface AccountMapper {
     List<DesiredGoods> getSupplyingGoodsByAccountId(Integer accountid);
 
     List<Account> getSupplyingAccountByDesiredGoodsId(Integer desiredgoodsid);
+
+    int deletePurchaseRecord(QuitBuyReq req);
 }

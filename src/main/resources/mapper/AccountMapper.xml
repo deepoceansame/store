@@ -302,5 +302,8 @@
            where desiredgoodsid = #{desiredgoodsid}
          ) as s join account a on s.accountid = a.id
   </select>
-
+  
+  <delete id="deletePurchaseRecord" parameterType="com.agroup.store.req.QuitBuyReq">
+    delete from purchaserecord where buyerId = {#buyerId} and goodsId = {#goodsId}
+  </delete>
 </mapper>

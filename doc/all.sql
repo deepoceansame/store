@@ -100,7 +100,7 @@ create table supplyrecord(
     desiredgoodsid int unsigned,
     primary key (accountid,desiredgoodsid),
     foreign key (accountid) references account(id) on delete cascade,
-    foreign key (desiredgoodsid) references goods(id) on delete cascade
+    foreign key (desiredgoodsid) references desiredgoods(id) on delete cascade
 );
 
 

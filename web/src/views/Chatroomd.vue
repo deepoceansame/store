@@ -1,4 +1,5 @@
 <template>
+  <message-list-item v-for="(mess, index) in messageList" :mess="mess" :key="index"/>
   <button @click="getMessage">getMessage</button>
   <br/>
   <input v-model="tt"/>{{tt}}<button @click="submitText">提交</button>
@@ -13,12 +14,12 @@
 import {reactive, ref} from "vue";
 import {useRoute} from 'vue-router'
 import axios from "axios";
-//import MessageListItemd from "@/components/MessageListItemd";
+import MessageListItem from "@/components/MessageListItem";
 import FormData from "form-data";
 import {message} from "ant-design-vue";
 export default {
   name: "Chatroomd",
-  //components:{MessageListItemd},
+  components:{MessageListItem},
   setup(){
     var messageList = ref([]);
     const route = useRoute();

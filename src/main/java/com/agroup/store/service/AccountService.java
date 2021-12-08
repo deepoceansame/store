@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -131,22 +132,39 @@ public class AccountService {
         if(req.getPage()!=0){
             page=req.getPage();
         }
-        PageHelper.startPage(page, 3);
+        //PageHelper.startPage(page, 3);
         LOG.info("传过来的page{}",req.getPage());
         List<GoodsPurchaseRecordResp> goodsList=accountMapper.selectGoodsByAccountId(accountId);
-        PageInfo<GoodsPurchaseRecordResp> pageInfo = new PageInfo<>(goodsList);
-        LOG.info("总行数{}",pageInfo.getTotal());
-        LOG.info("总页数{}",pageInfo.getPages());
+//        PageInfo<GoodsPurchaseRecordResp> pageInfo = new PageInfo<>(goodsList);
+//        LOG.info("总行数{}",pageInfo.getTotal());
+//        LOG.info("总页数{}",pageInfo.getPages());
 
         List<GoodsPurchaseRecordResp> lisr = CopyUtil.copyList(goodsList, GoodsPurchaseRecordResp.class);
 
         PageResp<GoodsPurchaseRecordResp> pageResp = new PageResp<>();
-        pageResp.setTotal(pageInfo.getTotal());
+        pageResp.setTotal(100);
         pageResp.setList(lisr);
 
         return pageResp;
     }
 
+    public CommonResp particiSupply(ParticiSupplyReq req){
+        boolean success=accountMapper.insertSupplyRecord(req.getAccountId(),req.getDesiredgoodsId())==1;
+        CommonResp resp=new CommonResp();
+        resp.setSuccess(success);
+        if(success){
+            resp.setMessage("购买成功！");
+        }else {
+            resp.setMessage("购买失败！");
+        }
+        return resp;
+    }
 
+    public CommonResp getAccountParticingSupply(Integer accountId){
+        List<DesiredGoods> list = accountMapper.getSupplyingGoodsByAccountId(accountId);
+        CommonResp resp = new CommonResp();
+        resp.setContent(list);
+        return resp;
+    }
 
 }

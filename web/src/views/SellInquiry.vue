@@ -4,7 +4,10 @@
   <br/>
   <search></search>
   <sell-nav></sell-nav>
-  <div>buy-goods list here</div>
+  <div>sell-desiredgoods list here</div>
+  <table>
+    <InquiryTableRow v-for="(desiredgoods, index) in desiredgoodsList" :desiredgoods="desiredgoods" :key="index"></InquiryTableRow>
+  </table>
   {{desiredgoodsList}}
 
   <pagina :total="total"></pagina>
@@ -19,6 +22,7 @@ import CategoryNav from "@/components/CategoryNav";
 import Search from "@/components/Search";
 import Pagina from "@/components/Pagina";
 import BuySellExchange from "@/components/BuySellExchange";
+import InquiryTableRow from "@/components/InquiryTableRow";
 import {computed, onMounted, ref, watch} from 'vue';
 import {useRoute, useRouter} from 'vue-router'
 import axios from "axios";
@@ -27,7 +31,7 @@ import store from "@/store";
 
 export default {
   name: "SellInquiry",
-  components: {SellNav, CategoryNav, Search, Pagina, BuySellExchange},
+  components: {SellNav, CategoryNav, Search, Pagina, BuySellExchange, InquiryTableRow},
   setup(){
     const route = useRoute()
     //const router = useRouter()

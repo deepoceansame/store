@@ -104,6 +104,18 @@ public class AccountController {
         return resp;
     }
 
+    @PostMapping("account/particisupply")
+    public CommonResp particisupply(@RequestBody ParticiSupplyReq req){
+        return accountService.particiSupply(req);
+    }
 
+    @GetMapping("account/getaccountsupplying")
+    public CommonResp getAccountSupplying(Integer accountId){
+        return accountService.getAccountParticingSupply(accountId);
+    }
 
+//    @PostMapping("account/quitbuy")
+//    public CommonResp quitBuy(QuitBuyReq req){
+//        accountService
+//    }
 }
