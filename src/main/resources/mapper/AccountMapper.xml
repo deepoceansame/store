@@ -304,7 +304,7 @@
   </select>
   
   <delete id="deletePurchaseRecord" parameterType="com.agroup.store.req.QuitBuyReq">
-    delete from purchaserecord where buyerId = {#buyerId} and goodsId = {#goodsId}
+    delete from purchaserecord where buyerId = #{buyerId} and goodsId = #{goodsId}
   </delete>
 
   <select id="selectPurchaseRecordByPid" resultType="com.agroup.store.domain.PurchaseRecord">
