@@ -1,13 +1,12 @@
 package com.agroup.store.mapper;
 
-import com.agroup.store.domain.Account;
-import com.agroup.store.domain.AccountExample;
+import com.agroup.store.domain.*;
+
 import java.util.List;
 
-import com.agroup.store.domain.DesiredGoods;
-import com.agroup.store.domain.Goods;
 import com.agroup.store.req.DesiredGoodsReq;
 import com.agroup.store.req.GoodsReq;
+import com.agroup.store.req.PurchaseRecordReq;
 import com.agroup.store.req.QuitBuyReq;
 import com.agroup.store.resp.GoodsPurchaseRecordResp;
 import org.apache.ibatis.annotations.Param;
@@ -48,4 +47,6 @@ public interface AccountMapper {
     List<Account> getSupplyingAccountByDesiredGoodsId(Integer desiredgoodsid);
 
     int deletePurchaseRecord(QuitBuyReq req);
+
+    List<PurchaseRecord> selectPurchaseRecordByPid(@Param("buyerId") Integer buyerId, @Param("goodsId") Integer goodsId);
 }

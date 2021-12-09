@@ -1,9 +1,11 @@
-package com.agroup.store.req;
+package com.agroup.store.domain;
 
-public class QuitBuyReq {
+public class PurchaseRecord {
     private Integer buyerId;
 
     private Integer goodsId;
+
+    private Boolean effective;
 
     public Integer getBuyerId() {
         return buyerId;
@@ -21,11 +23,20 @@ public class QuitBuyReq {
         this.goodsId = goodsId;
     }
 
+    public Boolean getEffective() {
+        return effective;
+    }
+
+    public void setEffective(Boolean effective) {
+        this.effective = effective;
+    }
+
     @Override
     public String toString() {
-        return "QuitBuyReq{" +
+        return "PurchaseRecord{" +
                 "buyerId=" + buyerId +
-                ", GoodsId=" + goodsId +
+                ", goodsId=" + goodsId +
+                ", effective=" + effective +
                 '}';
     }
 }

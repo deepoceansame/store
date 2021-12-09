@@ -1,9 +1,6 @@
 package com.agroup.store.service;
 
-import com.agroup.store.domain.Account;
-import com.agroup.store.domain.AccountExample;
-import com.agroup.store.domain.DesiredGoods;
-import com.agroup.store.domain.Goods;
+import com.agroup.store.domain.*;
 import com.agroup.store.exception.BusinessException;
 import com.agroup.store.exception.BusinessExceptionCode;
 import com.agroup.store.mapper.AccountMapper;
@@ -167,4 +164,30 @@ public class AccountService {
         return resp;
     }
 
+    public CommonResp quitBuy(QuitBuyReq req){
+        boolean success = accountMapper.deletePurchaseRecord(req) == 1;
+        CommonResp resp = new CommonResp();
+        resp.setSuccess(success);
+        if(success){
+            resp.setMessage("退出成功！");
+        }else {
+            resp.setMessage("退出失败！");
+        }
+        return resp;
+    }
+
+    public CommonResp hasEnrolledBuy(Integer buyerId, Integer goodsId){
+        CommonResp resp = new CommonResp();
+        List<PurchaseRecord> list = accountMapper.selectPurchaseRecordByPid(buyerId, goodsId);
+        boolean exist = list.size() > 0;
+        if (exist){
+            resp.setMessage("参加过了");
+            resp.setContent(true);
+        }
+        else{
+            resp.setMessage("没参加过");
+            resp.setContent(false);
+        }
+        return resp;
+    }
 }

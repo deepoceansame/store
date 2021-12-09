@@ -114,8 +114,13 @@ public class AccountController {
         return accountService.getAccountParticingSupply(accountId);
     }
 
-//    @PostMapping("account/quitbuy")
-//    public CommonResp quitBuy(QuitBuyReq req){
-//        accountService
-//    }
+    @PostMapping("account/quitbuy")
+    public CommonResp quitBuy(@RequestBody QuitBuyReq req){
+        return accountService.quitBuy(req);
+    }
+
+    @GetMapping("account/hasenrolledbuy")
+    public CommonResp  isExists(@RequestParam Integer buyerId, @RequestParam Integer goodsId){
+        return accountService.hasEnrolledBuy(buyerId, goodsId);
+    }
 }

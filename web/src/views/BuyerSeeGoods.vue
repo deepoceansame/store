@@ -2,8 +2,9 @@
   <div>goodsInfo:{{goods}}</div>
   <br/>
   <div>sellerInfo:{{sellerAccount}}</div>
-  <button @click="enroll">参与购买</button>
+  <button @click="enroll" v-if="!hasenrolled">参与购买</button>
   <button @click="goToChatRoom">联系卖家</button>
+  <button @click="quitBuy" v-if="hasenrolled">退出购买</button>
   {{goodsimgs}}
 </template>
 
@@ -21,6 +22,7 @@ export default {
     const router = useRouter()
     const goods = ref();
     const goodsimgs = ref([]);
+    const hasenrolled = ref(false);
     const sellerAccount = reactive({
       id: undefined,
       name: '',
@@ -52,7 +54,7 @@ export default {
               const a=0
             }
           }
-      )
+      );
       axios.get("/goods/getimages", {
         params:{
           goodsid: route.params.goodsid
@@ -60,6 +62,16 @@ export default {
       }).then(
           (response) => {
             goodsimgs.value = response.data.content
+          }
+      );
+      axios.get("/account/hasenrolledbuy", {
+        params:{
+          buyerId: account.value.id,
+          goodsId: route.params.goodsid
+        }
+      }).then(
+          (response) => {
+            hasenrolled.value = response.data.content
           }
       )
     };
@@ -95,9 +107,22 @@ export default {
             }
             else{
               message.info('成功参与')
+              hasenrolled.value = true
             }
           }
       )
+    }
+
+    const quitBuy = () => {
+      axios.post('account/quitbuy',{
+        buyerId: account.value.id,
+        goodsId: goods.value.id
+      }).then(
+          (response) => {
+            message.info(response.data.message)
+          }
+      )
+      router.push('/collectedgoods/page=:page&category=:category&keyword=')
     }
 
     return {
@@ -106,6 +131,8 @@ export default {
       enroll,
       goToChatRoom,
       goodsimgs,
+      hasenrolled,
+      quitBuy
     }
   }
 }

@@ -122,3 +122,9 @@ insert into goods(name, description, account_Id, category_id, price) value ('雷
 
 select * from desiredgoods where (description like concat('%', '能', '%'));
 select concat('%','单车','%')
+
+
+select *
+from purchaseRecord
+where buyerId=1
+
