@@ -150,6 +150,18 @@ public class GoodsService {
     }
 
 
+    public List<Goods> getMyGoods(Integer accountId){
+        GoodsExample goodsExample = new GoodsExample();
+        GoodsExample.Criteria criteria = goodsExample.createCriteria();
+        criteria.andAccountIdEqualTo(accountId);
+        List<Goods> goodsList = goodsMapper.selectByExample(goodsExample);
+        return goodsList;
+    }
+
+
+    public void shutGoods(Integer goodsid){
+        goodsMapper.deleteByPrimaryKey(goodsid);
+    }
 }
 
 

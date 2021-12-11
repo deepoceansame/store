@@ -120,9 +120,9 @@ export default {
       }).then(
           (response) => {
             message.info(response.data.message)
+            hasenrolled.value = false
           }
       )
-      router.push('/collectedgoods/page=:page&category=:category&keyword=')
     }
 
     return {

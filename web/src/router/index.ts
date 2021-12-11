@@ -16,6 +16,7 @@ import SellInquiry from '../views/SellInquiry.vue'
 import SellParticiSupply from '../views/SellParticiSupply.vue'
 import SellMyGoods from '../views/SellMyGoods.vue'
 import SellerSeeDesiredGoods from '../views/SellerSeeDesiredGoods.vue'
+import SellerSeeGoods from '../views/SellerSeeGoods.vue'
 
 import store from "@/store";
 import axios from "axios";
@@ -176,6 +177,11 @@ const routes: Array<RouteRecordRaw> = [
     path:'/sellerseedesiredgoods/desiredgoodsid=:desiredgoodsid',
     name:'sellerseedesiredgoods',
     component: SellerSeeDesiredGoods,
+  },
+  {
+    path:'/sellerseegoods/goodsid=:goodsid',
+    name:'sellerseegoods',
+    component: SellerSeeGoods,
   }
 ]
 

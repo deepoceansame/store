@@ -61,4 +61,19 @@ public class GoodsController {
         resp.setContent(lis);
         return resp;
     }
+
+    @GetMapping("goods/getmygoods")
+    public CommonResp getMyGoods(@RequestParam("accountId") Integer accountId){
+        List<Goods> lis = goodsService.getMyGoods(accountId);
+        CommonResp resp = new CommonResp();
+        resp.setContent(lis);
+        return resp;
+    }
+
+    @PostMapping("goods/deletegoodsbypid")
+    public CommonResp shutGoods(Integer goodsId){
+        goodsService.shutGoods(goodsId);
+        CommonResp resp = new CommonResp();
+        return resp;
+    }
 }
