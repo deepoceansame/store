@@ -2,6 +2,8 @@
   {{desiredgoods}}
   <br/>
   {{desiredgoodsimgs}}
+  <button @click="shutDesiredGoods">关闭求购</button>
+  {{supplyerList}}
 </template>
 
 <script>
@@ -10,6 +12,7 @@ import {computed, onMounted, reactive, ref} from "vue";
 import {useRoute, useRouter}  from 'vue-router'
 import store from "@/store";
 import {message} from 'ant-design-vue';
+import FormData from "form-data";
 
 export default {
   name: "BuyerSeeDesiredGoods",
@@ -18,6 +21,7 @@ export default {
     const router = useRouter()
     const desiredgoods = ref()
     const desiredgoodsimgs = ref([])
+    const supplyerList = ref([])
     const account = computed(() => {
       return store.state.account
     })
@@ -43,6 +47,16 @@ export default {
             desiredgoodsimgs.value = response.data.content
           }
       )
+
+      axios.get("account/getsupplyer",{
+        params: {
+          desiredGoodsId: route.params.desiredgoodsid
+        }
+      }).then(
+          (response) =>{
+            supplyerList.value = response.data.content;
+          }
+      )
     };
 
     onMounted(
@@ -52,9 +66,22 @@ export default {
         }
     )
 
+    const shutDesiredGoods = ()=>{
+      const fd = new FormData();
+      fd.append('desiredgoodsId', route.params.desiredgoodsid)
+      axios.post('desiredGoods/deleteinquirybypid', fd).then(
+          (response) => {
+            message.info("已删除")
+            router.push('/myinquiry/page=:page&category=:category&keyword=')
+          }
+      )
+    }
+
     return{
       desiredgoods,
-      desiredgoodsimgs
+      desiredgoodsimgs,
+      shutDesiredGoods,
+      supplyerList,
     }
   }
 }

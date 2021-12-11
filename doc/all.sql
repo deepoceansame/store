@@ -124,5 +124,5 @@ select * from desiredgoods where (description like concat('%', '能', '%'));
 select concat('%','单车','%')
 
 
-delete from purchaserecord where buyerId = 1 and goodsId = 29
+delete from GOODS where id = 29
 

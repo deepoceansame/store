@@ -302,7 +302,16 @@
            where desiredgoodsid = #{desiredgoodsid}
          ) as s join account a on s.accountid = a.id
   </select>
-  
+
+  <select id="getBuyersByGoodsId" parameterType="java.lang.Integer" resultType="com.agroup.store.domain.Account">
+    select a.*
+    from (
+           select *
+           from purchaserecord
+           where goodsid = #{goodsid}
+         ) as s join account a on s.buyerid = a.id
+  </select>
+
   <delete id="deletePurchaseRecord" parameterType="com.agroup.store.req.QuitBuyReq">
     delete from purchaserecord where buyerId = #{buyerId} and goodsId = #{goodsId}
   </delete>

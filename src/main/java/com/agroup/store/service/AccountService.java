@@ -164,6 +164,14 @@ public class AccountService {
         return resp;
     }
 
+    public List<Account> getSupplyer(Integer desiredGoodsId){
+        return accountMapper.getSupplyingAccountByDesiredGoodsId(desiredGoodsId);
+    }
+
+    public List<Account> getBuyer(Integer goodsId){
+        return accountMapper.getBuyersByGoodsId(goodsId);
+    }
+
     public CommonResp quitBuy(QuitBuyReq req){
         boolean success = accountMapper.deletePurchaseRecord(req) == 1;
         CommonResp resp = new CommonResp();

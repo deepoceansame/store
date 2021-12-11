@@ -125,6 +125,7 @@ export default {
       )
     }
 
+
     return {
       goods,
       sellerAccount,

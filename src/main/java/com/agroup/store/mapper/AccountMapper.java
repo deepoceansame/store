@@ -46,6 +46,8 @@ public interface AccountMapper {
 
     List<Account> getSupplyingAccountByDesiredGoodsId(Integer desiredgoodsid);
 
+    List<Account> getBuyersByGoodsId(Integer goodsid);
+
     int deletePurchaseRecord(QuitBuyReq req);
 
     List<PurchaseRecord> selectPurchaseRecordByPid(@Param("buyerId") Integer buyerId, @Param("goodsId") Integer goodsId);

@@ -20,4 +20,6 @@ public interface DesiredGoodsMapper {
     DesiredGoods selectById(Integer id);
 
     List<DesiredGoods> selectList(DesiredGoodsMainListReq req);
+
+    int deleteByPrimaryKey(Integer id);
 }

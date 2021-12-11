@@ -92,4 +92,9 @@
                 and account_id != #{accountId, jdbcType=INTEGER}
         </trim>
     </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from desiredgoods
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
 </mapper>

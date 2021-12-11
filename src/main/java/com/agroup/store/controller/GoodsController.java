@@ -71,7 +71,7 @@ public class GoodsController {
     }
 
     @PostMapping("goods/deletegoodsbypid")
-    public CommonResp shutGoods(Integer goodsId){
+    public CommonResp shutGoods(@RequestParam Integer goodsId){
         goodsService.shutGoods(goodsId);
         CommonResp resp = new CommonResp();
         return resp;

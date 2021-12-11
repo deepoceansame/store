@@ -1,14 +1,8 @@
 package com.agroup.store.service;
 
 import com.agroup.store.domain.*;
-import com.agroup.store.exception.BusinessException;
-import com.agroup.store.exception.BusinessExceptionCode;
-import com.agroup.store.mapper.AccountMapper;
 import com.agroup.store.mapper.DesiredGoodsMapper;
 import com.agroup.store.req.*;
-import com.agroup.store.resp.AccountLoginResp;
-import com.agroup.store.resp.CommonResp;
-import com.agroup.store.resp.GoodsPurchaseRecordResp;
 import com.agroup.store.resp.PageResp;
 import com.agroup.store.util.CopyUtil;
 import com.alibaba.fastjson.JSON;
@@ -19,8 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -144,5 +136,9 @@ public class DesiredGoodsService {
         pageResp.setList(list);
 
         return pageResp;
+    }
+
+    public void shutGoods(Integer desiredGoodsId){
+        desiredGoodsMapper.deleteByPrimaryKey(desiredGoodsId);
     }
 }

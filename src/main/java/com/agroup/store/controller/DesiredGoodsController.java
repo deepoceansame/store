@@ -71,4 +71,10 @@ public class DesiredGoodsController {
         return resp;
     }
 
+    @PostMapping("desiredGoods/deleteinquirybypid")
+    public CommonResp shutGoods(@RequestParam Integer desiredgoodsId){
+        desiredGoodsService.shutGoods(desiredgoodsId);
+        CommonResp resp = new CommonResp();
+        return resp;
+    }
 }

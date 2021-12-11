@@ -123,4 +123,18 @@ public class AccountController {
     public CommonResp  isExists(@RequestParam Integer buyerId, @RequestParam Integer goodsId){
         return accountService.hasEnrolledBuy(buyerId, goodsId);
     }
+
+    @GetMapping("account/getsupplyer")
+    public CommonResp getSupplyer(@RequestParam Integer desiredGoodsId){
+        CommonResp resp = new CommonResp();
+        resp.setContent(accountService.getSupplyer(desiredGoodsId));
+        return resp;
+    }
+
+    @GetMapping("account/getbuyer")
+    public CommonResp getBuyer(@RequestParam Integer goodsId){
+        CommonResp resp = new CommonResp();
+        resp.setContent(accountService.getBuyer(goodsId));
+        return resp;
+    }
 }

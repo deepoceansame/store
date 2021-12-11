@@ -2,6 +2,8 @@
   {{goods}}
   <br/>
   {{goodsimgs}}
+  {{buyerList}}
+  <button @click="shutGoods">关闭售卖</button>
 </template>
 
 <script>
@@ -10,6 +12,7 @@ import {computed, onMounted, reactive, ref} from "vue";
 import {useRoute, useRouter}  from 'vue-router'
 import store from "@/store";
 import {message} from 'ant-design-vue';
+import FormData from "form-data";
 
 export default {
   name: "BuyerSeeDesiredGoods",
@@ -18,6 +21,7 @@ export default {
     const router = useRouter()
     const goods = ref()
     const goodsimgs = ref([])
+    const buyerList = ref([])
     const account = computed(() => {
       return store.state.account
     })
@@ -43,7 +47,28 @@ export default {
             goodsimgs.value = response.data.content
           }
       )
+
+      axios.get("account/getbuyer",{
+        params:{
+          goodsId: route.params.goodsid
+        }
+      }).then(
+          (response) =>{
+            buyerList.value = response.data.content;
+          }
+      )
     };
+
+    const shutGoods = ()=>{
+      const fd = new FormData();
+      fd.append('goodsId', route.params.goodsid)
+      axios.post('goods/deletegoodsbypid', fd).then(
+          (response) => {
+            message.info("已删除")
+            router.push('/mygoods/page=:page&category=:category&keyword=')
+          }
+      )
+    }
 
     onMounted(
         () => {
@@ -54,7 +79,9 @@ export default {
 
     return{
       goods,
-      goodsimgs
+      goodsimgs,
+      shutGoods,
+      buyerList,
     }
   }
 }
