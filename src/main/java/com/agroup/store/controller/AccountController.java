@@ -70,7 +70,7 @@ public class AccountController {
         AccountLoginResp accountLoginResp = accountService.login(req);
         String token = snowFlake.nextId();
         LOG.info("生成token{}", token);
-        redisTemplate.opsForValue().set(token, JSONObject.toJSONString(accountLoginResp), 3600 * 2, TimeUnit.SECONDS);
+        //redisTemplate.opsForValue().set(token, JSONObject.toJSONString(accountLoginResp), 3600 * 2, TimeUnit.SECONDS);
         accountLoginResp.setToken(token);
         LOG.info("accountLOGinREsp.ID: {}", accountLoginResp.getId());
         resp.setContent(accountLoginResp);
@@ -80,7 +80,7 @@ public class AccountController {
     @GetMapping("account/logout/{token}")
     public CommonResp logout(@PathVariable String token){
         CommonResp resp = new CommonResp();
-        redisTemplate.delete(token);
+        //redisTemplate.delete(token);
         LOG.info("退出登录，从redis中删除了token:{}", token);
         return resp;
     }

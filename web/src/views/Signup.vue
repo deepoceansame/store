@@ -113,7 +113,7 @@ export default {
       if (value === '') {
         return Promise.reject('Please input the qq');
       } else {
-        const QQ_REGEX_1= /^\d{0,8}$/;
+        const QQ_REGEX_1= /^\d{5,12}$/;
         if (!QQ_REGEX_1.test(value)) {
           return Promise.reject('wrong qq format')
         }
