@@ -2,6 +2,7 @@
   <div>
     {{account}}
     <button v-show="account.id" @click="logout">登出</button>
+    <button v-show="account.id" @click="goToCenter">账户中心</button>
   </div>
   <router-view></router-view>
 </template>
@@ -33,9 +34,13 @@ export default defineComponent({
         }
       });
     }
+    const goToCenter = ()=>{
+      router.push({name:'accountcenter', params: {accountid: account.value.id}})
+    }
     return {
       account,
       logout,
+      goToCenter
     };
   },
 });

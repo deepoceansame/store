@@ -1,9 +1,18 @@
 <template>
-  {{goods}}
+  <div>
+    <label>商品名: {{goods.name}}</label><br/>
+    <label>价格: {{goods.price}}</label><br/>
+    <label>描述: {{goods.description}}</label>
+  </div>
   <br/>
-  {{goodsimgs}}
-  {{buyerList}}
+  <div>
+    <img v-for="(img, index) in goodsimgs" :key="index" :src="'http://127.0.0.1:8083/' + img" style="max-height: 150px" alt="图片"/>
+  </div>
   <button @click="shutGoods">关闭售卖</button>
+  <table border=2>
+    <tr v-if="buyerList.length>0"><th>头像</th> <th>id</th> <th>邮箱</th> <th>qq</th> <th>昵称</th></tr>
+    <buyer-table-row v-for="(buyer, index) in buyerList" :buyer="buyer" :key="index" :seller="account"></buyer-table-row>
+  </table>
 </template>
 
 <script>
@@ -13,13 +22,15 @@ import {useRoute, useRouter}  from 'vue-router'
 import store from "@/store";
 import {message} from 'ant-design-vue';
 import FormData from "form-data";
+import BuyerTableRow from "@/components/BuyerTableRow";
 
 export default {
   name: "BuyerSeeDesiredGoods",
+  components: {BuyerTableRow},
   setup(){
     const route = useRoute();
     const router = useRouter()
-    const goods = ref()
+    const goods = ref({})
     const goodsimgs = ref([])
     const buyerList = ref([])
     const account = computed(() => {
@@ -82,6 +93,7 @@ export default {
       goodsimgs,
       shutGoods,
       buyerList,
+      account
     }
   }
 }

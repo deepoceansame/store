@@ -16,6 +16,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -136,5 +137,13 @@ public class AccountController {
         CommonResp resp = new CommonResp();
         resp.setContent(accountService.getBuyer(goodsId));
         return resp;
+    }
+
+    @PostMapping("account/updateAvator")
+    public void addPicMessage(@RequestParam("accountid") String accountid, MultipartFile img){
+        LOG.info("收到的图片的大小{}", img.getSize());
+        if (img != null){
+            accountService.updateAvator(accountid, img);
+        }
     }
 }

@@ -7,23 +7,33 @@ import com.agroup.store.mapper.AccountMapper;
 import com.agroup.store.req.*;
 import com.agroup.store.resp.*;
 import com.agroup.store.util.CopyUtil;
+import com.fasterxml.uuid.Generators;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.io.File;
+import java.nio.file.Files;
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AccountService {
 
     private static final Logger LOG = LoggerFactory.getLogger(AccountService.class);
+
+    @Value("${picturesPath}")
+    private String picturesPath;
 
     @Resource
     private AccountMapper accountMapper;
@@ -196,6 +206,25 @@ public class AccountService {
             resp.setMessage("没参加过");
             resp.setContent(false);
         }
+        return resp;
+    }
+
+    public CommonResp updateAvator(String accountid, MultipartFile img){
+        CommonResp resp = new CommonResp();
+        UUID timebaseUUID = Generators.timeBasedGenerator().generate();
+        String fileName = timebaseUUID.toString()+".jpg";
+
+        //将图片存到文件系统里
+        String filePath = picturesPath + fileName;
+        try{
+            File dest = new File(filePath);
+            Files.copy(img.getInputStream(), dest.toPath());
+        }catch (Exception e){
+            LOG.info(e.getMessage());
+        }
+
+        //数据库更新
+
         return resp;
     }
 }

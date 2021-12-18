@@ -73,7 +73,7 @@ export default {
     }
 
     const submitImage = ()=>{
-      if(tempImage==null || tempImage.trim().length !== 0) {
+      if(tempImage!==null && tempImage.trim().length !== 0) {
         messageList.value.push({
           goodsid: route.params.goodsid,
           senderid: route.params.senderid,
