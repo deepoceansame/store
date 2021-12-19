@@ -6,7 +6,20 @@
   <br/>
   <input type="file" :value="imgToSubmit" name="image" accept="image/png, image/jpeg" @change="onFileChange"/>
   <button @click="submitImage">提交图片</button>
-  <br/><button>给对方转账</button>
+  <br/><button @click="showTransferPanel">给对方转账</button>
+  <a-modal
+      v-model:visible="trans_visible"
+      title="输入金额 然后点击转账"
+      :ok-button-props="{ disabled: false }"
+      :cancel-button-props="{ disabled: false }"
+      @ok="handleTransfer"
+  >
+    <template #footer>
+      <a-button key="back" @click="handleCancel">取消</a-button>
+      <a-button key="submit" type="primary" :loading="loading" @click="handleTransfer">转账</a-button>
+    </template>
+    <input v-model="transferAmount"/>
+  </a-modal>
   {{messageList}}
 </template>
 
@@ -26,6 +39,11 @@ export default {
     var tt = ref('')
     let imgToSubmit = null
     let tempImage = ''
+
+    const trans_visible = ref(false)
+    const loading = ref(false)
+    const transferAmount = ref('')
+
     const getMessage =  () => {
       console.log(route.params)
       axios.get('/messaged/getmessage',{
@@ -123,6 +141,38 @@ export default {
       console.log(tempImage)
     }
 
+    const showTransferPanel = () =>{
+      trans_visible.value = true
+    }
+
+    const handleTransfer = () => {
+      loading.value = true
+      let ta = transferAmount.value.trim()
+      const intRegx = /^[1-9]\d{0,8}$/
+      const floatRegex = /^[1-9]\d{0,8}\.\d{0,6}$/
+      const floatRegex2 = /^0\.\d{0,6}$/
+      if (ta === '') {
+        message.info('输入转账金额')
+        loading.value = false
+      } else if (!(intRegx.test(ta) || floatRegex.test(ta) || floatRegex2.test(ta))) {
+        message.info("不可接受的转账额度");
+        loading.value = false
+      } else {
+        const fd = new FormData();
+        fd.append('senderid', Number(route.params.senderid))
+        fd.append('receiverid', Number(route.params.receiverid))
+        fd.append('amount', transferAmount.value)
+        axios.post("account/transferMoney", fd).then((response) => {
+          message.info(response.data.message)
+        })
+        transferAmount.value = ''
+        loading.value = false
+      }
+    }
+
+    const handleCancel = () => {
+      trans_visible.value = false
+    }
 
     return {
       tt,
@@ -132,6 +182,12 @@ export default {
       onFileChange,
       submitImage,
       imgToSubmit,
+      showTransferPanel,
+      trans_visible,
+      transferAmount,
+      handleCancel,
+      handleTransfer,
+      loading,
     }
   }
 }

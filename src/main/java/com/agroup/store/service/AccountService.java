@@ -251,7 +251,7 @@ public class AccountService {
         Float afterSenderMoney = 0f;
         Float afterReceiverMoney = 0f;
         if (smoney < famount){
-            resp.setMessage("你的钱不够呀");
+            resp.setMessage("你的钱不够 余额"+smoney);
             resp.setSuccess(false);
             LOG.info("钱不够");
         }
@@ -260,7 +260,7 @@ public class AccountService {
             afterReceiverMoney = rmoney + famount;
             accountMapper.updateMoney(senderid, afterSenderMoney);
             accountMapper.updateMoney(receiverid, afterReceiverMoney);
-            resp.setMessage("钱转过去了");
+            resp.setMessage("钱转过去了 余额"+afterSenderMoney);
             resp.setSuccess(true);
             LOG.info("转了");
         }

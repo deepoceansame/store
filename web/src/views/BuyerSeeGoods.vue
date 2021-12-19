@@ -1,11 +1,50 @@
 <template>
   <div>goodsInfo:{{goods}}</div>
-  <br/>
+  <div>
+    <h2>商品描述</h2>
+    <table border=2>
+      <tr>
+        <th>商品名</th> <th>价格</th>
+      </tr>
+      <tr>
+        <td>{{goods.name}}</td>
+        <td>{{goods.price}}</td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <h3>商品描述</h3>
+    <p>
+      {{goods.description}}
+    </p>
+  </div>
   <div>sellerInfo:{{sellerAccount}}</div>
+  <div>
+    <h2>卖家信息</h2>
+    <table border=2>
+      <tr>
+        <th>头像</th> <th>id</th> <th>邮箱</th> <th>qq</th> <th>昵称</th>
+      </tr>
+      <tr>
+        <td><img :src="'http://127.0.0.1:8083/' + sellerAccount.avator" alt="无头像" style="max-height: 50px"/></td>
+        <td>{{sellerAccount.id}}</td>
+        <td>{{sellerAccount.mail}}</td>
+        <td>{{sellerAccount.qq}}</td>
+        <td>{{sellerAccount.name}}</td>
+      </tr>
+    </table>
+  </div>
+  {{goodsimgs}}
+  <div>
+    <h2>商品图片</h2>
+    <img v-for="(img, index) in goodsimgs"
+         :src="'http://127.0.0.1:8083/'+img"
+         :key="index" alt="图片没了"
+         style="max-height: 100px"/>
+  </div>
   <button @click="enroll" v-if="!hasenrolled">参与购买</button>
   <button @click="goToChatRoom">联系卖家</button>
   <button @click="quitBuy" v-if="hasenrolled">退出购买</button>
-  {{goodsimgs}}
 </template>
 
 <script>
@@ -20,7 +59,7 @@ export default {
   setup(){
     const route = useRoute();
     const router = useRouter()
-    const goods = ref();
+    const goods = ref({});
     const goodsimgs = ref([]);
     const hasenrolled = ref(false);
     const sellerAccount = reactive({

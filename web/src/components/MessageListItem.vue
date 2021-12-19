@@ -15,6 +15,8 @@
 
 <script>
 import {useRoute} from 'vue-router'
+import {computed, ref} from "vue";
+import store from "@/store";
 
 export default {
   name: "MessageListItem",
@@ -23,7 +25,9 @@ export default {
     const route = useRoute();
     console.log(props.mess.senderid)
     console.log(Number(route.params.senderid))
-    const atRight = Number(props.mess.senderid) === Number(route.params.senderid)
+    const atRight = computed(() => {
+      return Number(props.mess.senderid) === Number(route.params.senderid)
+    })
     console.log(atRight)
     return {
       atRight,

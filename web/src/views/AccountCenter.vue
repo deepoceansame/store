@@ -120,8 +120,9 @@ export default {
         fd.append('accountId', Number(route.params.accountid))
         fd.append('chargeAmount', cm)
         axios.post("account/chargeMoney", fd).then((response) => {
-          message.info(response.data.success);
-          console.log(String(response.data.success))
+          if (response.data.success){
+            message.info("充值成功")
+          }
         })
         chargeMoney.value = ''
       }

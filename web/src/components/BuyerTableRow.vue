@@ -1,6 +1,6 @@
 <template>
   <tr class="row">
-    <td><img :src="buyer.avator" alt="头像"/></td>
+    <td><img :src="'http://127.0.0.1:8083/' + buyer.avator" alt="无头像" style="max-height: 50px"/></td>
     <td>{{buyer.id}}</td>
     <td>{{buyer.mail}}</td>
     <td>{{buyer.qq}}</td>
