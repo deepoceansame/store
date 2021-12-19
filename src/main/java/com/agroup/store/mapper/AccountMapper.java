@@ -51,4 +51,14 @@ public interface AccountMapper {
     int deletePurchaseRecord(QuitBuyReq req);
 
     List<PurchaseRecord> selectPurchaseRecordByPid(@Param("buyerId") Integer buyerId, @Param("goodsId") Integer goodsId);
+
+    int updateAvatar(@Param("accountId") Integer accountId, @Param("filename") String filename);
+
+    int chargeMoney(@Param("accountId") Integer accountId, @Param("chargeAmount") Float chargeAmount);
+
+    Float getMoney(@Param("accountId") Integer accountId);
+
+    int updateMoney(@Param("accountId") Integer accountId, @Param("amount") Float amount);
+
+
 }

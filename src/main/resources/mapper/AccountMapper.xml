@@ -321,4 +321,20 @@
         from purchaseRecord
         where buyerId = #{buyerId} and goodsId = #{goodsId}
   </select>
+
+  <update id="updateAvatar">
+    update account set avator = #{filename, jdbcType=VARCHAR} where id=#{accountId, jdbcType=INTEGER}
+  </update>
+
+  <update id="chargeMoney">
+    update account set money=IF(money is null, #{chargeAmount, jdbcType=REAL}, money+#{chargeAmount, jdbcType=REAL}) where id=#{accountId, jdbcType=INTEGER}
+  </update>
+
+  <select id="getMoney" resultType="java.lang.Float">
+    select money from account where id=#{accountId, jdbcType=INTEGER}
+  </select>
+
+  <update id="updateMoney">
+    update account set money=#{amount, jdbcType=REAL} where id=#{accountId, jdbcType=INTEGER}
+  </update>
 </mapper>

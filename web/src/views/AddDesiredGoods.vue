@@ -72,9 +72,10 @@ export default ({
     let validatePrice = async (_rule, value) => {
       const intRegx = /^\d{0,8}$/
       const floatRegex = /^\d{0,8}\.\d{0,6}$/
+      const floatRegex2 = /^0\.\d{0,6}$/
       if (value === '') {
         return Promise.reject('Please input price');
-      } else if (!(intRegx.test(value) || floatRegex.test(value))) {
+      } else if (!(intRegx.test(value) || floatRegex.test(value) || floatRegex2.test(value))) {
         return Promise.reject("bad price");
       } else {
         return Promise.resolve();

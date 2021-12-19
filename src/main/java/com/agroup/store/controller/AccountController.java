@@ -139,11 +139,21 @@ public class AccountController {
         return resp;
     }
 
-    @PostMapping("account/updateAvator")
-    public void addPicMessage(@RequestParam("accountid") String accountid, MultipartFile img){
-        LOG.info("收到的图片的大小{}", img.getSize());
+    @PostMapping("account/updateAvatar")
+    public void updateAvatar(@RequestParam("accountid") String accountid, MultipartFile img){
         if (img != null){
+            LOG.info("收到的图片的大小{}", img.getSize());
             accountService.updateAvator(accountid, img);
         }
+    }
+
+    @PostMapping("account/chargeMoney")
+    public CommonResp chargeMoney(@RequestParam("accountId") Integer accountId, @RequestParam("chargeAmount") String chargeAmount){
+        return accountService.chargeMoney(accountId, chargeAmount);
+    }
+
+    @PostMapping("account/transferMoney")
+    public CommonResp transferMoney(Integer senderid, Integer receiverid, String amount){
+        return accountService.transferMoney(senderid, receiverid, amount);
     }
 }

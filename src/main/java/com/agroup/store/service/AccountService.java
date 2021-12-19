@@ -210,6 +210,7 @@ public class AccountService {
     }
 
     public CommonResp updateAvator(String accountid, MultipartFile img){
+        Integer accountId = Integer.parseInt(accountid);
         CommonResp resp = new CommonResp();
         UUID timebaseUUID = Generators.timeBasedGenerator().generate();
         String fileName = timebaseUUID.toString()+".jpg";
@@ -224,7 +225,45 @@ public class AccountService {
         }
 
         //数据库更新
+        accountMapper.updateAvatar(accountId, fileName);
+        return resp;
+    }
 
+    public CommonResp chargeMoney(Integer accountId, String chargeAmount){
+        CommonResp resp = new CommonResp();
+        float cm = Float.parseFloat(chargeAmount);
+        accountMapper.chargeMoney(accountId, cm);
+        return  resp;
+    }
+
+    public CommonResp transferMoney(Integer senderid, Integer receiverid, String amount){
+        LOG.info("进来了");
+        CommonResp resp = new CommonResp();
+        Float famount = Float.parseFloat(amount);
+        Float smoney = accountMapper.getMoney(senderid);
+        if (smoney==null){
+            smoney = 0f;
+        }
+        Float rmoney = accountMapper.getMoney(receiverid);
+        if(rmoney==null){
+            rmoney = 0f;
+        }
+        Float afterSenderMoney = 0f;
+        Float afterReceiverMoney = 0f;
+        if (smoney < famount){
+            resp.setMessage("你的钱不够呀");
+            resp.setSuccess(false);
+            LOG.info("钱不够");
+        }
+        else{
+            afterSenderMoney = smoney - famount;
+            afterReceiverMoney = rmoney + famount;
+            accountMapper.updateMoney(senderid, afterSenderMoney);
+            accountMapper.updateMoney(receiverid, afterReceiverMoney);
+            resp.setMessage("钱转过去了");
+            resp.setSuccess(true);
+            LOG.info("转了");
+        }
         return resp;
     }
 }

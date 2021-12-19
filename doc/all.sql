@@ -121,8 +121,10 @@ insert into goods(name, description, account_Id, category_id, price) value ('女
 insert into goods(name, description, account_Id, category_id, price) value ('雷兽', '高血量高护甲', 2, 5, 1000);
 
 select * from desiredgoods where (description like concat('%', '能', '%'));
-select concat('%','单车','%')
+select concat('%','单车','%');
 
 
-delete from GOODS where id = 29
+delete from GOODS where id = 29;
+
+update account set money=IF(money is not null, null, money+10)
 
