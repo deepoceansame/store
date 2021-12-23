@@ -82,14 +82,12 @@ export default {
             handleQuery({page: route.params.page, categoryId: route.params.category, accountId: account.value.id});
           }
           else{
-            handleQuery({page: route.params.page, keyword:route.params.keyword, categoryId: route.params.catagory, accountId: account.value.id})
+            handleQuery({page: route.params.page, keyword:route.params.keyword, categoryId: route.params.category, accountId: account.value.id})
           }
         }
     )
     const click = () => {
-      console.log(typeof(route.params.keyword))
-      console.log(route.path)
-      console.log(route.name !== "Home" && route.name !== "signup")
+      console.log(route.params.category)
     }
     return {
       desiredgoodsList,

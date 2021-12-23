@@ -1,7 +1,7 @@
 <template>
   <div>goodsInfo:{{goods}}</div>
   <div>
-    <h2>商品描述</h2>
+    <h2>商品信息</h2>
     <table border=2>
       <tr>
         <th>商品名</th> <th>价格</th>
@@ -12,8 +12,8 @@
       </tr>
     </table>
   </div>
-  <div>
-    <h3>商品描述</h3>
+  <div style="border-style: solid">
+    <h2>商品描述</h2>
     <p>
       {{goods.description}}
     </p>
