@@ -337,4 +337,6 @@
   <update id="updateMoney">
     update account set money=#{amount, jdbcType=REAL} where id=#{accountId, jdbcType=INTEGER}
   </update>
+
+
 </mapper>

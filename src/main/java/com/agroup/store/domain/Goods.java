@@ -1,5 +1,7 @@
 package com.agroup.store.domain;
 
+import java.util.Map;
+
 public class Goods {
     private Integer id;
 

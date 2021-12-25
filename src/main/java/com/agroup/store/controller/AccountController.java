@@ -92,7 +92,7 @@ public class AccountController {
         return accountService.requestGoods(req);
     }
 
-    //购买生效:effective: false->true
+    //购买生效:effective: false -> true
     @GetMapping("account/purchaseGoods")
     public CommonResp purchaseGoods(@Valid RequestGoodsReq req){
         return accountService.purchaseGoods(req);

@@ -60,5 +60,4 @@ public interface AccountMapper {
 
     int updateMoney(@Param("accountId") Integer accountId, @Param("amount") Float amount);
 
-
 }

@@ -1,6 +1,7 @@
 package com.agroup.store.service;
 
 import com.agroup.store.domain.*;
+import com.agroup.store.mapper.AccountMapper;
 import com.agroup.store.mapper.DesiredGoodsMapper;
 import com.agroup.store.req.*;
 import com.agroup.store.resp.PageResp;
@@ -11,7 +12,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,6 +23,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.io.File;
 import java.nio.file.Files;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,9 +35,20 @@ public class DesiredGoodsService {
     @Resource
     private DesiredGoodsMapper desiredGoodsMapper;
 
+    @Resource
+    private AccountMapper accountMapper;
+
     @Value("${picturesPath}")
     private String picturesPath;
 
+    @Autowired
+    JavaMailSender javaMailSender;
+
+    @Value("${spring.mail.username}")
+    private String senderUsername;
+
+    @Value("${spring.mail.nickname}")
+    private String nickname;
 
     public Integer addDesiredGoods(String req, MultipartFile[] imgs){
         LOG.info("收到了String{}",req);
@@ -113,6 +129,8 @@ public class DesiredGoodsService {
         return desiredGoodsMapper.getDesiredGoodsImgs(desiredgoodsid);
     }
 
+
+
     public PageResp getList(DesiredGoodsMainListReq req){
         int page=1;
         if(req.getPage()!=0){
@@ -139,6 +157,39 @@ public class DesiredGoodsService {
     }
 
     public void shutGoods(Integer desiredGoodsId){
+        DesiredGoods desiredGoods = desiredGoodsMapper.selectById(desiredGoodsId);
+        Account buyer = accountMapper.selectByPrimaryKey(desiredGoods.getAccountId());
+        List<Account> suppliers = accountMapper.getSupplyingAccountByDesiredGoodsId(desiredGoodsId);
         desiredGoodsMapper.deleteByPrimaryKey(desiredGoodsId);
+        sendMailToSuppliersForClosingDesiredGoods(suppliers, buyer, desiredGoods);
+    }
+
+    public void sendMailToSuppliersForClosingDesiredGoods(List<Account> suppliers, Account buyer, DesiredGoods desiredGoods) {
+        // 设置邮件发送者，这个跟application.yml中设置的要一致
+        for (Account supplier : suppliers) {
+            // 构建一个邮件对象
+            SimpleMailMessage message = new SimpleMailMessage();
+            // 设置邮件主题
+            message.setSubject("通知：有买家删除了您愿意提供的求购");
+            message.setFrom(nickname + '<' + senderUsername + '>');
+            // 设置邮件接收者，可以有多个接收者，中间用逗号隔开，以下类似
+            // message.setTo("10*****16@qq.com","12****32*qq.com");
+            message.setTo(supplier.getMail());
+            // 设置邮件抄送人，可以有多个抄送人
+//        message.setCc("12****32*qq.com");
+//        // 设置隐秘抄送人，可以有多个
+//        message.setBcc("7******9@qq.com");
+//        // 设置邮件发送日期
+            message.setSentDate(new Date());
+            // 设置邮件的正文
+
+            String content = "买家（用户名："
+                    + buyer.getName() + "）关闭了一件求购商品（商品名：" + desiredGoods.getName() + "）。";
+            message.setText(content);
+            // 发送邮件
+            javaMailSender.send(message);
+
+        }
+
     }
 }

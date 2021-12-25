@@ -1,6 +1,7 @@
 package com.agroup.store.service;
 
 import com.agroup.store.domain.*;
+import com.agroup.store.mapper.AccountMapper;
 import com.agroup.store.mapper.GoodsMapper;
 import com.agroup.store.mapper.GoodsimageMapper;
 import com.agroup.store.req.GetOthersGoodsReq;
@@ -15,7 +16,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
@@ -27,6 +31,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
@@ -39,10 +44,22 @@ public class GoodsService {
     @Resource
     private GoodsimageMapper goodsimageMapper;
 
+    @Resource
+    private AccountMapper accountMapper;
+
     private static final Logger LOG = LoggerFactory.getLogger(GoodsService.class);
 
     @Value("${picturesPath}")
     private String picturesPath;
+
+    @Autowired
+    JavaMailSender javaMailSender;
+
+    @Value("${spring.mail.username}")
+    private String senderUsername;
+
+    @Value("${spring.mail.nickname}")
+    private String nickname;
 
     public PageResp<GoodsResp> getOthersGoods(GetOthersGoodsReq req){
         //筛查
@@ -160,8 +177,31 @@ public class GoodsService {
 
 
     public void shutGoods(Integer goodsid){
+        Goods goods = goodsMapper.selectByPrimaryKey(goodsid);
+        Account seller = accountMapper.selectByPrimaryKey(goods.getAccountId());
+        List<Account> buyers = accountMapper.getBuyersByGoodsId(goodsid);
+        sendMailTobuyersForClosingGoods(buyers, seller, goods);
         goodsMapper.deleteByPrimaryKey(goodsid);
     }
+
+    public void sendMailTobuyersForClosingGoods(List<Account> buyers, Account seller, Goods goods) {
+        for (Account buyer : buyers) {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setSubject("通知：有卖家删除了您参与购买的商品");
+            message.setFrom(nickname + '<' + senderUsername + '>');
+            message.setTo(buyer.getMail());
+            message.setSentDate(new Date());
+            String content = "卖家（用户名："
+                    + seller.getName() + "）关闭了一件在售商品（商品名：" + goods.getName() + "）。";
+            message.setText(content);
+            // 发送邮件
+            javaMailSender.send(message);
+
+        }
+
+    }
+
+
 }
 
 
