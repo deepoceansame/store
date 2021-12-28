@@ -1,5 +1,6 @@
 <template>
   <div>
+    <buy-sell-exchange></buy-sell-exchange>
     <buy-nav></buy-nav>
     buy-collected-goods list here
     <table border=2>
@@ -7,7 +8,7 @@
       <GoodsTableRow v-for="(goods, index) in goodsList" :goods="goods" :key="index"></GoodsTableRow>
     </table>
   </div>
-  {{goodsList}}
+<!--  {{goodsList}}-->
 </template>
 
 <script>
@@ -18,10 +19,12 @@ import {computed, onMounted, ref} from "vue";
 import {useRoute, useRouter} from 'vue-router'
 import store from "@/store";
 import GoodsTableRow from "@/components/GoodsTableRow";
+import BuySellExchange from "@/components/BuySellExchange";
+
 export default {
   name: "BuyCollectedGoods",
   components:{
-    BuyNav, GoodsTableRow
+    BuyNav, GoodsTableRow, BuySellExchange
   },
   setup(){
 

@@ -5,7 +5,7 @@
     <td>{{buyer.mail}}</td>
     <td>{{buyer.qq}}</td>
     <td>{{buyer.name}}</td>
-    <td>{{buyer.recvaddress}}</td>;
+    <td>{{buyer.recvaddress}}</td>
     <td><button @click="goToChatRoom">联系他</button> </td>
   </tr>
 </template>

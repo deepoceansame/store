@@ -7,7 +7,7 @@
     <tr v-if="myGoodsList.length>0"><th>图片</th> <th>名称</th> <th>价格</th> <th>描述</th></tr>
     <my-goods-table-row v-for="(goods, index) in myGoodsList" :goods="goods" :key="index"></my-goods-table-row>
   </table>
-  {{myGoodsList}}
+<!--  {{myGoodsList}}-->
 </template>
 
 <script>

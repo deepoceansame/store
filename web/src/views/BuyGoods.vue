@@ -12,7 +12,7 @@
 
   <pagina :total="total"></pagina>
 
-  <button @click="click"></button>
+<!--  <button @click="click"></button>-->
 </template>
 
 <script>

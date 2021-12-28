@@ -1,4 +1,5 @@
 <template>
+  <buy-sell-exchange></buy-sell-exchange>
   <buy-nav></buy-nav>
   <div>buy inqury list here</div>
   <button @click="goToAddDesiredGoods">添加求购</button>
@@ -6,7 +7,7 @@
     <tr v-if="desiredGoodsList.length>0"><th>图片</th> <th>名称</th> <th>价格</th> <th>描述</th></tr>
     <DesiredGoodsTableRow v-for="(goods, index) in desiredGoodsList" :goods="goods" :key="index"></DesiredGoodsTableRow>
   </table>
-  {{desiredGoodsList}}
+<!--  {{desiredGoodsList}}-->
 </template>
 
 <script>
@@ -14,6 +15,8 @@ import BuyNav from "@/components/BuyNav";
 import DesiredGoodsTableRow from "@/components/DesiredGoodsTableRow";
 import CategoryNav from "@/components/CategoryNav";
 import Search from "@/components/Search";
+import BuySellExchange from "@/components/BuySellExchange";
+
 import {computed, onMounted, ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import store from "@/store";
@@ -24,6 +27,7 @@ export default {
   components:{
     BuyNav,
     DesiredGoodsTableRow,
+    BuySellExchange
   },
   setup(){
     const desiredGoodsList = ref([])
