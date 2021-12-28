@@ -5,13 +5,14 @@
   <search></search>
   <buy-nav></buy-nav>
   <div>buy-goods list here</div>
-  <table>
+  <table border=2>
+    <tr v-if="goodsList.length>0"><th>图片</th> <th>名称</th> <th>价格</th> <th>描述</th></tr>
     <GoodsTableRow v-for="(goods, index) in goodsList" :goods="goods" :key="index"></GoodsTableRow>
   </table>
 
   <pagina :total="total"></pagina>
 
-  <button @click="click"></button>
+<!--  <button @click="click"></button>-->
 </template>
 
 <script>

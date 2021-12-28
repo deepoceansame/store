@@ -9,11 +9,11 @@
       :wrapper-col="wrapperCol"
       enctype="multipart/form-data"
   >
-    <a-form-item ref="name" label="GoodsName" name="name">
+    <a-form-item ref="name" label="求购名" name="name">
       <a-input v-model:value="formState.name" />
     </a-form-item>
 
-    <a-form-item label="category" name="category">
+    <a-form-item label="类别" name="category">
       <a-select v-model:value="formState.category">
         <a-select-option value="2">生活用品</a-select-option>
         <a-select-option value="3">零食</a-select-option>
@@ -23,15 +23,15 @@
       </a-select>
     </a-form-item>
 
-    <a-form-item label="price" name="price">
+    <a-form-item label="价格" name="price">
       <a-input v-model:value="formState.price" />
     </a-form-item>
 
-    <a-form-item label="description" name="description">
+    <a-form-item label="描述" name="description">
       <a-textarea v-model:value="formState.description" :rows="4" />
     </a-form-item>
 
-    <a-form-item label="image" name="image">
+    <a-form-item label="图片" name="image">
       <input type="file" name="image" accept="image/png, image/jpeg" @change="onFileChange" multiple="multiple"/>
     </a-form-item>
     <img v-for="(imgurl, index) in showImages" :src="imgurl" :key="index" style="max-height: 150px" />
@@ -44,7 +44,7 @@
 
 
 
-  <button @click="handleClick">Click</button>
+<!--  <button @click="handleClick">Click</button>-->
 
 
 

@@ -6,8 +6,7 @@
   <br/>
   <input type="file" :value="imgToSubmit" name="image" accept="image/png, image/jpeg" @change="onFileChange"/>
   <button @click="submitImage">提交图片</button>
-  <br/><button type="primary" @click="showTransferPanel">购买</button>
-
+  <br/><button @click="showTransferPanel">给对方转账</button>
   <a-modal
       v-model:visible="trans_visible"
       title="填写订单"
@@ -46,12 +45,11 @@
     <p>选择转账金额</p>
     <input v-model="transferAmount"/>
   </a-modal>
-
-  {{messageList}}
+<!--  {{messageList}}-->
 </template>
 
-<script type="text/javascript">
-import {ref} from "vue";
+<script>
+import {reactive, ref} from "vue";
 import {useRoute} from 'vue-router'
 import axios from "axios";
 import MessageListItem from "@/components/MessageListItem";

@@ -5,14 +5,15 @@
   <search></search>
   <sell-nav></sell-nav>
   <div>sell-desiredgoods list here</div>
-  <table>
+  <table border=2>
+    <tr v-if="desiredgoodsList.length>0"><th>图片</th> <th>名称</th> <th>价格</th> <th>描述</th></tr>
     <InquiryTableRow v-for="(desiredgoods, index) in desiredgoodsList" :desiredgoods="desiredgoods" :key="index"></InquiryTableRow>
   </table>
-  {{desiredgoodsList}}
+<!--  {{desiredgoodsList}}-->
 
   <pagina :total="total"></pagina>
 
-  <button @click="click"></button>
+<!--  <button @click="click"></button>-->
 </template>
 
 <script>

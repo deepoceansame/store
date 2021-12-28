@@ -20,7 +20,7 @@
     </template>
     <input v-model="transferAmount"/>
   </a-modal>
-  {{messageList}}
+<!--  {{messageList}}-->
 </template>
 
 <script>

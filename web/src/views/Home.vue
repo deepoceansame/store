@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/goods/page=1&category=1&keyword=">enter</router-link>
+<!--  <router-link to="/goods/page=1&category=1&keyword=">enter</router-link>-->
   <a-form
       ref="formRef"
       name="custom-validation"
@@ -19,7 +19,7 @@
     </a-form-item>
   </a-form>
   <a-button @click="goToSignup">注册</a-button>
-  <button @click="handleClick">click</button>
+<!--  <button @click="handleClick">click</button>-->
 </template>
 
 <script lang="ts">

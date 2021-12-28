@@ -9,7 +9,7 @@ public class AccountLoginResp{
 
     private String token;
 
-    private String avatar;
+    private String avator;
 
     public Integer getId() {
         return id;
@@ -44,11 +44,11 @@ public class AccountLoginResp{
     }
 
     public String getAvatar() {
-        return avatar;
+        return avator;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setAvator(String avatar) {
+        this.avator = avatar;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class AccountLoginResp{
                 ", mail='" + mail + '\'' +
                 ", name='" + name + '\'' +
                 ", token='" + token + '\'' +
-                ", avatar='" + avatar + '\'' +
+                ", avatar='" + avator + '\'' +
                 '}';
     }
 }
