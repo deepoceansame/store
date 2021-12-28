@@ -24,7 +24,7 @@
     <h2>求购者信息</h2>
     <table border=2>
       <tr>
-        <th>头像</th> <th>id</th> <th>邮箱</th> <th>qq</th> <th>昵称</th>
+        <th>头像</th> <th>id</th> <th>邮箱</th> <th>qq</th> <th>昵称</th> <th>收货地址</th>
       </tr>
       <tr>
         <td><img :src="'http://127.0.0.1:8083/' + buyerAccount.avator" alt="无头像" style="max-height: 50px"/></td>
@@ -32,6 +32,7 @@
         <td>{{buyerAccount.mail}}</td>
         <td>{{buyerAccount.qq}}</td>
         <td>{{buyerAccount.name}}</td>
+        <td>{{buyerAccount.recvaddress}}</td>
       </tr>
     </table>
   </div>
@@ -86,6 +87,7 @@ export default {
                     buyerAccount.qq = data.qq
                     buyerAccount.mail = data.mail
                     buyerAccount.avator = data.avator
+                    buyerAccount.recvaddress = data.recvaddress
                   }
               )
             } else{

@@ -10,7 +10,7 @@
   </div>
   <button @click="shutGoods">关闭售卖</button>
   <table border=2>
-    <tr v-if="buyerList.length>0"><th>头像</th> <th>id</th> <th>邮箱</th> <th>qq</th> <th>昵称</th></tr>
+    <tr v-if="buyerList.length>0"><th>头像</th> <th>id</th> <th>邮箱</th> <th>qq</th> <th>昵称</th> <th>收货地址</th></tr>
     <buyer-table-row v-for="(buyer, index) in buyerList" :buyer="buyer" :key="index" :seller="account"></buyer-table-row>
   </table>
 </template>

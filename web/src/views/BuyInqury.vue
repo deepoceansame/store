@@ -2,7 +2,8 @@
   <buy-nav></buy-nav>
   <div>buy inqury list here</div>
   <button @click="goToAddDesiredGoods">添加求购</button>
-  <table>
+  <table border=2>
+    <tr v-if="desiredGoodsList.length>0"><th>图片</th> <th>名称</th> <th>价格</th> <th>描述</th></tr>
     <DesiredGoodsTableRow v-for="(goods, index) in desiredGoodsList" :goods="goods" :key="index"></DesiredGoodsTableRow>
   </table>
   {{desiredGoodsList}}
