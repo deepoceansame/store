@@ -6,10 +6,11 @@
   <br/>
   <input type="file" :value="imgToSubmit" name="image" accept="image/png, image/jpeg" @change="onFileChange"/>
   <button @click="submitImage">提交图片</button>
-  <br/><button @click="showTransferPanel">给对方转账</button>
+  <br/><button type="primary" @click="showTransferPanel">购买</button>
+
   <a-modal
       v-model:visible="trans_visible"
-      title="输入金额 然后点击转账"
+      title="填写订单"
       :ok-button-props="{ disabled: false }"
       :cancel-button-props="{ disabled: false }"
       @ok="handleTransfer"
@@ -18,18 +19,45 @@
       <a-button key="back" @click="handleCancel">取消</a-button>
       <a-button key="submit" type="primary" :loading="loading" @click="handleTransfer">转账</a-button>
     </template>
+    <p>选择交易时间</p>
+    <input v-model="transferDate" ref="date" id="date" type="datetime-local"/>
+    <br><br>
+    <p>选择交易地点</p>
+    <select v-model="transferLocation" name="location">
+      <option value="一教">一教</option>
+      <option value="二教">二教</option>
+      <option value="荔园1栋">荔园1栋</option>
+      <option value="荔园2栋">荔园2栋</option>
+      <option value="荔园3栋">荔园3栋</option>
+      <option value="荔园4栋">荔园4栋</option>
+      <option value="荔园5栋">荔园5栋</option>
+      <option value="荔园6栋">荔园6栋</option>
+      <option value="欣园">欣园</option>
+      <option value="湖畔1栋">湖畔1栋</option>
+      <option value="湖畔2栋">湖畔2栋</option>
+      <option value="湖畔3栋">湖畔3栋</option>
+      <option value="湖畔4栋">湖畔4栋</option>
+      <option value="湖畔5栋">湖畔5栋</option>
+      <option value="11栋">11栋</option>
+      <option value="润扬体育馆">润扬体育馆</option>
+    </select>
+    <br>
+    <br>
+    <p>选择转账金额</p>
     <input v-model="transferAmount"/>
   </a-modal>
+
   {{messageList}}
 </template>
 
-<script>
-import {reactive, ref} from "vue";
+<script type="text/javascript">
+import {ref} from "vue";
 import {useRoute} from 'vue-router'
 import axios from "axios";
 import MessageListItem from "@/components/MessageListItem";
 import FormData from "form-data";
 import {message} from "ant-design-vue";
+
 export default {
   name: "Chatroom",
   components:{MessageListItem},
@@ -40,6 +68,8 @@ export default {
     const loading = ref(false)
     var tt = ref('')
     const transferAmount = ref('')
+    const transferDate = ref('')
+    const transferLocation = ref('')
     let imgToSubmit = null
     let tempImage = ''
     const getMessage =  () => {
@@ -146,10 +176,18 @@ export default {
     const handleTransfer = () => {
       loading.value = true
       let ta = transferAmount.value.trim()
+      let date = transferDate.value
+      let location = transferLocation.value
       const intRegx = /^[1-9]\d{0,8}$/
       const floatRegex = /^[1-9]\d{0,8}\.\d{0,6}$/
       const floatRegex2 = /^0\.\d{0,6}$/
-      if (ta === '') {
+      if (date === ''){
+        message.info('输入交易日期')
+        loading.value = false
+      } else if(location ===''){
+        message.info('输入交易地点')
+        loading.value = false
+      } else if (ta === '') {
         message.info('输入转账金额')
         loading.value = false
       } else if (!(intRegx.test(ta) || floatRegex.test(ta) || floatRegex2.test(ta))) {
@@ -157,14 +195,17 @@ export default {
         loading.value = false
       } else {
         const fd = new FormData();
-        fd.append('senderid', Number(route.params.senderid))
-        fd.append('receiverid', Number(route.params.receiverid))
-        fd.append('amount', transferAmount.value)
-        axios.post("account/transferMoney", fd).then((response) => {
+        fd.append('goodsId', Number(route.params.goodsid))
+        fd.append('buyerId', Number(route.params.senderid))
+        fd.append('tradingDate', Date(transferDate))
+        fd.append('tradingLocation', transferLocation.value)
+        fd.append('payment', transferAmount.value)
+        axios.post("goods/submitPurchaseForm", fd).then((response) => {
            message.info(response.data.message)
         })
         transferAmount.value = ''
         loading.value = false
+        trans_visible.value = false
       }
     }
 
@@ -183,10 +224,40 @@ export default {
       showTransferPanel,
       trans_visible,
       transferAmount,
+      transferDate,
+      transferLocation,
       handleTransfer,
       handleCancel,
       loading
     }
+  },
+  beforeUpdate(){
+    this.$nextTick(()=>{
+      var date = document.getElementById("date")
+      date.setAttribute("min", getDate())
+    })
+  },
+
+}
+
+function getDate() {
+  var today = new Date();//返回当前日期和时间
+  var yyyy = today.getFullYear();//获取当前年份
+  var MM = today.getMonth() + 1;//因为getMonth()方法获取的是索引值，获取的月份为0-11，所以要＋1
+  var dd = today.getDate();//从 Date 对象返回一个月中的某一天 (1 ~ 31）
+  var hh = today.getHours();//返回 Date 对象的小时 (0 ~ 23)
+  var mm = today.getMinutes();//返回 Date 对象的分钟 (0 ~ 59)
+  MM = checkTime(MM);//调用下面的checkTime函数，设置小于10的时间数字格式，例如5秒显示成05秒
+  dd = checkTime(dd);
+  hh = checkTime(hh);
+  mm = checkTime(mm);
+  return yyyy + "-" + MM + "-" + dd + "T" + hh + ":" + mm
+
+  function checkTime(i) {
+    if (i < 10) {
+      i = "0" + i;//这里如果是一位数则在前面添加一位0
+    }
+    return i
   }
 }
 </script>

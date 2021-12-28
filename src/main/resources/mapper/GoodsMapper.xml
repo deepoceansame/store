@@ -10,6 +10,7 @@
     <result column="account_id" jdbcType="INTEGER" property="accountId" />
     <result column="price" jdbcType="REAL" property="price" />
   </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -240,4 +241,18 @@
       price = #{price,jdbcType=REAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="updateTradingInf">
+    update purchaserecord
+    set tradingDate = #{tradingDate},
+        tradinglocation = #{tradingLocation},
+        payment = #{payment}
+    where buyerId = #{buyerId}
+        and goodsId = #{goodsId}
+  </update>
+
+  <select id="getAccountIdByGoodsId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select account_id from goods where id = #{goodsId}
+  </select>
+
 </mapper>

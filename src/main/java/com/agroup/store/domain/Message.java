@@ -16,6 +16,16 @@ public class Message {
 
     private String content;
 
+    public Message(){};
+    public Message(Integer senderid, Integer receiverid, Integer goodsid, Timestamp sendtime, Integer type, String content) {
+        this.senderid = senderid;
+        this.receiverid = receiverid;
+        this.goodsid = goodsid;
+        this.sendtime = sendtime;
+        this.type = type;
+        this.content = content;
+    }
+
     public Integer getSenderid() {
         return senderid;
     }
