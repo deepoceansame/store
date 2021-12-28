@@ -1,5 +1,6 @@
 drop table if exists goods;
 drop table if exists account cascade;
+drop table if exists desiredgoods;
 drop table if exists purchaseRecord;
 drop table if exists message;
 drop table if exists goodsimage;
