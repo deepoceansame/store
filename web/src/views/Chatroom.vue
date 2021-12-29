@@ -6,6 +6,24 @@
   <br/>
   <input type="file" :value="imgToSubmit" name="image" accept="image/png, image/jpeg" @change="onFileChange"/>
   <button @click="submitImage">提交图片</button>
+
+
+  <br/><button @click="showPanel">给对方转账</button>
+  <a-modal
+      v-model:visible="visible"
+      title="输入金额 然后点击转账"
+      :ok-button-props="{ disabled: false }"
+      :cancel-button-props="{ disabled: false }"
+      @ok="handleTrans"
+  >
+    <template #footer>
+      <a-button key="back" @click="handleCan">取消</a-button>
+      <a-button key="submit" type="primary" :loading="loading" @click="handleTrans">转账</a-button>
+    </template>
+    <input v-model="transferAmount"/>
+  </a-modal>
+
+
   <br/><button v-if="!isSeller" @click="showTransferPanel">购买</button>
   <br/><button @click="showPurchaseRecord">查看订单</button>
   <a-modal
@@ -15,6 +33,7 @@
       :cancel-button-props="{ disabled: false }"
       @ok="handleTransfer"
   >
+
     <template #footer>
       <a-button key="back" @click="handleCancel">取消</a-button>
       <a-button key="submit" type="primary" :loading="loading" @click="handleTransfer">转账</a-button>
@@ -103,6 +122,7 @@ export default {
     const transferAmount = ref('')
     const transferDate = ref('')
     const transferLocation = ref('')
+    const  visible = ref(false)
     const purchaseRec = reactive({
       buyerName: '',
       goodsName: '',
@@ -361,6 +381,39 @@ export default {
       )
     }
 
+    const handleTrans = () => {
+      loading.value = true
+      let ta = transferAmount.value.trim()
+      const intRegx = /^[1-9]\d{0,8}$/
+      const floatRegex = /^[1-9]\d{0,8}\.\d{0,6}$/
+      const floatRegex2 = /^0\.\d{0,6}$/
+      if (ta === '') {
+        message.info('输入转账金额')
+        loading.value = false
+      } else if (!(intRegx.test(ta) || floatRegex.test(ta) || floatRegex2.test(ta))) {
+        message.info("不可接受的转账额度");
+        loading.value = false
+      } else {
+        const fd = new FormData();
+        fd.append('senderid', Number(route.params.senderid))
+        fd.append('receiverid', Number(route.params.receiverid))
+        fd.append('amount', transferAmount.value)
+        axios.post("account/transferMoney", fd).then((response) => {
+          message.info(response.data.message)
+        })
+        transferAmount.value = ''
+        loading.value = false
+      }
+    }
+
+    const handleCan = () => {
+      visible.value = false
+    }
+
+    const showPanel = () => {
+      visible.value = true
+    }
+
     onMounted(
         () => {
           init();
@@ -390,7 +443,11 @@ export default {
       purchaseRec,
       handleTransfer,
       handleCancel,
-      loading
+      loading,
+      handleTrans,
+      handleCan,
+      visible,
+      showPanel
     }
   },
 
