@@ -132,7 +132,7 @@ export default {
               message.info('参与过了')
             }
             else{
-              message.info('成功参与')
+              message.info(response.data.message)
             }
           }
       )
