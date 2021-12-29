@@ -6,10 +6,11 @@
   <br/>
   <input type="file" :value="imgToSubmit" name="image" accept="image/png, image/jpeg" @change="onFileChange"/>
   <button @click="submitImage">提交图片</button>
-  <br/><button @click="showTransferPanel">给对方转账</button>
+  <br/><button v-if="!isSeller" @click="showTransferPanel">购买</button>
+  <br/><button @click="showPurchaseRecord">查看订单</button>
   <a-modal
       v-model:visible="trans_visible"
-      title="输入金额 然后点击转账"
+      title="填写订单"
       :ok-button-props="{ disabled: false }"
       :cancel-button-props="{ disabled: false }"
       @ok="handleTransfer"
@@ -18,28 +19,99 @@
       <a-button key="back" @click="handleCancel">取消</a-button>
       <a-button key="submit" type="primary" :loading="loading" @click="handleTransfer">转账</a-button>
     </template>
+    <p>选择交易时间</p>
+    <input v-model="transferDate" ref="date" id="date" type="datetime-local"/>
+    <br><br>
+    <p>选择交易地点</p>
+    <select v-model="transferLocation" name="location">
+      <option value="一教">一教</option>
+      <option value="二教">二教</option>
+      <option value="荔园1栋">荔园1栋</option>
+      <option value="荔园2栋">荔园2栋</option>
+      <option value="荔园3栋">荔园3栋</option>
+      <option value="荔园4栋">荔园4栋</option>
+      <option value="荔园5栋">荔园5栋</option>
+      <option value="荔园6栋">荔园6栋</option>
+      <option value="欣园">欣园</option>
+      <option value="湖畔1栋">湖畔1栋</option>
+      <option value="湖畔2栋">湖畔2栋</option>
+      <option value="湖畔3栋">湖畔3栋</option>
+      <option value="湖畔4栋">湖畔4栋</option>
+      <option value="湖畔5栋">湖畔5栋</option>
+      <option value="11栋">11栋</option>
+      <option value="润扬体育馆">润扬体育馆</option>
+    </select>
+    <br>
+    <br>
+    <p>选择转账金额</p>
     <input v-model="transferAmount"/>
   </a-modal>
+
+  <a-modal
+      v-model:visible="purRec_visible"
+      title="订单详情"
+      :ok-button-props="{ disabled: false }"
+      :cancel-button-props="{ disabled: false }"
+      @ok="closePurRec">
+
+    <p v-if="isExistPurRec">买家： {{purchaseRec.buyerName}}</p>
+    <br v-if="isExistPurRec">
+    <p v-if="isExistPurRec">卖家： {{purchaseRec.sellerName}}</p>
+    <br v-if="isExistPurRec">
+    <p v-if="isExistPurRec">商品： {{purchaseRec.goodsName}}</p>
+    <br v-if="isExistPurRec">
+    <p v-if="isExistPurRec">交易时间： {{purchaseRec.tradingDate}}</p>
+    <br v-if="isExistPurRec">
+    <p v-if="isExistPurRec">交易地点： {{purchaseRec.tradingLocation}}</p>
+    <br v-if="isExistPurRec">
+    <p v-if="isExistPurRec">支付金额： {{purchaseRec.payment}}</p>
+    <template v-if="isExistPurRec" #footer>
+      <a-button v-if="!isSeller" key="back" type="primary" @click="closePurRec">确认</a-button>
+      <a-button v-if="isSeller" key="submit" type="danger" :loading="loading" @click="cancelPurRec">取消订单，退出交易</a-button>
+      <a-button v-if="isSeller" key="submit" type="primary" :loading="loading" @click="confirmPurRec">确认订单，完成交易</a-button>
+    </template>
+
+    <a-div v-if="!isExistPurRec">
+      <p>当前没有订单！</p>
+    </a-div>
+
+  </a-modal>
+
 <!--  {{messageList}}-->
 </template>
 
 <script>
-import {reactive, ref} from "vue";
+import {onMounted, reactive, ref} from "vue";
 import {useRoute} from 'vue-router'
 import axios from "axios";
 import MessageListItem from "@/components/MessageListItem";
 import FormData from "form-data";
 import {message} from "ant-design-vue";
+
 export default {
   name: "Chatroom",
   components:{MessageListItem},
   setup(){
+    const isSeller = ref(false)
+    const isExistPurRec = ref(false)
     var messageList = ref([]);
     const route = useRoute();
     const trans_visible = ref(false)
+    const purRec_visible = ref(false)
     const loading = ref(false)
     var tt = ref('')
     const transferAmount = ref('')
+    const transferDate = ref('')
+    const transferLocation = ref('')
+    const purchaseRec = reactive({
+      buyerName: '',
+      goodsName: '',
+      sellerName:'',
+      effective: false,
+      tradingDate: undefined,
+      tradingLocation: '',
+      payment:undefined
+    });
     let imgToSubmit = null
     let tempImage = ''
     const getMessage =  () => {
@@ -143,28 +215,121 @@ export default {
       trans_visible.value = true
     }
 
+    const confirmPurRec = () =>{
+      axios.get("account/confirmPurchaseRecord/",{
+        params:{
+          buyerId: route.params.receiverid,
+          goodsId: route.params.goodsid
+        }
+      }).then(
+          (response) =>  {
+            const data = response.data
+            isExistPurRec.value = false
+            message.info(response.data.message)
+          }
+      );
+    }
+
+    const cancelPurRec = () =>{
+      axios.get("account/cancelPurRec/",{
+        params:{
+          buyerId: route.params.receiverid,
+          goodsId: route.params.goodsid
+        }
+      }).then(
+          (response) =>  {
+            const data = response.data
+            if(data.success){
+              isExistPurRec.value = false
+            }
+            message.info(response.data.message)
+          }
+      );
+    }
+
+    const showPurchaseRecord = () =>{
+      axios.get("/goods/getPurchaseRecord/",{
+        params:{
+          buyerId: isSeller.value ? route.params.receiverid : route.params.senderid,
+          goodsId: route.params.goodsid
+        }
+      }).then(
+          (response) =>  {
+            const data = response.data.content
+            purchaseRec.tradingDate = dateFormat(data.tradingDate)
+            purchaseRec.tradingLocation = data.tradingLocation
+            purchaseRec.payment = data.payment
+            axios.get("/account/getbyid/"+(isSeller.value ? route.params.receiverid : route.params.senderid)).then(
+                (response) => {
+                  const data = response.data.content
+                  purchaseRec.buyerName = data.name
+                }
+            )
+            axios.get("/account/getbyid/"+(isSeller.value ? route.params.senderid : route.params.receiverid)).then(
+                (response) => {
+                  const data = response.data.content
+                  purchaseRec.sellerName = data.name
+                }
+            )
+            axios.get("/goods/getbyid/"+route.params.goodsid).then(
+                (response) => {
+                  const data = response.data.content
+                  purchaseRec.goodsName = data.name
+                }
+            )
+          }
+      );
+      purRec_visible.value = true
+    }
+
+    const closePurRec = () =>{
+      purRec_visible.value = false
+    }
+
     const handleTransfer = () => {
       loading.value = true
       let ta = transferAmount.value.trim()
+      let date = transferDate.value
+      let location = transferLocation.value
       const intRegx = /^[1-9]\d{0,8}$/
       const floatRegex = /^[1-9]\d{0,8}\.\d{0,6}$/
       const floatRegex2 = /^0\.\d{0,6}$/
-      if (ta === '') {
+      if (date === ''){
+        message.info('输入交易日期')
+        loading.value = false
+      } else if(location ===''){
+        message.info('输入交易地点')
+        loading.value = false
+      } else if (ta === '') {
         message.info('输入转账金额')
         loading.value = false
       } else if (!(intRegx.test(ta) || floatRegex.test(ta) || floatRegex2.test(ta))) {
         message.info("不可接受的转账额度");
         loading.value = false
       } else {
-        const fd = new FormData();
-        fd.append('senderid', Number(route.params.senderid))
-        fd.append('receiverid', Number(route.params.receiverid))
-        fd.append('amount', transferAmount.value)
-        axios.post("account/transferMoney", fd).then((response) => {
-           message.info(response.data.message)
-        })
-        transferAmount.value = ''
-        loading.value = false
+        axios.get("/account/getMoney/" + route.params.senderid,).then(
+            (response) =>  {
+              const data = response.data.content
+              if (data < transferAmount.value){
+                message.info("余额不足，请先充值")
+                loading.value = false
+              }else {
+                const fd = new FormData();
+                fd.append('goodsId', Number(route.params.goodsid))
+                fd.append('buyerId', Number(route.params.senderid))
+                fd.append('tradingDate', Date(transferDate))
+                fd.append('tradingLocation', transferLocation.value)
+                fd.append('payment', transferAmount.value)
+                axios.post("goods/submitPurchaseForm", fd).then((response) => {
+                  message.info(response.data.message)
+                })
+                transferAmount.value = ''
+                isExistPurRec.value = true
+                loading.value = false
+                trans_visible.value = false
+              }
+            }
+        );
       }
     }
 
@@ -172,8 +337,40 @@ export default {
       trans_visible.value = false
     }
 
+    const init = () => {
+      axios.get("/account/getAccountByGoodsId/"+route.params.goodsid).then(
+          (response) => {
+            const data = Number(response.data.content)
+            isSeller.value = (data === Number(route.params.senderid))
+            axios.get("/goods/getPurchaseRecord/", {
+              params:{
+                buyerId: isSeller.value ? route.params.receiverid : route.params.senderid,
+                goodsId: route.params.goodsid
+              }
+            }).then(
+                (response) => {
+                  const data = response.data.content
+                  if(data !== null){
+                    isExistPurRec.value = (data.effective === false && data.tradingLocation !== null);
+                  }else {
+                    isExistPurRec.value = false
+                  }
+                }
+            )
+          },
+      )
+    }
+
+    onMounted(
+        () => {
+          init();
+        }
+    )
+
     return {
       tt,
+      isSeller,
+      isExistPurRec,
       getMessage,
       submitText,
       messageList,
@@ -181,12 +378,66 @@ export default {
       submitImage,
       imgToSubmit,
       showTransferPanel,
+      showPurchaseRecord,
+      closePurRec,
+      confirmPurRec,
+      cancelPurRec,
       trans_visible,
+      purRec_visible,
       transferAmount,
+      transferDate,
+      transferLocation,
+      purchaseRec,
       handleTransfer,
       handleCancel,
       loading
     }
+  },
+
+  beforeUpdate(){
+    this.$nextTick(()=>{
+      var date = document.getElementById("date")
+      date.setAttribute("min", getDate())
+    })
+  },
+
+}
+
+
+function dateFormat (time) {
+  var date = new Date(time);
+  var year = date.getFullYear();
+  /* 在日期格式中，月份是从0开始的，因此要加0
+   * 使用三元表达式在小于10的前面加0，以达到格式统一  如 09:11:05
+   * */
+  var month =
+      date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+  var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+  var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+  var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+  var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+  // 拼接
+  return year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+}
+
+function getDate() {
+  var today = new Date();//返回当前日期和时间
+  var yyyy = today.getFullYear();//获取当前年份
+  var MM = today.getMonth() + 1;//因为getMonth()方法获取的是索引值，获取的月份为0-11，所以要＋1
+  var dd = today.getDate();//从 Date 对象返回一个月中的某一天 (1 ~ 31）
+  var hh = today.getHours();//返回 Date 对象的小时 (0 ~ 23)
+  var mm = today.getMinutes();//返回 Date 对象的分钟 (0 ~ 59)
+  MM = checkTime(MM);//调用下面的checkTime函数，设置小于10的时间数字格式，例如5秒显示成05秒
+  dd = checkTime(dd);
+  hh = checkTime(hh);
+  mm = checkTime(mm);
+  return yyyy + "-" + MM + "-" + dd + "T" + hh + ":" + mm
+
+  function checkTime(i) {
+    if (i < 10) {
+      i = "0" + i;//这里如果是一位数则在前面添加一位0
+    }
+    return i
   }
 }
 </script>

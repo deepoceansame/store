@@ -4,9 +4,12 @@ import com.agroup.store.domain.*;
 import com.agroup.store.mapper.AccountMapper;
 import com.agroup.store.mapper.GoodsMapper;
 import com.agroup.store.mapper.GoodsimageMapper;
+import com.agroup.store.mapper.MessageMapper;
 import com.agroup.store.req.GetOthersGoodsReq;
 import com.agroup.store.req.GoodsReq;
 import com.agroup.store.req.GoodsSaveReq;
+import com.agroup.store.req.PurchaseFormReq;
+import com.agroup.store.resp.CommonResp;
 import com.agroup.store.resp.GoodsResp;
 import com.agroup.store.resp.PageResp;
 import com.agroup.store.util.CopyUtil;
@@ -30,6 +33,7 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,6 +50,9 @@ public class GoodsService {
 
     @Resource
     private AccountMapper accountMapper;
+
+    @Resource
+    private MessageMapper messageMapper;
 
     private static final Logger LOG = LoggerFactory.getLogger(GoodsService.class);
 
@@ -201,6 +208,35 @@ public class GoodsService {
 
     }
 
+    public CommonResp submitPurchaseForm(PurchaseFormReq req){
+        CommonResp resp = new CommonResp();
+        Integer buyerId = req.getBuyerId();
+        Integer goodsId = req.getGoodsId();
+        Date tradingDate = req.getTradingDate();
+        String tradingLocation = req.getTradingLocation();
+        Float payment = req.getPayment();
+        Integer sellerId = goodsMapper.getAccountIdByGoodsId(goodsId);
+        boolean success = goodsMapper.updateTradingInf(buyerId, goodsId, tradingDate, tradingLocation, payment) == 1;
+        if(success){
+            String content = "[购买通知]买家已下单该商品，请您进行确认。";
+            Message message = new Message(buyerId,sellerId,goodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+            messageMapper.addMessage(message);
+            resp.setSuccess(true);
+            resp.setMessage("成功创建订单，待买家确认");
+        }else {
+            resp.setSuccess(false);
+            resp.setMessage("创建订单失败");
+        }
+        return resp;
+
+    }
+
+    public CommonResp<PurchaseRecord> getPurchaseRecord(Integer buyerId, Integer goodsId){
+        CommonResp<PurchaseRecord> resp = new CommonResp();
+        PurchaseRecord purchaseRecord = accountMapper.selectPurchaseRecordByPid(buyerId, goodsId).get(0);
+        resp.setContent(purchaseRecord);
+        return resp;
+    }
 
 }
 

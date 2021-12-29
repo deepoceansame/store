@@ -7,6 +7,7 @@ import com.agroup.store.mapper.GoodsimageMapper;
 import com.agroup.store.req.GetOthersGoodsReq;
 import com.agroup.store.req.GoodsReq;
 import com.agroup.store.req.GoodsSaveReq;
+import com.agroup.store.req.PurchaseFormReq;
 import com.agroup.store.resp.CommonResp;
 import com.agroup.store.resp.GoodsResp;
 import com.agroup.store.resp.PageResp;
@@ -76,4 +77,16 @@ public class GoodsController {
         CommonResp resp = new CommonResp();
         return resp;
     }
+
+    @PostMapping("goods/submitPurchaseForm")
+    public CommonResp submitPurchaseForm(PurchaseFormReq req){
+        return goodsService.submitPurchaseForm(req);
+    }
+
+    @GetMapping("goods/getPurchaseRecord")
+    public CommonResp getPurchaseRecord(Integer buyerId, Integer goodsId){
+        return goodsService.getPurchaseRecord(buyerId, goodsId);
+    }
+
+
 }

@@ -257,7 +257,7 @@
   </update>
 
   <insert id="insertPurchaseRecordWithoutEffect" >
-    insert into purchaserecord values (#{accountId},#{goodsId},'false');
+    insert into purchaserecord values (#{accountId},#{goodsId},'false', null, null, null);
   </insert>
 
   <update id="updatePurchaseRecord">
@@ -338,5 +338,8 @@
     update account set money=#{amount, jdbcType=REAL} where id=#{accountId, jdbcType=INTEGER}
   </update>
 
+  <select id="getAccountIdByGoodsId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select account_id from goods where id = #{goodsId}
+  </select>
 
 </mapper>
