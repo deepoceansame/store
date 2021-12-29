@@ -98,9 +98,19 @@ public class AccountController {
         return accountService.purchaseGoods(buyerId, goodsId);
     }
 
+    @GetMapping("account/confirmSupplyRecord")
+    public CommonResp confirmSupplyRecord(Integer sellerId, Integer desiredGoodsId){
+        return accountService.confirmSupplyRecord(sellerId, desiredGoodsId);
+    }
+
     @GetMapping("account/cancelPurRec")
     public CommonResp cancelPurRec(Integer buyerId, Integer goodsId){
         return accountService.cancelPurRec(buyerId, goodsId);
+    }
+
+    @GetMapping("account/cancelSupRec")
+    public CommonResp cancelSupRec(Integer sellerId, Integer desiredGoodsId){
+        return accountService.cancelSupRec(sellerId, desiredGoodsId);
     }
 
     @GetMapping("account/showPurchaseRecordsByAccountId")
@@ -146,6 +156,11 @@ public class AccountController {
     @GetMapping("account/getAccountByGoodsId/{id}")
     public CommonResp getAccountByGoodsId(@PathVariable Integer id) {
         return accountService.getAccountByGoodsId(id);
+    }
+
+    @GetMapping("account/getAccountByDesiredGoodsId/{id}")
+    public CommonResp getAccountByDesiredGoodsId(@PathVariable Integer id) {
+        return accountService.getAccountByDesiredGoodsId(id);
     }
 
     @PostMapping("account/updateAvatar")

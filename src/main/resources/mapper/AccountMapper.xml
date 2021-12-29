@@ -264,6 +264,10 @@
     update purchaserecord set effective='true' where buyerId= #{accountId} and goodsId=#{goodsId}
   </update>
 
+  <update id="updateSupplyRecord">
+    update supplyrecord set effective='true' where accountid= #{accountId} and desiredgoodsid=#{desiredGoodsId}
+  </update>
+
   <resultMap id="goodsMap" type="com.agroup.store.resp.GoodsPurchaseRecordResp">
     <id column="buyerId"></id>
     <result column="goodsId" property="id"></result>
@@ -282,7 +286,7 @@
   </select>
 
   <insert id="insertSupplyRecord" >
-    insert into supplyrecord values (#{accountId},#{desiredgoodsId});
+    insert into supplyrecord (accountid, desiredgoodsid, effective) values (#{accountId},#{desiredgoodsId}, "false");
   </insert>
 
   <select id="getSupplyingGoodsByAccountId" parameterType="java.lang.Integer" resultType="com.agroup.store.domain.DesiredGoods">
@@ -322,6 +326,12 @@
         where buyerId = #{buyerId} and goodsId = #{goodsId}
   </select>
 
+  <select id="selectSupplyRecordByPid" resultType="com.agroup.store.domain.SupplyRecord">
+    select *
+    from supplyrecord
+    where accountid = #{sellerId} and desiredgoodsid = #{desiredGoodsId}
+  </select>
+
   <update id="updateAvatar">
     update account set avator = #{filename, jdbcType=VARCHAR} where id=#{accountId, jdbcType=INTEGER}
   </update>
@@ -340,6 +350,10 @@
 
   <select id="getAccountIdByGoodsId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
     select account_id from goods where id = #{goodsId}
+  </select>
+
+  <select id="getAccountIdByDesiredGoodsId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select account_id from desiredgoods where id = #{desiredGoodsId}
   </select>
 
 </mapper>

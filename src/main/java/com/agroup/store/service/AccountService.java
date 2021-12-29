@@ -3,10 +3,7 @@ package com.agroup.store.service;
 import com.agroup.store.domain.*;
 import com.agroup.store.exception.BusinessException;
 import com.agroup.store.exception.BusinessExceptionCode;
-import com.agroup.store.mapper.AccountMapper;
-import com.agroup.store.mapper.DesiredGoodsMapper;
-import com.agroup.store.mapper.GoodsMapper;
-import com.agroup.store.mapper.MessageMapper;
+import com.agroup.store.mapper.*;
 import com.agroup.store.req.*;
 import com.agroup.store.resp.*;
 import com.agroup.store.util.CopyUtil;
@@ -53,6 +50,9 @@ public class AccountService {
 
     @Resource
     private MessageMapper messageMapper;
+
+    @Resource
+    private MessagedMapper messagedMapper;
 
     @Autowired
     JavaMailSender javaMailSender;
@@ -166,6 +166,22 @@ public class AccountService {
         return resp;
     }
 
+    public CommonResp cancelSupRec(Integer sellerId, Integer desiredGoodsId){
+        Integer buyerId = desiredGoodsMapper.getAccountIdByDesiredGoodsId(desiredGoodsId);
+        Boolean success = desiredGoodsMapper.updateTradingEffectToFalse(sellerId, desiredGoodsId) == 1;
+        CommonResp resp =new CommonResp();
+        resp.setSuccess(success);
+        if(success){
+            resp.setMessage("成功取消交易");
+            String content = "[交易失败]卖家取消了求购订单";
+            Messaged messaged = new Messaged(sellerId,buyerId, desiredGoodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+            messagedMapper.addMessage(messaged);
+        }else {
+            resp.setMessage("取消失败");
+        }
+        return resp;
+    }
+
     public CommonResp purchaseGoods(Integer buyerId, Integer goodsId) {
         Integer sellerId = goodsMapper.getAccountIdByGoodsId(goodsId);
         PurchaseRecord purchaseRecord = accountMapper.selectPurchaseRecordByPid(buyerId, goodsId).get(0);
@@ -188,6 +204,7 @@ public class AccountService {
                 messageMapper.addMessage(message);
             }
         }else {
+            goodsMapper.updateTradingEffectToFalse(buyerId, goodsId);
             resp1.setMessage("买家余额不足，订单取消！");
             String content = "[交易失败]您的余额不足，请充值！";
             Message message = new Message(sellerId,buyerId,goodsId, new Timestamp(System.currentTimeMillis()), 1, content);
@@ -196,6 +213,40 @@ public class AccountService {
 
         return resp1;
     }
+
+    public CommonResp confirmSupplyRecord(Integer sellerId, Integer desiredGoodsId) {
+        Integer buyerId = desiredGoodsMapper.getAccountIdByDesiredGoodsId(desiredGoodsId);
+        SupplyRecord supplyRecord = accountMapper.selectSupplyRecordByPid(sellerId, desiredGoodsId).get(0);
+        Float payment = supplyRecord.getPayment();
+        CommonResp resp = transferMoney(buyerId, sellerId, payment.toString());
+        CommonResp resp1 = new CommonResp();
+        resp1.setSuccess(resp.getSuccess());
+        if(resp.getSuccess()){
+            boolean success = accountMapper.updateSupplyRecord(sellerId, desiredGoodsId) == 1;
+            resp1.setSuccess(success);
+            if(success){
+                resp1.setMessage("交易成功");
+                String content = "[交易成功]卖家确认求购订单，交易成功！";
+                Messaged messaged = new Messaged(sellerId, buyerId, desiredGoodsId,new Timestamp(System.currentTimeMillis()), 1, content);
+                messagedMapper.addMessage(messaged);
+            }else {
+                resp1.setMessage("交易失败");
+                String content = "[交易失败]原因不明！";
+                Messaged messaged = new Messaged(sellerId,buyerId,desiredGoodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+                messagedMapper.addMessage(messaged);
+            }
+        }else {
+            desiredGoodsMapper.updateTradingEffectToFalse(sellerId, desiredGoodsId);
+            resp1.setMessage("买家余额不足，订单取消！");
+            String content = "[交易失败]您的余额不足，请充值！";
+            Messaged messaged = new Messaged(sellerId,buyerId, desiredGoodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+            messagedMapper.addMessage(messaged);
+        }
+
+        return resp1;
+    }
+
+
 
     public PageResp<GoodsPurchaseRecordResp> showPurchaseRecordsByAccountId(PurchaseRecordReq req) {
         Integer accountId = req.getAccountId();
@@ -253,6 +304,12 @@ public class AccountService {
     public CommonResp<Integer> getAccountByGoodsId(Integer goodsId) {
         CommonResp<Integer> resp = new CommonResp();
         resp.setContent(accountMapper.getAccountIdByGoodsId(goodsId));
+        return resp;
+    }
+
+    public CommonResp<Integer> getAccountByDesiredGoodsId(Integer desiredGoodsId) {
+        CommonResp<Integer> resp = new CommonResp();
+        resp.setContent(accountMapper.getAccountIdByDesiredGoodsId(desiredGoodsId));
         return resp;
     }
 
