@@ -4,9 +4,6 @@ import com.agroup.store.domain.*;
 
 import java.util.List;
 
-import com.agroup.store.req.DesiredGoodsReq;
-import com.agroup.store.req.GoodsReq;
-import com.agroup.store.req.PurchaseRecordReq;
 import com.agroup.store.req.QuitBuyReq;
 import com.agroup.store.resp.GoodsPurchaseRecordResp;
 import org.apache.ibatis.annotations.Param;
@@ -67,4 +64,8 @@ public interface AccountMapper {
     List<SupplyRecord> selectSupplyRecordByPid(@Param("sellerId") Integer sellerId, @Param("desiredGoodsId") Integer desiredGoodsId);
 
     int updateSupplyRecord(@Param("accountId") Integer accountId, @Param("desiredGoodsId") Integer desiredGoodsId);
+
+    int decrease1CreditPoint(Integer Id);
+
+    int increase1CreditPoint(Integer Id);
 }

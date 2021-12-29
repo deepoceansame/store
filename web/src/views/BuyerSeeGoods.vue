@@ -144,9 +144,11 @@ export default {
             if(typeof(response.data.message)=='undefined'){
               message.info('参与过了')
             }
-            else{
+            else if(response.data.message === '成功参与'){
               message.info('成功参与')
               hasenrolled.value = true
+            }else {
+              message.info(response.data.message)
             }
           }
       )
