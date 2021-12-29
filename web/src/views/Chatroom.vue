@@ -1,6 +1,6 @@
 <template>
   <message-list-item v-for="(mess, index) in messageList" :mess="mess" :key="index"/>
-  <button @click="getMessage">getMessage</button>
+  <button @click="getMessage">进入聊天室</button>
   <br/>
   <input v-model="tt"/>{{tt}}<button @click="submitText">提交</button>
   <br/>
@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import {onMounted, reactive, ref} from "vue";
+import {onBeforeUnmount, onMounted, reactive, ref} from "vue";
 import {useRoute} from 'vue-router'
 import axios from "axios";
 import MessageListItem from "@/components/MessageListItem";
@@ -117,7 +117,9 @@ export default {
     const route = useRoute();
     const trans_visible = ref(false)
     const purRec_visible = ref(false)
+    let showMessage = ref(false)
     const loading = ref(false)
+    let timer = undefined
     var tt = ref('')
     const transferAmount = ref('')
     const transferDate = ref('')
@@ -136,18 +138,7 @@ export default {
     let tempImage = ''
     const getMessage =  () => {
       console.log(route.params)
-      axios.get('/message/getmessage',{
-        params:{
-          goodsid: route.params.goodsid,
-          senderid: route.params.senderid,
-          receiverid: route.params.receiverid
-        }
-      }).then(
-          function (response){
-            console.log(response)
-            messageList.value = response.data.content
-          }
-      )
+      showMessage.value = true
     }
 
     const addTxtContent = (content) => {
@@ -168,28 +159,15 @@ export default {
       console.log(tt.value);
       if(tt.value.trim().length !== 0){
         console.log(tt.value)
-        addTxtContent(tt.value);
-        messageList.value.push({
-          goodsid: route.params.goodsid,
-          senderid: route.params.senderid,
-          receiverid: route.params.receiverid,
-          type: 1,
-          content: tt.value
-        });
+        addTxtContent(tt.value)
+        showMessage.value = true
       }
       tt.value = '';
     }
 
     const submitImage = ()=>{
       if(tempImage!==null && tempImage.trim().length !== 0) {
-        messageList.value.push({
-          goodsid: route.params.goodsid,
-          senderid: route.params.senderid,
-          receiverid: route.params.receiverid,
-          type: 2,
-          content: tempImage,
-          temp: true
-        });
+        showMessage.value = true
       }
 
       if(imgToSubmit!==null){
@@ -415,11 +393,37 @@ export default {
       visible.value = true
     }
 
+
+
     onMounted(
         () => {
           init();
+          //定时器
+          timer = setInterval(() => {
+            if(showMessage.value){
+              axios.get('/message/getmessage',{
+                params:{
+                  goodsid: route.params.goodsid,
+                  senderid: route.params.senderid,
+                  receiverid: route.params.receiverid
+                }
+              }).then(
+                  function (response){
+                    console.log(response)
+                    messageList.value = response.data.content
+                  }
+              )
+            }
+          }, 1000)
         }
     )
+
+    onBeforeUnmount(()=>{
+      clearInterval(timer)
+    }
+    )
+
+
 
     return {
       tt,
@@ -434,6 +438,7 @@ export default {
       showTransferPanel,
       showPurchaseRecord,
       closePurRec,
+      timer,
       confirmPurRec,
       cancelPurRec,
       trans_visible,
