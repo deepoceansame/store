@@ -231,6 +231,12 @@ public class GoodsService {
 
     }
 
+    public CommonResp<PurchaseRecord> getPurchaseRecord(Integer buyerId, Integer goodsId){
+        CommonResp<PurchaseRecord> resp = new CommonResp();
+        PurchaseRecord purchaseRecord = accountMapper.selectPurchaseRecordByPid(buyerId, goodsId).get(0);
+        resp.setContent(purchaseRecord);
+        return resp;
+    }
 
 }
 

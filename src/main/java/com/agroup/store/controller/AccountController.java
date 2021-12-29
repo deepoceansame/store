@@ -93,9 +93,14 @@ public class AccountController {
     }
 
     //购买生效:effective: false -> true
-    @GetMapping("account/purchaseGoods")
-    public CommonResp purchaseGoods(@Valid RequestGoodsReq req){
-        return accountService.purchaseGoods(req);
+    @GetMapping("account/confirmPurchaseRecord")
+    public CommonResp confirmPurchaseRecord(Integer buyerId, Integer goodsId){
+        return accountService.purchaseGoods(buyerId, goodsId);
+    }
+
+    @GetMapping("account/cancelPurRec")
+    public CommonResp cancelPurRec(Integer buyerId, Integer goodsId){
+        return accountService.cancelPurRec(buyerId, goodsId);
     }
 
     @GetMapping("account/showPurchaseRecordsByAccountId")
@@ -138,6 +143,10 @@ public class AccountController {
         resp.setContent(accountService.getBuyer(goodsId));
         return resp;
     }
+    @GetMapping("account/getAccountByGoodsId/{id}")
+    public CommonResp getAccountByGoodsId(@PathVariable Integer id) {
+        return accountService.getAccountByGoodsId(id);
+    }
 
     @PostMapping("account/updateAvatar")
     public void updateAvatar(@RequestParam("accountid") String accountid, MultipartFile img){
@@ -145,6 +154,11 @@ public class AccountController {
             LOG.info("收到的图片的大小{}", img.getSize());
             accountService.updateAvator(accountid, img);
         }
+    }
+
+    @GetMapping("account/getMoney/{id}")
+    public CommonResp getMoney(@PathVariable Integer id){
+        return accountService.getMoney(id);
     }
 
     @PostMapping("account/chargeMoney")

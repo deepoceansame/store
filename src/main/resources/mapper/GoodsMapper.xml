@@ -244,7 +244,8 @@
 
   <update id="updateTradingInf">
     update purchaserecord
-    set tradingDate = #{tradingDate},
+    set effective = "false" ,
+        tradingDate = #{tradingDate},
         tradinglocation = #{tradingLocation},
         payment = #{payment}
     where buyerId = #{buyerId}
@@ -254,5 +255,15 @@
   <select id="getAccountIdByGoodsId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
     select account_id from goods where id = #{goodsId}
   </select>
+
+  <update id="updateTradingEffectToFalse">
+    update purchaserecord
+    set effective = "false" ,
+        tradingDate = null,
+        tradinglocation = null,
+        payment = null
+    where buyerId = #{buyerId}
+      and goodsId = #{goodsId}
+  </update>
 
 </mapper>

@@ -35,4 +35,5 @@ public interface GoodsMapper {
 
     int updateTradingInf(@Param("buyerId") Integer buyerId, @Param("goodsId")Integer goodsId, @Param("tradingDate")Date tradingDate, @Param("tradingLocation")String tradingLocation, @Param("payment") Float payment);
 
+    int updateTradingEffectToFalse(@Param("buyerId") Integer buyerId, @Param("goodsId")Integer goodsId);
 }

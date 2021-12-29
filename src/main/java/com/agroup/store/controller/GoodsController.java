@@ -83,5 +83,10 @@ public class GoodsController {
         return goodsService.submitPurchaseForm(req);
     }
 
+    @GetMapping("goods/getPurchaseRecord")
+    public CommonResp getPurchaseRecord(Integer buyerId, Integer goodsId){
+        return goodsService.getPurchaseRecord(buyerId, goodsId);
+    }
+
 
 }
