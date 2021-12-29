@@ -18,7 +18,7 @@
     <input v-model="chargeMoney"/>{{chargeMoney}}<button @click="charge">充值</button>
   </div>
 
-  <button @click="clk">ckj</button>
+<!--  <button @click="clk">ckj</button>-->
 </template>
 
 <script>
