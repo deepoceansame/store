@@ -1,5 +1,5 @@
 <template>
-  <div>goodsInfo:{{goods}}</div>
+<!--  <div>goodsInfo:{{goods}}</div>-->
   <div>
     <h2>商品信息</h2>
     <table border=2>
@@ -18,7 +18,7 @@
       {{goods.description}}
     </p>
   </div>
-  <div>sellerInfo:{{sellerAccount}}</div>
+<!--  <div>sellerInfo:{{sellerAccount}}</div>-->
   <div>
     <h2>卖家信息</h2>
     <table border=2>
@@ -34,7 +34,7 @@
       </tr>
     </table>
   </div>
-  {{goodsimgs}}
+<!--  {{goodsimgs}}-->
   <div>
     <h2>商品图片</h2>
     <img v-for="(img, index) in goodsimgs"

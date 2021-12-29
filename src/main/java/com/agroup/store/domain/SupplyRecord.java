@@ -2,8 +2,8 @@ package com.agroup.store.domain;
 
 import java.util.Date;
 
-public class PurchaseRecord {
-    private Integer buyerId;
+public class SupplyRecord {
+    private Integer sellerId;
 
     private Integer goodsId;
 
@@ -15,12 +15,12 @@ public class PurchaseRecord {
 
     private Float payment;
 
-    public Integer getBuyerId() {
-        return buyerId;
+    public Integer getSellerId() {
+        return sellerId;
     }
 
-    public void setBuyerId(Integer buyerId) {
-        this.buyerId = buyerId;
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
     }
 
     public Integer getGoodsId() {
@@ -65,8 +65,8 @@ public class PurchaseRecord {
 
     @Override
     public String toString() {
-        return "PurchaseRecord{" +
-                "buyerId=" + buyerId +
+        return "SupplyRecord{" +
+                "sellerId=" + sellerId +
                 ", goodsId=" + goodsId +
                 ", effective=" + effective +
                 ", tradingDate=" + tradingDate +

@@ -97,4 +97,29 @@
         delete from desiredgoods
         where id = #{id,jdbcType=INTEGER}
     </delete>
+
+    <select id="getAccountIdByDesiredGoodsId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select account_id from desiredgoods where id = #{desiredGoodsId}
+    </select>
+
+    <update id="updateTradingInf">
+        update supplyrecord
+        set effective = "false" ,
+            tradingDate = #{tradingDate},
+            tradinglocation = #{tradingLocation},
+            payment = #{payment}
+        where accountid = #{sellerId}
+          and desiredgoodsid = #{desiredGoodsId}
+    </update>
+
+    <update id="updateTradingEffectToFalse">
+        update supplyrecord
+        set effective = "false" ,
+            tradingDate = null,
+            tradinglocation = null,
+            payment = null
+        where accountid = #{sellerId}
+          and desiredgoodsid = #{desiredGoodsId}
+    </update>
+
 </mapper>

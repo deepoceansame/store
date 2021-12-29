@@ -60,4 +60,11 @@ public interface AccountMapper {
 
     int updateMoney(@Param("accountId") Integer accountId, @Param("amount") Float amount);
 
+    Integer getAccountIdByGoodsId(Integer GoodsId);
+
+    Integer getAccountIdByDesiredGoodsId(Integer desiredGoodsId);
+
+    List<SupplyRecord> selectSupplyRecordByPid(@Param("sellerId") Integer sellerId, @Param("desiredGoodsId") Integer desiredGoodsId);
+
+    int updateSupplyRecord(@Param("accountId") Integer accountId, @Param("desiredGoodsId") Integer desiredGoodsId);
 }

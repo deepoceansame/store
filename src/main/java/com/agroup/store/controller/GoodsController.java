@@ -4,12 +4,11 @@ import com.agroup.store.domain.Goods;
 import com.agroup.store.domain.Goodsimage;
 import com.agroup.store.mapper.GoodsMapper;
 import com.agroup.store.mapper.GoodsimageMapper;
-import com.agroup.store.req.GetOthersGoodsReq;
-import com.agroup.store.req.GoodsReq;
-import com.agroup.store.req.GoodsSaveReq;
+import com.agroup.store.req.*;
 import com.agroup.store.resp.CommonResp;
 import com.agroup.store.resp.GoodsResp;
 import com.agroup.store.resp.PageResp;
+import com.agroup.store.service.DesiredGoodsService;
 import com.agroup.store.service.GoodsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +27,7 @@ public class GoodsController {
     private static final Logger LOG = LoggerFactory.getLogger(GoodsService.class);
     @Resource
     GoodsService goodsService = new GoodsService();
+
     @Resource
     private GoodsimageMapper goodsimageMapper;
 
@@ -76,4 +76,17 @@ public class GoodsController {
         CommonResp resp = new CommonResp();
         return resp;
     }
+
+    @PostMapping("goods/submitPurchaseForm")
+    public CommonResp submitPurchaseForm(PurchaseFormReq req){
+        return goodsService.submitPurchaseForm(req);
+    }
+
+
+    @GetMapping("goods/getPurchaseRecord")
+    public CommonResp getPurchaseRecord(Integer buyerId, Integer goodsId){
+        return goodsService.getPurchaseRecord(buyerId, goodsId);
+    }
+
+
 }

@@ -1,13 +1,11 @@
-package com.agroup.store.domain;
+package com.agroup.store.req;
 
 import java.util.Date;
 
-public class PurchaseRecord {
-    private Integer buyerId;
+public class SupplyFormReq {
+    private Integer desiredGoodsId;
 
-    private Integer goodsId;
-
-    private Boolean effective;
+    private Integer sellerId;
 
     private Date tradingDate;
 
@@ -15,28 +13,20 @@ public class PurchaseRecord {
 
     private Float payment;
 
-    public Integer getBuyerId() {
-        return buyerId;
+    public Integer getDesiredGoodsId() {
+        return desiredGoodsId;
     }
 
-    public void setBuyerId(Integer buyerId) {
-        this.buyerId = buyerId;
+    public void setDesiredGoodsId(Integer desiredGoodsId) {
+        this.desiredGoodsId = desiredGoodsId;
     }
 
-    public Integer getGoodsId() {
-        return goodsId;
+    public Integer getSellerId() {
+        return sellerId;
     }
 
-    public void setGoodsId(Integer goodsId) {
-        this.goodsId = goodsId;
-    }
-
-    public Boolean getEffective() {
-        return effective;
-    }
-
-    public void setEffective(Boolean effective) {
-        this.effective = effective;
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
     }
 
     public Date getTradingDate() {
@@ -65,10 +55,9 @@ public class PurchaseRecord {
 
     @Override
     public String toString() {
-        return "PurchaseRecord{" +
-                "buyerId=" + buyerId +
-                ", goodsId=" + goodsId +
-                ", effective=" + effective +
+        return "SupplyFormReq{" +
+                "desiredGoodsId=" + desiredGoodsId +
+                ", sellerId=" + sellerId +
                 ", tradingDate=" + tradingDate +
                 ", tradingLocation='" + tradingLocation + '\'' +
                 ", payment=" + payment +
