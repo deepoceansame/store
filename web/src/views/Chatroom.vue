@@ -24,7 +24,7 @@
   </a-modal>
 
 
-  <br/><button v-if="!isSeller" @click="showTransferPanel">购买</button>
+  <br/><button v-if="!isSeller" @click="showTransferPanel">写订单给卖家</button>
   <br/><button @click="showPurchaseRecord">查看订单</button>
   <a-modal
       v-model:visible="trans_visible"
@@ -36,7 +36,7 @@
 
     <template #footer>
       <a-button key="back" @click="handleCancel">取消</a-button>
-      <a-button key="submit" type="primary" :loading="loading" @click="handleTransfer">转账</a-button>
+      <a-button key="submit" type="primary" :loading="loading" @click="handleTransfer">提交订单</a-button>
     </template>
     <p>选择交易时间</p>
     <input v-model="transferDate" ref="date" id="date" type="datetime-local"/>
@@ -267,7 +267,32 @@ export default {
       );
     }
 
+    const init = () => {
+      axios.get("/account/getAccountByGoodsId/"+route.params.goodsid).then(
+          (response) => {
+            const data = Number(response.data.content)
+            isSeller.value = (data === Number(route.params.senderid))
+            axios.get("/goods/getPurchaseRecord/", {
+              params:{
+                buyerId: isSeller.value ? route.params.receiverid : route.params.senderid,
+                goodsId: route.params.goodsid
+              }
+            }).then(
+                (response) => {
+                  const data = response.data.content
+                  if(data !== null){
+                    isExistPurRec.value = (data.effective === false && data.tradingLocation !== null);
+                  }else {
+                    isExistPurRec.value = false
+                  }
+                }
+            )
+          },
+      )
+    }
+
     const showPurchaseRecord = () =>{
+      init()
       axios.get("/goods/getPurchaseRecord/",{
         params:{
           buyerId: isSeller.value ? route.params.receiverid : route.params.senderid,
@@ -355,30 +380,6 @@ export default {
 
     const handleCancel = () => {
       trans_visible.value = false
-    }
-
-    const init = () => {
-      axios.get("/account/getAccountByGoodsId/"+route.params.goodsid).then(
-          (response) => {
-            const data = Number(response.data.content)
-            isSeller.value = (data === Number(route.params.senderid))
-            axios.get("/goods/getPurchaseRecord/", {
-              params:{
-                buyerId: isSeller.value ? route.params.receiverid : route.params.senderid,
-                goodsId: route.params.goodsid
-              }
-            }).then(
-                (response) => {
-                  const data = response.data.content
-                  if(data !== null){
-                    isExistPurRec.value = (data.effective === false && data.tradingLocation !== null);
-                  }else {
-                    isExistPurRec.value = false
-                  }
-                }
-            )
-          },
-      )
     }
 
     const handleTrans = () => {
