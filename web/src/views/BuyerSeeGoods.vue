@@ -15,7 +15,7 @@
   <div style="border-style: solid">
     <h2>商品描述</h2>
     <p>
-<!--      {{goods.description}}-->
+      {{goods.description}}
     </p>
   </div>
 <!--  <div>sellerInfo:{{sellerAccount}}</div>-->
