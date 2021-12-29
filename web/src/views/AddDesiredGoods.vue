@@ -1,6 +1,4 @@
 <template>
-  <div>add goods here</div>
-
   <a-form
       ref="formRef"
       :model="formState"
