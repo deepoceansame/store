@@ -515,4 +515,23 @@ public class AccountService {
         message.setText(content);
         javaMailSender.send(message);
     }
+
+    public CommonResp complain(Integer from, Integer to){
+        CommonResp resp = new CommonResp();
+        Date date = new Date();
+        int count = accountMapper.checkIsAbleToComplain(from, to, date);
+        System.out.println(count);
+        if (count!=0 ){
+            resp.setSuccess(false);
+            resp.setMessage("投诉失败：近七天内已有投诉记录");
+            return resp;
+        }
+        accountMapper.addComplainRecord(from, to, date);
+        accountMapper.decrease1CreditPoint(from);
+        accountMapper.decrease1CreditPoint(to);
+        resp.setSuccess(true);
+        resp.setMessage("投诉成功！");
+        return resp;
+    }
+
 }

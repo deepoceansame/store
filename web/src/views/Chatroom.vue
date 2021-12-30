@@ -16,11 +16,12 @@
       </a-layout-header>
     </a-layout>
 
-    <div style="margin-left: 575px; margin-top: 25px">
+    <div style="margin-left: 530px; margin-top: 25px">
       <a-button type="primary" @click="showTransferPanel" v-if="!isSeller">写订单给卖家</a-button>
       <a-button style="margin-left: 30px" @click="showPurchaseRecord" v-if="!isSeller">查看订单</a-button>
       <a-button style="margin-left: 85px" @click="showPurchaseRecord" v-if="isSeller">查看订单</a-button>
       <a-button style="margin-left: 30px" type="danger" @click="showPanel" >给对方转账</a-button>
+      <a-button style="margin-left: 30px" type="danger" @click="complain" >投诉</a-button>
       <a-modal
           v-model:visible="visible"
           title="输入金额 然后点击转账"
@@ -127,107 +128,6 @@
 
 
 
-<!--<template>-->
-<!--  <message-list-item v-for="(mess, index) in messageList" :mess="mess" :key="index"/>-->
-<!--  <button @click="getMessage">进入聊天室</button>-->
-<!--  <br/>-->
-<!--  <input v-model="tt"/>{{tt}}<button @click="submitText">提交</button>-->
-<!--  <br/>-->
-<!--  <input type="file" :value="imgToSubmit" name="image" accept="image/png, image/jpeg" @change="onFileChange"/>-->
-<!--  <button @click="submitImage">提交图片</button>-->
-
-
-<!--  <br/><button @click="showPanel">给对方转账</button>-->
-<!--  <a-modal-->
-<!--      v-model:visible="visible"-->
-<!--      title="输入金额 然后点击转账"-->
-<!--      :ok-button-props="{ disabled: false }"-->
-<!--      :cancel-button-props="{ disabled: false }"-->
-<!--      @ok="handleTrans"-->
-<!--  >-->
-<!--    <template #footer>-->
-<!--      <a-button key="back" @click="handleCan">取消</a-button>-->
-<!--      <a-button key="submit" type="primary" :loading="loading" @click="handleTrans">转账</a-button>-->
-<!--    </template>-->
-<!--    <input v-model="transferAmount"/>-->
-<!--  </a-modal>-->
-
-
-<!--  <br/><button v-if="!isSeller" @click="showTransferPanel">写订单给卖家</button>-->
-<!--  <br/><button @click="showPurchaseRecord">查看订单</button>-->
-<!--  <a-modal-->
-<!--      v-model:visible="trans_visible"-->
-<!--      title="填写订单"-->
-<!--      :ok-button-props="{ disabled: false }"-->
-<!--      :cancel-button-props="{ disabled: false }"-->
-<!--      @ok="handleTransfer"-->
-<!--  >-->
-
-<!--    <template #footer>-->
-<!--      <a-button key="back" @click="handleCancel">取消</a-button>-->
-<!--      <a-button key="submit" type="primary" :loading="loading" @click="handleTransfer">提交订单</a-button>-->
-<!--    </template>-->
-<!--    <p>选择交易时间</p>-->
-<!--    <input v-model="transferDate" ref="date" id="date" type="datetime-local"/>-->
-<!--    <br><br>-->
-<!--    <p>选择交易地点</p>-->
-<!--    <select v-model="transferLocation" name="location">-->
-<!--      <option value="一教">一教</option>-->
-<!--      <option value="二教">二教</option>-->
-<!--      <option value="荔园1栋">荔园1栋</option>-->
-<!--      <option value="荔园2栋">荔园2栋</option>-->
-<!--      <option value="荔园3栋">荔园3栋</option>-->
-<!--      <option value="荔园4栋">荔园4栋</option>-->
-<!--      <option value="荔园5栋">荔园5栋</option>-->
-<!--      <option value="荔园6栋">荔园6栋</option>-->
-<!--      <option value="欣园">欣园</option>-->
-<!--      <option value="湖畔1栋">湖畔1栋</option>-->
-<!--      <option value="湖畔2栋">湖畔2栋</option>-->
-<!--      <option value="湖畔3栋">湖畔3栋</option>-->
-<!--      <option value="湖畔4栋">湖畔4栋</option>-->
-<!--      <option value="湖畔5栋">湖畔5栋</option>-->
-<!--      <option value="11栋">11栋</option>-->
-<!--      <option value="润扬体育馆">润扬体育馆</option>-->
-<!--    </select>-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <p>选择转账金额</p>-->
-<!--    <input v-model="transferAmount"/>-->
-<!--  </a-modal>-->
-
-<!--  <a-modal-->
-<!--      v-model:visible="purRec_visible"-->
-<!--      title="订单详情"-->
-<!--      :ok-button-props="{ disabled: false }"-->
-<!--      :cancel-button-props="{ disabled: false }"-->
-<!--      @ok="closePurRec">-->
-
-<!--    <p v-if="isExistPurRec">买家： {{purchaseRec.buyerName}}</p>-->
-<!--    <br v-if="isExistPurRec">-->
-<!--    <p v-if="isExistPurRec">卖家： {{purchaseRec.sellerName}}</p>-->
-<!--    <br v-if="isExistPurRec">-->
-<!--    <p v-if="isExistPurRec">商品： {{purchaseRec.goodsName}}</p>-->
-<!--    <br v-if="isExistPurRec">-->
-<!--    <p v-if="isExistPurRec">交易时间： {{purchaseRec.tradingDate}}</p>-->
-<!--    <br v-if="isExistPurRec">-->
-<!--    <p v-if="isExistPurRec">交易地点： {{purchaseRec.tradingLocation}}</p>-->
-<!--    <br v-if="isExistPurRec">-->
-<!--    <p v-if="isExistPurRec">支付金额： {{purchaseRec.payment}}</p>-->
-<!--    <template v-if="isExistPurRec" #footer>-->
-<!--      <a-button v-if="!isSeller" key="back" type="primary" @click="closePurRec">确认</a-button>-->
-<!--      <a-button v-if="isSeller" key="submit" type="danger" :loading="loading" @click="cancelPurRec">取消订单，退出交易</a-button>-->
-<!--      <a-button v-if="isSeller" key="submit" type="primary" :loading="loading" @click="confirmPurRec">确认订单，完成交易</a-button>-->
-<!--    </template>-->
-
-<!--    <a-div v-if="!isExistPurRec">-->
-<!--      <p>当前没有订单！</p>-->
-<!--    </a-div>-->
-
-<!--  </a-modal>-->
-
-<!--&lt;!&ndash;  {{messageList}}&ndash;&gt;-->
-<!--</template>-->
-
 <script>
 import {onBeforeUnmount, onMounted, reactive, ref} from "vue";
 import {useRoute} from 'vue-router'
@@ -283,6 +183,20 @@ export default {
           }
       )
     };
+
+    const complain = ()=>{
+      axios.get("account/complain/",{
+        params:{
+          from: route.params.senderid,
+          to: route.params.receiverid
+        }
+      }).then(
+          (response) =>  {
+            const data = response.data
+            message.info(response.data.message)
+          }
+      );
+    }
 
     const submitText = ()=>{
       console.log(tt.value);
@@ -567,6 +481,7 @@ export default {
       showTransferPanel,
       showPurchaseRecord,
       closePurRec,
+      complain,
       timer,
       confirmPurRec,
       cancelPurRec,

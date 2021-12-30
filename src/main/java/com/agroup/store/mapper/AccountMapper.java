@@ -2,6 +2,7 @@ package com.agroup.store.mapper;
 
 import com.agroup.store.domain.*;
 
+import java.util.Date;
 import java.util.List;
 
 import com.agroup.store.req.QuitBuyReq;
@@ -68,4 +69,8 @@ public interface AccountMapper {
     int decrease1CreditPoint(Integer Id);
 
     int increase1CreditPoint(Integer Id);
+
+    int checkIsAbleToComplain(@Param("id1")Integer id1, @Param("id2")Integer id2, @Param("date") Date date);
+
+    int addComplainRecord(@Param("id1")Integer id1, @Param("id2")Integer id2, @Param("date") Date date);
 }

@@ -365,4 +365,13 @@
     update account set creditpoint = least(creditpoint + 1, 3)  where id = #{id}
   </update>
 
+  <insert id="addComplainRecord" >
+    insert into complainRecord value (#{id1},#{id2},#{date})
+  </insert>
+
+  <select id="checkIsAbleToComplain" resultType="java.lang.Integer">
+    select count(*)from complainRecord where ((accountId1 = #{id1} and accountId2 = #{id2})
+    or (accountId1 = #{id2} and accountId2 = #{id1}) ) and  (7*24*60*60) > timediff(#{date},date)
+  </select>
+
 </mapper>

@@ -186,5 +186,9 @@ public class AccountController {
         return accountService.transferMoney(senderid, receiverid, amount);
     }
 
+    @GetMapping("account/complain")
+    public CommonResp complain(Integer from, Integer to){
+        return accountService.complain(from, to);
+    }
 
 }

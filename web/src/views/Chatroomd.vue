@@ -16,11 +16,12 @@
       </a-layout-header>
     </a-layout>
 
-    <div style="margin-left: 575px; margin-top: 25px">
+    <div style="margin-left: 530px; margin-top: 25px">
       <a-button type="primary" @click="showTransferPanel" v-if="!isSeller">写订单给卖家</a-button>
       <a-button style="margin-left: 30px" @click="showSupplyRecord" v-if="!isSeller">查看订单</a-button>
       <a-button style="margin-left: 85px" @click="showSupplyRecord" v-if="isSeller">查看订单</a-button>
       <a-button style="margin-left: 30px" type="danger" @click="showPanel" >给对方转账</a-button>
+      <a-button style="margin-left: 30px" type="danger" @click="complain" >投诉</a-button>
       <a-modal
           v-model:visible="visible"
           title="输入金额 然后点击转账"
@@ -295,6 +296,20 @@ export default {
       tt.value = '';
     }
 
+    const complain = ()=>{
+      axios.get("account/complain/",{
+        params:{
+          from: route.params.senderid,
+          to: route.params.receiverid
+        }
+      }).then(
+          (response) =>  {
+            const data = response.data
+            message.info(response.data.message)
+          }
+      );
+    }
+
     const submitImage = ()=>{
       if(tempImage!==null && tempImage.trim().length !== 0) {
         showMessage.value = true
@@ -561,6 +576,7 @@ export default {
       onFileChange,
       submitImage,
       imgToSubmit,
+      complain,
       showTransferPanel,
       showSupplyRecord,
       closeSupRec,
