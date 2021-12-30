@@ -16,6 +16,10 @@
       </a-layout-header>
     </a-layout>
 
+    <h1 style="margin-left: 670px;font-family: Arial, 'Hiragino Sans GB', 'Microsoft Yahei', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif">
+      <font size="80">添加求购</font>
+    </h1>
+
     <a-form
         ref="formRef"
         :model="formState"
