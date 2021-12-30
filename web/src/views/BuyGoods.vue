@@ -52,7 +52,7 @@ import store from "@/store";
 
 export default {
   name: "BuyGoods",
-  components: {BuyNav, CategoryNav, Search, GoodsTableRow, Pagina, BuySellExchange},
+  components: {BuyNav, CategoryNav, Search, GoodsTableRow, Pagina},
   setup(){
     const route = useRoute()
     //const router = useRouter()

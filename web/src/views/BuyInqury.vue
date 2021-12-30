@@ -70,7 +70,6 @@ export default {
     BuyNav,
     CategoryNav,
     DesiredGoodsTableRow,
-    BuySellExchange,
     Pagina
   },
   setup(){

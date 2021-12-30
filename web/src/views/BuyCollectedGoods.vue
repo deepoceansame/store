@@ -71,7 +71,7 @@ import Pagina from "@/components/Pagina";
 export default {
   name: "BuyCollectedGoods",
   components:{
-    BuyNav, CategoryNav, GoodsTableRow, BuySellExchange,Pagina
+    BuyNav, CategoryNav, GoodsTableRow, Pagina
   },
   setup(){
 

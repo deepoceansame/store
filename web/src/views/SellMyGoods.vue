@@ -68,7 +68,7 @@ import {message} from "ant-design-vue";
 
 export default {
   name: "MyGoods",
-  components: {SellNav, CategoryNav, BuySellExchange, MyGoodsTableRow, Pagina},
+  components: {SellNav, CategoryNav, MyGoodsTableRow, Pagina},
   setup(){
     const myGoodsList = ref([])
     const route = useRoute()

@@ -333,7 +333,7 @@ export default {
             )
             axios.get("/account/getbyid/"+(isSeller.value ? route.params.senderid : route.params.receiverid)).then(
                 (response) => {
-                  const data = response.data.content
+                  const data = response.data.contenbt
                   purchaseRec.sellerName = data.name
                 }
             )

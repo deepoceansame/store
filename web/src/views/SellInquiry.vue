@@ -71,7 +71,7 @@ import store from "@/store";
 
 export default {
   name: "SellInquiry",
-  components: {SellNav, CategoryNav, Search, Pagina, BuySellExchange, InquiryTableRow},
+  components: {SellNav, CategoryNav, Search, Pagina,  InquiryTableRow},
   setup(){
     const route = useRoute()
     //const router = useRouter()

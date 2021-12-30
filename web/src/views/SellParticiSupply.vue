@@ -62,7 +62,7 @@ import axios from "axios";
 import {message} from "ant-design-vue";
 export default {
   name: "ParticiSupply",
-  components: {BuySellExchange, CategoryNav, SellNav, InquiryTableRow,Pagina},
+  components: { CategoryNav, SellNav, InquiryTableRow,Pagina},
   setup(){
 
     const desiredgoodsList = ref([])
