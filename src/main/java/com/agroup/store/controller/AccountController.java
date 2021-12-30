@@ -185,4 +185,6 @@ public class AccountController {
     public CommonResp transferMoney(Integer senderid, Integer receiverid, String amount){
         return accountService.transferMoney(senderid, receiverid, amount);
     }
+
+
 }
