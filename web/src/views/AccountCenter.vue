@@ -1,25 +1,75 @@
 <template>
-  <div>
-    <label>id: {{account.id}}</label><br/>
-    <label>邮箱: {{account.mail}}</label><br/>
-    <label>QQ: {{account.qq}}</label><br/>
-    <label>收货地址: {{account.recvaddress}}</label><br/>
-    <label>余额: {{balance}}</label><br/>
-  </div>
-  <div>
-    <label>头像:</label>
-    <img :src="'http://127.0.0.1:8083/' + account.avator" alt="无头像" style="max-height: 150px"/>
-  </div>
-  <input type="file" :value="imgToSubmit" name="image" accept="image/png, image/jpeg" @change="onFileChange"/>
-  <button @click="submitImage">提交头像</button>
-  <img :src="tempImage"  v-if="showTempImage" alt="头像" style="max-height: 150px"/>
+  <div class="page">
+    <a-layout style="margin-bottom: 20px">
+      <a-layout-header class="header">
+        <div class="logo" />
+        <a-menu
+            theme="dark"
+            mode="horizontal"
+            :default-selected-keys="['2']"
+            :style="{ lineHeight: '64px' }"
+        >
+          <a-menu-item style="margin-left: 650px; font-weight: bold" key="1" >
+            Sustech Store
+          </a-menu-item>
+        </a-menu>
+      </a-layout-header>
+    </a-layout>
 
-  <div>
-    <input v-model="chargeMoney"/>{{chargeMoney}}<button @click="charge">充值</button>
+    <a-descriptions style="padding-top: 25px" title="用户信息" align="center" class="ad" bordered>
+      <a-descriptions-item label="id">
+        {{account.id}}
+      </a-descriptions-item>
+      <a-descriptions-item label="邮箱">
+        {{account.mail}}
+      </a-descriptions-item>
+      <a-descriptions-item label="QQ">
+        {{account.qq}}
+      </a-descriptions-item>
+      <a-descriptions-item label="余额">
+        {{balance}}
+      </a-descriptions-item>
+      <a-descriptions-item label="收货地址" :span="2">
+        {{account.recvaddress}}
+      </a-descriptions-item>
+      <a-descriptions-item label="头像" :span="6">
+        <div>
+          <img :src="'http://127.0.0.1:8083/' + account.avator" alt="无头像" style="max-height: 150px"/>
+        </div>
+      </a-descriptions-item>
+      <a-descriptions-item label="信誉积分">
+        {{account.creditPoint}}
+      </a-descriptions-item >
+      <a-descriptions-item label="信誉状态" :span="3">
+        <a-badge status="processing" text="正常" v-if="account.creditPoint>0"/>
+        <a-badge status="error" text="信誉分不足" v-if="account.creditPoint<=0"/>
+      </a-descriptions-item>
+      <a-descriptions-item label="充值">
+        <input style="width: 60px" v-model="chargeMoney"/><button style="margin-left: 10px" @click="charge">充值</button>
+      </a-descriptions-item >
+      <a-descriptions-item label="提交头像">
+        <div style="margin-left: 1px">
+          <input type="file" :value="imgToSubmit" name="image" accept="image/png, image/jpeg" @change="onFileChange"/>
+          <button @click="submitImage">提交头像</button>
+        </div>
+      </a-descriptions-item >
+    </a-descriptions>
+
+    <!--  <button @click="clk">ckj</button>-->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
 
-<!--  <button @click="clk">ckj</button>-->
 </template>
+
+<style>
+.ad{
+  background-color: white;
+  width: 60%;
+  margin: auto;
+}
+
+</style>
+
 
 <script>
 import axios from "axios";

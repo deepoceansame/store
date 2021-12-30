@@ -3,7 +3,7 @@
     <a-pagination
         v-model:current="current"
         :total="total"
-        :show-total="total => `Total ${total} items`"
+        :show-total="total => `共 ${total} 项`"
         :page-size="10"
         @change = 'pageChange'
     />

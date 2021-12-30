@@ -33,6 +33,7 @@ public class GoodsController {
 
     @GetMapping("goods/getothersgoods")
     public CommonResp getOthersGoods(GetOthersGoodsReq req){
+        System.out.println(req);
         CommonResp<PageResp<GoodsResp>> resp = new CommonResp<>();
         resp.setContent(goodsService.getOthersGoods(req));
         return resp;
