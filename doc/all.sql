@@ -9,6 +9,9 @@ drop table if exists desiredgoodsimage;
 drop table if exists supplyrecord;
 drop table if exists purchaseRecord;
 
+ALTER TABLE account
+    ADD creditpoint int;
+
 create table account(
     id int unsigned auto_increment,
     name varchar(40),
