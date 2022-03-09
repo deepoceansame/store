@@ -17,6 +17,8 @@ public class Account {
 
     private Float money;
 
+    private Integer creditPoint;
+
     public Integer getId() {
         return id;
     }
@@ -81,6 +83,14 @@ public class Account {
         this.money = money;
     }
 
+    public Integer getCreditPoint() {
+        return creditPoint;
+    }
+
+    public void setCreditPoint(Integer creditPoint) {
+        this.creditPoint = creditPoint;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -95,6 +105,7 @@ public class Account {
         sb.append(", avator=").append(avator);
         sb.append(", qq=").append(qq);
         sb.append(", money=").append(money);
+        sb.append(", creditPoint=").append(creditPoint);
         sb.append("]");
         return sb.toString();
     }

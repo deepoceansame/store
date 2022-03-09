@@ -3,9 +3,7 @@ package com.agroup.store.service;
 import com.agroup.store.domain.*;
 import com.agroup.store.exception.BusinessException;
 import com.agroup.store.exception.BusinessExceptionCode;
-import com.agroup.store.mapper.AccountMapper;
-import com.agroup.store.mapper.DesiredGoodsMapper;
-import com.agroup.store.mapper.GoodsMapper;
+import com.agroup.store.mapper.*;
 import com.agroup.store.req.*;
 import com.agroup.store.resp.*;
 import com.agroup.store.util.CopyUtil;
@@ -28,6 +26,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.io.File;
 import java.nio.file.Files;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -49,6 +48,12 @@ public class AccountService {
 
     @Resource
     private GoodsMapper goodsMapper;
+
+    @Resource
+    private MessageMapper messageMapper;
+
+    @Resource
+    private MessagedMapper messagedMapper;
 
     @Autowired
     JavaMailSender javaMailSender;
@@ -131,32 +136,157 @@ public class AccountService {
     }
 
     public CommonResp requestGoods(RequestGoodsReq req) {
-        boolean success = accountMapper.insertPurchaseRecordWithoutEffect(req.getAccountId(), req.getGoodId()) == 1;
+            CommonResp resp = new CommonResp();
+            Integer buyerId = req.getAccountId();
+            Goods goods = goodsMapper.selectByPrimaryKey(req.getGoodId());
+            Account buyer = accountMapper.selectByPrimaryKey(buyerId);
+            Account seller = accountMapper.selectByPrimaryKey(goods.getAccountId());
+            if(buyer.getCreditPoint() <= 0){
+                resp.setSuccess(false);
+                resp.setMessage("您的信誉积分不足，无法参与购买！");
+                return resp;
+            }else if(seller.getCreditPoint() <= 0){
+                resp.setSuccess(false);
+                resp.setMessage("卖家的信誉积分不足，暂时无法购买！");
+                return resp;
+            }
+            boolean success = accountMapper.insertPurchaseRecordWithoutEffect(buyerId, req.getGoodId()) == 1;
+            resp.setSuccess(success);
+            if (success) {
+                resp.setMessage("成功参与");
+                sendMailToSellerForNewBuyer(buyer, seller, goods);
+            } else {
+                resp.setMessage("参与过了！");
+            }
+            return resp;
+    }
+
+    public CommonResp cancelPurRec(Integer buyerId, Integer goodsId){
+        Integer sellerId = goodsMapper.getAccountIdByGoodsId(goodsId);
+        PurchaseRecord purchaseRecord = accountMapper.selectPurchaseRecordByPid(buyerId, goodsId).get(0);
+        Float payment = purchaseRecord.getPayment();
+        Goods goods = goodsMapper.selectByPrimaryKey(goodsId);
+        Float price = goods.getPrice();
+        Boolean success = goodsMapper.updateTradingEffectToFalse(buyerId, goodsId) == 1;
         CommonResp resp = new CommonResp();
         resp.setSuccess(success);
         if (success) {
-            resp.setMessage("已参与购买，待卖家回复");
-            Goods goods = goodsMapper.selectByPrimaryKey(req.getGoodId());
-            Account buyer = accountMapper.selectByPrimaryKey(req.getAccountId());
-            Account seller = accountMapper.selectByPrimaryKey(goods.getAccountId());
-            sendMailToSellerForNewBuyer(buyer, seller, goods);
+            resp.setMessage("成功取消交易");
+            String content = "";
+            if (payment.equals(price)) {
+                content = "[交易失败]卖家取消了订单 （卖家信誉分-1）";
+                accountMapper.decrease1CreditPoint(sellerId);
+            } else if (payment < 0.8 * price) {
+                content = "[交易失败]卖家取消了订单 （买家信誉分-1）";
+                accountMapper.decrease1CreditPoint(buyerId);
+            } else {
+                content = "[交易失败]卖家取消了订单";
+            }
+            Message message = new Message(sellerId, buyerId, goodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+            messageMapper.addMessage(message);
         } else {
-            resp.setMessage("购买失败！");
+            resp.setMessage("取消失败");
         }
         return resp;
     }
 
-    public CommonResp purchaseGoods(RequestGoodsReq req) {
-        boolean success = accountMapper.updatePurchaseRecord(req.getAccountId(), req.getGoodId()) == 1;
-        CommonResp resp = new CommonResp();
+    public CommonResp cancelSupRec(Integer sellerId, Integer desiredGoodsId){
+        Integer buyerId = desiredGoodsMapper.getAccountIdByDesiredGoodsId(desiredGoodsId);
+        SupplyRecord supplyRecord = accountMapper.selectSupplyRecordByPid(sellerId, desiredGoodsId).get(0);
+        Float payment = supplyRecord.getPayment();
+        DesiredGoods desiredGoods = desiredGoodsMapper.selectById(desiredGoodsId);
+        Float price = desiredGoods.getPrice();
+        Boolean success = desiredGoodsMapper.updateTradingEffectToFalse(sellerId, desiredGoodsId) == 1;
+        CommonResp resp =new CommonResp();
         resp.setSuccess(success);
-        if (success) {
-            resp.setMessage("购买成功！");
-        } else {
-            resp.setMessage("购买失败！");
+        if(success){
+            resp.setMessage("成功取消交易");
+            String content = "";
+            if (payment < price) {
+                content = "[交易失败]卖家取消了订单 （买家信誉分-1）";
+                accountMapper.decrease1CreditPoint(buyerId);
+            } else {
+                content = "[交易失败]卖家取消了订单";
+            }
+            Messaged messaged = new Messaged(sellerId, buyerId, desiredGoodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+            messagedMapper.addMessage(messaged);
+        }else {
+            resp.setMessage("取消失败");
         }
         return resp;
     }
+
+    public CommonResp purchaseGoods(Integer buyerId, Integer goodsId) {
+        Integer sellerId = goodsMapper.getAccountIdByGoodsId(goodsId);
+        PurchaseRecord purchaseRecord = accountMapper.selectPurchaseRecordByPid(buyerId, goodsId).get(0);
+        Float payment = purchaseRecord.getPayment();
+        CommonResp resp = transferMoney(buyerId, sellerId, payment.toString());
+        CommonResp resp1 = new CommonResp();
+        resp1.setSuccess(resp.getSuccess());
+        if(resp.getSuccess()){
+            boolean success = accountMapper.updatePurchaseRecord(buyerId, goodsId) == 1;
+            resp1.setSuccess(success);
+            if(success){
+                resp1.setMessage("交易成功");
+                String content = "[交易成功]卖家确认订单，交易成功！（双方信誉分+1）";
+                accountMapper.increase1CreditPoint(buyerId);
+                accountMapper.increase1CreditPoint(sellerId);
+                Message message = new Message(sellerId,buyerId,goodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+                messageMapper.addMessage(message);
+            }else {
+                resp1.setMessage("交易失败");
+                String content = "[交易失败]原因不明！";
+                Message message = new Message(sellerId,buyerId,goodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+                messageMapper.addMessage(message);
+            }
+        }else {
+            goodsMapper.updateTradingEffectToFalse(buyerId, goodsId);
+            accountMapper.decrease1CreditPoint(buyerId);
+            resp1.setMessage("买家余额不足，订单取消！");
+            String content = "[交易失败]您的余额不足，请充值！（买家信誉分-1)";
+            Message message = new Message(sellerId,buyerId,goodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+            messageMapper.addMessage(message);
+        }
+
+        return resp1;
+    }
+
+    public CommonResp confirmSupplyRecord(Integer sellerId, Integer desiredGoodsId) {
+        Integer buyerId = desiredGoodsMapper.getAccountIdByDesiredGoodsId(desiredGoodsId);
+        SupplyRecord supplyRecord = accountMapper.selectSupplyRecordByPid(sellerId, desiredGoodsId).get(0);
+        Float payment = supplyRecord.getPayment();
+        CommonResp resp = transferMoney(buyerId, sellerId, payment.toString());
+        CommonResp resp1 = new CommonResp();
+        resp1.setSuccess(resp.getSuccess());
+        if(resp.getSuccess()){
+            boolean success = accountMapper.updateSupplyRecord(sellerId, desiredGoodsId) == 1;
+            resp1.setSuccess(success);
+            if(success){
+                resp1.setMessage("交易成功");
+                String content = "[交易成功]卖家确认求购订单，交易成功！（双方信誉分+1）";
+                accountMapper.increase1CreditPoint(buyerId);
+                accountMapper.increase1CreditPoint(sellerId);
+                Messaged messaged = new Messaged(sellerId, buyerId, desiredGoodsId,new Timestamp(System.currentTimeMillis()), 1, content);
+                messagedMapper.addMessage(messaged);
+            }else {
+                resp1.setMessage("交易失败");
+                String content = "[交易失败]原因不明！";
+                Messaged messaged = new Messaged(sellerId,buyerId,desiredGoodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+                messagedMapper.addMessage(messaged);
+            }
+        }else {
+            desiredGoodsMapper.updateTradingEffectToFalse(sellerId, desiredGoodsId);
+            accountMapper.decrease1CreditPoint(buyerId);
+            resp1.setMessage("买家余额不足，订单取消！");
+            String content = "[交易失败]您的余额不足，请充值！（买家信誉分-1)";
+            Messaged messaged = new Messaged(sellerId,buyerId, desiredGoodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+            messagedMapper.addMessage(messaged);
+        }
+
+        return resp1;
+    }
+
+
 
     public PageResp<GoodsPurchaseRecordResp> showPurchaseRecordsByAccountId(PurchaseRecordReq req) {
         Integer accountId = req.getAccountId();
@@ -181,14 +311,23 @@ public class AccountService {
     }
 
     public CommonResp particiSupply(ParticiSupplyReq req) {
-        boolean success = accountMapper.insertSupplyRecord(req.getAccountId(), req.getDesiredgoodsId()) == 1;
         CommonResp resp = new CommonResp();
+        DesiredGoods desiredGoods = desiredGoodsMapper.selectById(req.getDesiredgoodsId());
+        Account seller = accountMapper.selectByPrimaryKey(req.getAccountId());
+        Account buyer = accountMapper.selectByPrimaryKey(desiredGoods.getAccountId());
+        if(seller.getCreditPoint() <= 0){
+            resp.setSuccess(false);
+            resp.setMessage("您的信誉积分不足，无法参与求购！");
+            return resp;
+        }else if(buyer.getCreditPoint() <= 0){
+            resp.setSuccess(false);
+            resp.setMessage("买家的信誉积分不足，暂时无法参与求购！");
+            return resp;
+        }
+        boolean success = accountMapper.insertSupplyRecord(req.getAccountId(), req.getDesiredgoodsId()) == 1;
         resp.setSuccess(success);
         if (success) {
-            resp.setMessage("成功！");
-            DesiredGoods desiredGoods = desiredGoodsMapper.selectById(req.getDesiredgoodsId());
-            Account seller = accountMapper.selectByPrimaryKey(req.getAccountId());
-            Account buyer = accountMapper.selectByPrimaryKey(desiredGoods.getAccountId());
+            resp.setMessage("成功参与");
             sendMailToBuyerForNewSupplier(buyer, seller, desiredGoods);
         } else {
             resp.setMessage("失败！");
@@ -209,6 +348,18 @@ public class AccountService {
 
     public List<Account> getBuyer(Integer goodsId) {
         return accountMapper.getBuyersByGoodsId(goodsId);
+    }
+
+    public CommonResp<Integer> getAccountByGoodsId(Integer goodsId) {
+        CommonResp<Integer> resp = new CommonResp();
+        resp.setContent(accountMapper.getAccountIdByGoodsId(goodsId));
+        return resp;
+    }
+
+    public CommonResp<Integer> getAccountByDesiredGoodsId(Integer desiredGoodsId) {
+        CommonResp<Integer> resp = new CommonResp();
+        resp.setContent(accountMapper.getAccountIdByDesiredGoodsId(desiredGoodsId));
+        return resp;
     }
 
     public CommonResp quitBuy(QuitBuyReq req) {
@@ -262,6 +413,12 @@ public class AccountService {
         float cm = Float.parseFloat(chargeAmount);
         accountMapper.chargeMoney(accountId, cm);
         return resp;
+    }
+
+    public CommonResp getMoney(Integer id){
+        CommonResp commonResp = new CommonResp();
+        commonResp.setContent(accountMapper.getMoney(id));
+        return commonResp;
     }
 
     public CommonResp transferMoney(Integer senderid, Integer receiverid, String amount) {
@@ -358,4 +515,23 @@ public class AccountService {
         message.setText(content);
         javaMailSender.send(message);
     }
+
+    public CommonResp complain(Integer from, Integer to){
+        CommonResp resp = new CommonResp();
+        Date date = new Date();
+        int count = accountMapper.checkIsAbleToComplain(from, to, date);
+        System.out.println(count);
+        if (count!=0 ){
+            resp.setSuccess(false);
+            resp.setMessage("投诉失败：近七天内已有投诉记录");
+            return resp;
+        }
+        accountMapper.addComplainRecord(from, to, date);
+        accountMapper.decrease1CreditPoint(from);
+        accountMapper.decrease1CreditPoint(to);
+        resp.setSuccess(true);
+        resp.setMessage("投诉成功！");
+        return resp;
+    }
+
 }

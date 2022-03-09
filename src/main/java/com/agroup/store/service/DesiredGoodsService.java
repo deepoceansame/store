@@ -3,7 +3,10 @@ package com.agroup.store.service;
 import com.agroup.store.domain.*;
 import com.agroup.store.mapper.AccountMapper;
 import com.agroup.store.mapper.DesiredGoodsMapper;
+import com.agroup.store.mapper.MessageMapper;
+import com.agroup.store.mapper.MessagedMapper;
 import com.agroup.store.req.*;
+import com.agroup.store.resp.CommonResp;
 import com.agroup.store.resp.PageResp;
 import com.agroup.store.util.CopyUtil;
 import com.alibaba.fastjson.JSON;
@@ -23,6 +26,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.io.File;
 import java.nio.file.Files;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -37,6 +41,9 @@ public class DesiredGoodsService {
 
     @Resource
     private AccountMapper accountMapper;
+
+    @Resource
+    private MessagedMapper messagedMapper;
 
     @Value("${picturesPath}")
     private String picturesPath;
@@ -192,4 +199,36 @@ public class DesiredGoodsService {
         }
 
     }
+
+    public CommonResp submitSupplyForm(SupplyFormReq req){
+        CommonResp resp = new CommonResp();
+        Integer sellerId = req.getSellerId();
+        Integer desiredGoodsId = req.getDesiredGoodsId();
+        Date tradingDate = req.getTradingDate();
+        String tradingLocation = req.getTradingLocation();
+        Float payment = req.getPayment();
+        Integer buyerId = desiredGoodsMapper.getAccountIdByDesiredGoodsId(desiredGoodsId);
+        boolean success = desiredGoodsMapper.updateTradingInf(sellerId, desiredGoodsId, tradingDate, tradingLocation, payment) == 1;
+        if(success){
+            String content = "[购买通知]买家已提交求购订单，请您进行确认。";
+            Messaged messaged = new Messaged(buyerId,sellerId,desiredGoodsId, new Timestamp(System.currentTimeMillis()), 1, content);
+            messagedMapper.addMessage(messaged);
+            resp.setSuccess(true);
+            resp.setMessage("成功创建求购订单，待买家确认");
+        }else {
+            resp.setSuccess(false);
+            resp.setMessage("创建求购订单失败");
+        }
+        return resp;
+
+    }
+
+
+    public CommonResp<SupplyRecord> getSupplyRecord(Integer sellerId, Integer goodsId){
+        CommonResp<SupplyRecord> resp = new CommonResp();
+        SupplyRecord supplyRecord = accountMapper.selectSupplyRecordByPid(sellerId, goodsId).get(0);
+        resp.setContent(supplyRecord);
+        return resp;
+    }
+
 }

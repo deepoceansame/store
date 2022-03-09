@@ -1,54 +1,71 @@
 <template>
-  <div>add goods here</div>
+  <div class="page">
+    <a-layout style="margin-bottom: 20px">
+      <a-layout-header class="header">
+        <div class="logo" />
+        <a-menu
+            theme="dark"
+            mode="horizontal"
+            :default-selected-keys="['2']"
+            :style="{ lineHeight: '64px' }"
+        >
+          <a-menu-item style="margin-left: 650px; font-weight: bold" key="1" >
+            Sustech Store
+          </a-menu-item>
+        </a-menu>
+      </a-layout-header>
+    </a-layout>
 
-  <a-form
-      ref="formRef"
-      :model="formState"
-      :rules="rules"
-      :label-col="labelCol"
-      :wrapper-col="wrapperCol"
-      enctype="multipart/form-data"
-  >
-    <a-form-item ref="name" label="求购名" name="name">
-      <a-input v-model:value="formState.name" />
-    </a-form-item>
+    <h1 style="margin-left: 670px;font-family: Arial, 'Hiragino Sans GB', 'Microsoft Yahei', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif">
+      <font size="80">添加求购</font>
+    </h1>
 
-    <a-form-item label="类别" name="category">
-      <a-select v-model:value="formState.category">
-        <a-select-option value="2">生活用品</a-select-option>
-        <a-select-option value="3">零食</a-select-option>
-        <a-select-option value="4">电子</a-select-option>
-        <a-select-option value="5">书籍</a-select-option>
-        <a-select-option value="6">其它</a-select-option>
-      </a-select>
-    </a-form-item>
+    <a-form
+        ref="formRef"
+        :model="formState"
+        :rules="rules"
+        :label-col="labelCol"
+        :wrapper-col="wrapperCol"
+        enctype="multipart/form-data"
+    >
+      <a-form-item style="margin-left: 460px" ref="name" label="求购名" name="name" >
+        <a-input style="width: 300px;" v-model:value="formState.name" />
+      </a-form-item>
 
-    <a-form-item label="价格" name="price">
-      <a-input v-model:value="formState.price" />
-    </a-form-item>
+      <a-form-item style="margin-left: 460px" label="类别" name="category">
+        <a-select style="width: 300px" v-model:value="formState.category">
+          <a-select-option value="2">生活用品</a-select-option>
+          <a-select-option value="3">零食</a-select-option>
+          <a-select-option value="4">电子</a-select-option>
+          <a-select-option value="5">书籍</a-select-option>
+          <a-select-option value="6">其它</a-select-option>
+        </a-select>
+      </a-form-item>
 
-    <a-form-item label="描述" name="description">
-      <a-textarea v-model:value="formState.description" :rows="4" />
-    </a-form-item>
+      <a-form-item style="margin-left: 460px" label="价格" name="price">
+        <a-input style="width: 300px" v-model:value="formState.price" />
+      </a-form-item>
 
-    <a-form-item label="图片" name="image">
-      <input type="file" name="image" accept="image/png, image/jpeg" @change="onFileChange" multiple="multiple"/>
-    </a-form-item>
-    <img v-for="(imgurl, index) in showImages" :src="imgurl" :key="index" style="max-height: 150px" />
+      <a-form-item style="margin-left: 460px" label="描述" name="description">
+        <a-textarea style="width: 300px" v-model:value="formState.description" :rows="4" />
+      </a-form-item>
 
-    <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="onSubmit">Create</a-button>
-      <a-button style="margin-left: 10px" @click="resetForm">Reset</a-button>
-    </a-form-item>
-  </a-form>
+      <a-form-item style="margin-left: 460px" label="图片" name="image">
+        <input type="file" name="image" accept="image/png, image/jpeg" @change="onFileChange" multiple="multiple"/>
+      </a-form-item>
+      <img v-for="(imgurl, index) in showImages" :src="imgurl" :key="index" style="max-height: 150px" />
 
+      <a-form-item style="margin-left: 545px" :wrapper-col="{ span: 14, offset: 4 }">
+        <a-button type="primary" @click="onSubmit">提交</a-button>
+        <a-button style="margin-left: 10px" @click="resetForm">重置</a-button>
+      </a-form-item>
+    </a-form>
 
-
-<!--  <button @click="handleClick">Click</button>-->
-
-
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
 
 </template>
+
 
 <script>
 import { reactive, ref, toRaw } from 'vue';

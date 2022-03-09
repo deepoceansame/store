@@ -2,11 +2,9 @@ package com.agroup.store.mapper;
 
 import com.agroup.store.domain.*;
 
+import java.util.Date;
 import java.util.List;
 
-import com.agroup.store.req.DesiredGoodsReq;
-import com.agroup.store.req.GoodsReq;
-import com.agroup.store.req.PurchaseRecordReq;
 import com.agroup.store.req.QuitBuyReq;
 import com.agroup.store.resp.GoodsPurchaseRecordResp;
 import org.apache.ibatis.annotations.Param;
@@ -60,4 +58,19 @@ public interface AccountMapper {
 
     int updateMoney(@Param("accountId") Integer accountId, @Param("amount") Float amount);
 
+    Integer getAccountIdByGoodsId(Integer GoodsId);
+
+    Integer getAccountIdByDesiredGoodsId(Integer desiredGoodsId);
+
+    List<SupplyRecord> selectSupplyRecordByPid(@Param("sellerId") Integer sellerId, @Param("desiredGoodsId") Integer desiredGoodsId);
+
+    int updateSupplyRecord(@Param("accountId") Integer accountId, @Param("desiredGoodsId") Integer desiredGoodsId);
+
+    int decrease1CreditPoint(Integer Id);
+
+    int increase1CreditPoint(Integer Id);
+
+    int checkIsAbleToComplain(@Param("id1")Integer id1, @Param("id2")Integer id2, @Param("date") Date date);
+
+    int addComplainRecord(@Param("id1")Integer id1, @Param("id2")Integer id2, @Param("date") Date date);
 }

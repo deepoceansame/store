@@ -1,5 +1,6 @@
 <template>
-<input v-model="keyw"/><button @click="handleSearch">搜索</button>
+<input placeholder="输入关键词进行查询" v-model="keyw"/>
+<a-button style="margin-left: 15px" type="primary" @click="handleSearch">搜索</a-button>
 </template>
 
 <script>

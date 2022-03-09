@@ -4,3 +4,4 @@ GET http://localhost:8081/goods/list?page=3
 POST http://localhost:8081/goods/save?{"name"=寒冷即是虚无}
 ###
 
+POST http://localhost:8081/goods/submitPurchaseForm?goodsId=50&buyerId=9&tradingDate=Tue, 28 Dec 2021 15:04:19 GMT&tradingLocation=荔园&payment=50

@@ -1,5 +1,5 @@
 <template>
-  <tr class="row">
+  <tr class="row" align="center">
     <td class="pic" @click="handleClick"><img class="pic" :src="'http://127.0.0.1:8083/' + desiredgoods.img" alt="图片"/></td>
     <td class="goodsname">{{desiredgoods.name}}</td>
     <td class="price">{{desiredgoods.price}}</td>

@@ -1,10 +1,7 @@
 <template>
   <div v-if="account.id">
-    <label style="color: brown">mail: {{account.mail}}</label>
-    <label style="color: blue">  id: {{account.id}}</label>
-    <label style="color: darkgreen">  name: {{account.name}}</label>
-    <button v-show="account.id" @click="logout">登出</button>
-    <button v-show="account.id" @click="goToCenter">账户中心</button>
+    <button style="margin-left: 1300px" v-show="account.id" @click="logout">注销</button>
+    <button style="margin-left: 20px" v-show="account.id" @click="goToCenter">账户中心</button>
   </div>
   <router-view></router-view>
 </template>

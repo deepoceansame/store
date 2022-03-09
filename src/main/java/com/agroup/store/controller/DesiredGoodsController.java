@@ -77,4 +77,14 @@ public class DesiredGoodsController {
         CommonResp resp = new CommonResp();
         return resp;
     }
+
+    @PostMapping("desiredGoods/submitSupplyForm")
+    public CommonResp submitSupplyForm(SupplyFormReq req){
+        return desiredGoodsService.submitSupplyForm(req);
+    }
+
+    @GetMapping("desiredGoods/getSupplyRecord")
+    public CommonResp getSupplyRecord(Integer sellerId, Integer desiredGoodsId){
+        return desiredGoodsService.getSupplyRecord(sellerId, desiredGoodsId);
+    }
 }

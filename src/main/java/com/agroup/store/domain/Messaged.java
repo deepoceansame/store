@@ -15,6 +15,18 @@ public class Messaged {
 
     private String content;
 
+    public Messaged() {
+    }
+
+    public Messaged(Integer senderid, Integer receiverid, Integer desiredgoodsid, Timestamp sendtime, Integer type, String content) {
+        this.senderid = senderid;
+        this.receiverid = receiverid;
+        this.desiredgoodsid = desiredgoodsid;
+        this.sendtime = sendtime;
+        this.type = type;
+        this.content = content;
+    }
+
     public Integer getSenderid() {
         return senderid;
     }

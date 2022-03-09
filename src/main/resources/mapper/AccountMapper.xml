@@ -10,6 +10,7 @@
     <result column="avator" jdbcType="VARCHAR" property="avator" />
     <result column="qq" jdbcType="VARCHAR" property="qq" />
     <result column="money" jdbcType="REAL" property="money" />
+    <result column="creditpoint" jdbcType="INTEGER" property="creditPoint" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, `password`, mail, recvAddress, avator, qq, money
+    id, `name`, `password`, mail, recvAddress, avator, qq, money, creditpoint
   </sql>
   <select id="selectByExample" parameterType="com.agroup.store.domain.AccountExample" resultMap="BaseResultMap">
     select
@@ -105,10 +106,10 @@
   <insert id="insert" parameterType="com.agroup.store.domain.Account">
     insert into account (id, `name`, `password`, 
       mail, recvAddress, avator, 
-      qq, money)
+      qq, money, creditpoint)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{mail,jdbcType=VARCHAR}, #{recvaddress,jdbcType=VARCHAR}, #{avator,jdbcType=VARCHAR}, 
-      #{qq,jdbcType=VARCHAR}, #{money,jdbcType=REAL})
+      #{qq,jdbcType=VARCHAR}, #{money,jdbcType=REAL}, 3)
   </insert>
   <insert id="insertSelective" parameterType="com.agroup.store.domain.Account">
     insert into account
@@ -257,11 +258,15 @@
   </update>
 
   <insert id="insertPurchaseRecordWithoutEffect" >
-    insert into purchaserecord values (#{accountId},#{goodsId},'false');
+    insert into purchaserecord values (#{accountId},#{goodsId},'false', null, null, null);
   </insert>
 
   <update id="updatePurchaseRecord">
     update purchaserecord set effective='true' where buyerId= #{accountId} and goodsId=#{goodsId}
+  </update>
+
+  <update id="updateSupplyRecord">
+    update supplyrecord set effective='true' where accountid= #{accountId} and desiredgoodsid=#{desiredGoodsId}
   </update>
 
   <resultMap id="goodsMap" type="com.agroup.store.resp.GoodsPurchaseRecordResp">
@@ -282,7 +287,7 @@
   </select>
 
   <insert id="insertSupplyRecord" >
-    insert into supplyrecord values (#{accountId},#{desiredgoodsId});
+    insert into supplyrecord (accountid, desiredgoodsid, effective) values (#{accountId},#{desiredgoodsId}, "false");
   </insert>
 
   <select id="getSupplyingGoodsByAccountId" parameterType="java.lang.Integer" resultType="com.agroup.store.domain.DesiredGoods">
@@ -322,6 +327,12 @@
         where buyerId = #{buyerId} and goodsId = #{goodsId}
   </select>
 
+  <select id="selectSupplyRecordByPid" resultType="com.agroup.store.domain.SupplyRecord">
+    select *
+    from supplyrecord
+    where accountid = #{sellerId} and desiredgoodsid = #{desiredGoodsId}
+  </select>
+
   <update id="updateAvatar">
     update account set avator = #{filename, jdbcType=VARCHAR} where id=#{accountId, jdbcType=INTEGER}
   </update>
@@ -338,5 +349,29 @@
     update account set money=#{amount, jdbcType=REAL} where id=#{accountId, jdbcType=INTEGER}
   </update>
 
+  <select id="getAccountIdByGoodsId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select account_id from goods where id = #{goodsId}
+  </select>
+
+  <select id="getAccountIdByDesiredGoodsId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select account_id from desiredgoods where id = #{desiredGoodsId}
+  </select>
+
+  <update id="decrease1CreditPoint" parameterType="java.lang.Integer">
+    update account set creditpoint = creditpoint - 1 where id = #{Id}
+  </update>
+
+  <update id="increase1CreditPoint" parameterType="java.lang.Integer">
+    update account set creditpoint = least(creditpoint + 1, 3)  where id = #{id}
+  </update>
+
+  <insert id="addComplainRecord" >
+    insert into complainRecord value (#{id1},#{id2},#{date})
+  </insert>
+
+  <select id="checkIsAbleToComplain" resultType="java.lang.Integer">
+    select count(*)from complainRecord where ((accountId1 = #{id1} and accountId2 = #{id2})
+    or (accountId1 = #{id2} and accountId2 = #{id1}) ) and  (7*24*60*60) > timediff(#{date},date)
+  </select>
 
 </mapper>

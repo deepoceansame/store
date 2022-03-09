@@ -1,4 +1,10 @@
 <template>
+
+  <br><br><br>
+  <h1 style="margin-left: 575px;font-family: Arial, 'Hiragino Sans GB', 'Microsoft Yahei', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif">
+    <font size="100">Sustech Store</font>
+  </h1>
+
   <a-form
       ref="formRef"
       name="custom-validation"
@@ -7,34 +13,35 @@
       v-bind="layout"
   >
 
-    <a-form-item has-feedback label="mail" name="mail">
+    <a-form-item style="margin-top: 30px; margin-left: 40px" has-feedback label="邮箱" name="mail">
       <a-input v-model:value="formState.mail" type="mail" autocomplete="off" />
     </a-form-item>
-    <a-form-item has-feedback label="name" name="name">
+    <a-form-item style="margin-left: 40px" has-feedback label="用户名" name="name">
       <a-input v-model:value="formState.name" type="input" autocomplete="off" />
     </a-form-item>
-    <a-form-item has-feedback label="qq" name="qq">
+    <a-form-item style="margin-left: 40px" has-feedback label="QQ" name="qq">
       <a-input v-model:value="formState.qq" type="input" autocomplete="off" />
     </a-form-item>
-    <a-form-item has-feedback label="Password" name="password">
+    <a-form-item style="margin-left: 40px" has-feedback label="密码" name="password">
       <a-input v-model:value="formState.password" type="password" autocomplete="off" />
     </a-form-item>
-    <a-form-item has-feedback label="Confirm" name="repPassword">
+    <a-form-item style="margin-left: 40px" has-feedback label="确认密码" name="repPassword">
       <a-input v-model:value="formState.repPassword" type="password" autocomplete="off" />
     </a-form-item>
-    <a-form-item has-feedback label="收货地址" name="recvaddress">
+    <a-form-item style="margin-left: 40px" has-feedback label="收货地址" name="recvaddress">
       <a-input v-model:value="formState.recvaddress" type="input" autocomplete="off" />
     </a-form-item>
 
 
 
-    <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="onSubmit">Submit</a-button>
-      <a-button style="margin-left: 10px" @click="resetForm">Reset</a-button>
+    <a-form-item style="margin-left: 40px" :wrapper-col="{ span: 14, offset: 9 }">
+      <a-button type="primary" @click="onSubmit">提交</a-button>
+      <a-button style="margin-left: 10px" @click="resetForm">重置</a-button>
+      <a-button style="margin-left: 10px" @click="goback">返回</a-button>
     </a-form-item>
   </a-form>
-  <a-button @click="goback">返回</a-button>
-  <button @click="handleClick">click</button>
+
+<!--  <button @click="handleClick">click</button>-->
 </template>
 
 <script lang="ts">
@@ -88,9 +95,9 @@ export default {
 
     let validatePass2 = async (_rule: any, value: string) => {
       if (value === '') {
-        return Promise.reject('Please input the password again');
+        return Promise.reject('请确认密码');
       } else if (value !== formState.password) {
-        return Promise.reject("Two inputs don't match!");
+        return Promise.reject("两次输入密码不一致!");
       } else {
         return Promise.resolve();
       }
@@ -99,11 +106,11 @@ export default {
 
     let validateMail = async (_rule: any, value: string) => {
       if (value === '') {
-        return Promise.reject('Please input the mail');
+        return Promise.reject('请填写邮箱');
       } else {
         const MAIL_REGEX_1= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!MAIL_REGEX_1.test(value)) {
-          return Promise.reject('wrong mail format')
+          return Promise.reject('邮箱格式错误')
         }
         return Promise.resolve();
       }
@@ -111,11 +118,11 @@ export default {
 
     let validateQQ = async (_rule: any, value: string) => {
       if (value === '') {
-        return Promise.reject('Please input the qq');
+        return Promise.reject('请填写QQ号');
       } else {
         const QQ_REGEX_1= /^\d{5,12}$/;
         if (!QQ_REGEX_1.test(value)) {
-          return Promise.reject('wrong qq format')
+          return Promise.reject('QQ号格式错误')
         }
         return Promise.resolve();
       }
@@ -160,10 +167,10 @@ export default {
     };
     const layout = {
       labelCol: {
-        span: 4,
+        span: 8,
       },
       wrapperCol: {
-        span: 14,
+        span: 6,
       },
     };
 

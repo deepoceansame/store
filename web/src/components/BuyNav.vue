@@ -1,6 +1,6 @@
 <template>
   <nav id="nav">
-    <router-link to="/goods/page=1&category=1&keyword=" :style="{color: getColor('goods')}">在卖的商品</router-link>|
+    <router-link to="/goods/page=1&category=1&keyword=" :style="{color: getColor('goods')}">在售商品</router-link>|
     <router-link to="/collectedgoods/page=1&category=1&keyword=" :style="{color: getColor('collectedgoods')}">参与购买的商品</router-link>|
     <router-link to="/myinquiry/page=1&category=1&keyword=" :style="{color: getColor('myinquiry')}">我的求购</router-link>
   </nav>

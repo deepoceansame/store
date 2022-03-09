@@ -1,5 +1,9 @@
 <template>
-  <router-link to="/goods/page=1&category=1&keyword=">enter</router-link>
+<!--  <router-link to="/goods/page=1&category=1&keyword=">enter</router-link>-->
+  <br><br><br>
+  <h1 style="margin-left: 575px;font-family: Arial, 'Hiragino Sans GB', 'Microsoft Yahei', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif">
+    <font size="100">Sustech Store</font>
+  </h1>
   <a-form
       ref="formRef"
       name="custom-validation"
@@ -7,25 +11,27 @@
       :rules="rules"
       v-bind="layout"
   >
-    <a-form-item has-feedback label="邮箱" name="mail">
+
+    <a-form-item style="margin-top: 30px ; margin-left: 40px" has-feedback label="邮箱" name="mail">
       <a-input v-model:value="formState.mail" type="mail" autocomplete="off" />
     </a-form-item>
-    <a-form-item has-feedback label="密码" name="password">
+    <a-form-item has-feedback label="密码" style=" margin-left: 40px" name="password">
       <a-input v-model:value="formState.password" type="password" autocomplete="off" />
     </a-form-item>
-    <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="onSubmit">登录</a-button>
-      <a-button style="margin-left: 10px" @click="resetForm">Reset</a-button>
+    <a-form-item :wrapper-col="{ span: 20, offset: 9 }">
+      <a-button style=" margin-left: 40px" type="primary" @click="onSubmit">登录</a-button>
+      <a-button style="margin-left: 10px" @click="resetForm">重置</a-button>
+      <a-button style="margin-left: 10px" @click="goToSignup">注册</a-button>
     </a-form-item>
   </a-form>
-  <a-button @click="goToSignup">注册</a-button>
-  <button @click="handleClick">click</button>
+
+<!--  <button @click="handleClick">click</button>-->
 </template>
 
 <script lang="ts">
 import {computed, defineComponent, reactive, ref, toRaw} from 'vue';
 import axios from "axios";
-import {message} from "ant-design-vue";
+import {message, Layout} from "ant-design-vue";
 import {useRouter, useRoute} from "vue-router";
 import store from '@/store';
 declare let hexMd5: any;
@@ -43,11 +49,11 @@ export default defineComponent({
 
     let validateMail = async (_rule: any, value: string) => {
       if (value === '') {
-        return Promise.reject('Please input the mail');
+        return Promise.reject('请填写邮箱');
       } else {
         const MAIL_REGEX_1= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!MAIL_REGEX_1.test(value)) {
-          return Promise.reject('wrong mail format')
+          return Promise.reject('邮箱格式错误')
         }
 
         return Promise.resolve();
@@ -56,7 +62,7 @@ export default defineComponent({
 
     let validatePass = async (_rule: any, value: string) => {
       if (value === '') {
-        return Promise.reject('Please input your password');
+        return Promise.reject('请输入密码');
       } else {
         return Promise.resolve();
       }
@@ -76,10 +82,10 @@ export default defineComponent({
     };
     const layout = {
       labelCol: {
-        span: 4,
+        span: 8,
       },
       wrapperCol: {
-        span: 14,
+        span: 6,
       },
     };
 
@@ -135,3 +141,4 @@ export default defineComponent({
 
 });
 </script>
+
